@@ -1,0 +1,26 @@
+profile_version: 0.01
+name: "vnf-pp-0.01"
+version: "0.1"
+author: "https://github.com/raphaelvrosa/vnf-bench-meth/blob/master/draft-rosa-bmwg-vnfbench-02"
+description: "This is an example of VNF performance profile (vnf-pp)"
+
+environment:
+  vnfs:
+    - id:
+      specs: {{ vnf_info }}
+  agents:
+      - id:
+      specs: {{ agent_info }}
+  monitors:
+    - id:
+      specs: {{ monitor_info }}
+
+metrics:
+  agents:
+    - id: {{ agent_id_1 }}
+      throughput: {{ throughput_bps }}
+      frame_loss: {{ frame_loss_percent }}
+  monitors:
+    - id: {{ monitor_id }}
+      cpu_percent: {{ mon_cpu }}
+      mem_percent: {{ mon_mem }}

@@ -1,0 +1,11 @@
+report_version: 0.01
+id: "001"
+name: "vnf-br-0.01"
+version: "0.1"
+author: "https://github.com/raphaelvrosa/vnf-bench-meth/blob/master/draft-rosa-bmwg-vnfbench-02"
+description: "This is an example of VNF benchmark report (vnf-br)"
+
+
+vnf-bd: {% include vnf-bd %}
+
+vnf-pp: {% include vnf-pp %}

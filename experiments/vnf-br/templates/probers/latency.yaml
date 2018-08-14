@@ -1,0 +1,15 @@
+id: 2
+name: 'prober-ping'
+version: "0.1"
+description: "A descriptor of a prober for ping tool"
+
+frame_size: {{ frame_size }}
+interval: {{ interval }}
+packets: {{ packets }}
+duration: {{ duration }}
+target: {{ target }}
+
+metrics:
+  - rtt_avg
+  - rtt_std_dev
+  - loss
