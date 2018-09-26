@@ -1,0 +1,51 @@
+{
+    "id": 501,
+    "method": "task",
+    "params": {
+        "agents": {
+            "d1": [
+                {
+                    "id": 4,
+                    "parameters": {
+                        "client": true,
+                        "duration": 20,
+                        "port": 9003,
+                        "protocol": "tcp",
+                        "rate": "1G",
+                        "server": "172.31.1.4"
+                    }
+                }
+            ],
+            "d3": [
+                {
+                    "id": 4,
+                    "parameters": {
+                        "client": false,
+                        "duration": 20,
+                        "port": 9003,
+                        "protocol": "tcp"
+                    }
+                }
+            ]
+        },
+        "monitors": {
+            "d6": [
+                {
+                    "id": 17,
+                    "parameters": {
+                        "duration": 20,
+                        "interval": 5,
+                        "target": "mn.d2"
+                    }
+                }
+            ]
+        },
+        "time": {
+            "duration": null,
+            "every": 0,
+            "repeat": 0,
+            "timestamp": "Wed, 26 Sep 2018 10:30:46",
+            "when": null
+        }
+    }
+}

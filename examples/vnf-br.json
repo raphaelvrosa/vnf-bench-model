@@ -1,0 +1,774 @@
+{
+    "id": "510",
+    "response": "vnfbr",
+    "result": {
+        "error": {},
+        "timestamp": "2018-09-26T13:31:07.790015Z",
+        "vnfbd": {
+            "author": "https://github.com/raphaelvrosa/vnf-bench-meth/blob/master/draft-rosa-bmwg-vnfbench-02",
+            "description": "This is an example of VNF benchmark descriptor (vnf-bd)",
+            "id": "001",
+            "name": "vnf-bd-0.01",
+            "procedures": {
+                "repeat": {
+                    "method": 1,
+                    "tests": 1,
+                    "trials": 1
+                }
+            },
+            "scenario": {
+                "deployment": {
+                    "entrypoint": "http://127.0.0.1:7878/001/",
+                    "orchestration": true,
+                    "plugin": "containernet"
+                },
+                "parameters": {
+                    "agents": [
+                        {
+                            "id": "d1",
+                            "probers": [
+                                {
+                                    "id": 4,
+                                    "parameters": {
+                                        "client": true,
+                                        "duration": 20,
+                                        "port": 9003,
+                                        "protocol": "tcp",
+                                        "rate": "1G",
+                                        "server": "172.31.1.4"
+                                    }
+                                }
+                            ]
+                        },
+                        {
+                            "id": "d3",
+                            "probers": [
+                                {
+                                    "id": 4,
+                                    "parameters": {
+                                        "client": false,
+                                        "duration": 20,
+                                        "port": 9003,
+                                        "protocol": "tcp"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "monitors": [
+                        {
+                            "id": "d6",
+                            "listeners": [
+                                {
+                                    "id": 17,
+                                    "parameters": {
+                                        "duration": 20,
+                                        "interval": 5,
+                                        "target": "mn.d2"
+                                    }
+                                }
+                            ]
+                        }
+                    ],
+                    "vnfs": [
+                        {
+                            "id": "d2"
+                        }
+                    ]
+                },
+                "requirements": [
+                    {
+                        "id": "d2",
+                        "resources": {
+                            "cpu": {
+                                "cpu_cores": "0,1",
+                                "vcpus": [
+                                    1,
+                                    2
+                                ]
+                            },
+                            "memory": {
+                                "size": 64,
+                                "size_unit": "MB"
+                            },
+                            "storage": {
+                                "size": 2,
+                                "size_unit": "GB"
+                            }
+                        }
+                    },
+                    {
+                        "id": "d1",
+                        "resources": {
+                            "cpu": {
+                                "vcpus": 1
+                            },
+                            "memory": {
+                                "size": 512,
+                                "size_unit": "MB"
+                            },
+                            "storage": {
+                                "size": 2,
+                                "size_unit": "GB"
+                            }
+                        }
+                    },
+                    {
+                        "id": "d3",
+                        "resources": {
+                            "cpu": {
+                                "vcpus": 1
+                            },
+                            "memory": {
+                                "size": 512,
+                                "size_unit": "MB"
+                            },
+                            "storage": {
+                                "size": 2,
+                                "size_unit": "GB"
+                            }
+                        }
+                    },
+                    {
+                        "id": "d5",
+                        "resources": {
+                            "cpu": {
+                                "vcpus": 1
+                            },
+                            "memory": {
+                                "size": 512,
+                                "size_unit": "MB"
+                            },
+                            "storage": {
+                                "size": 2,
+                                "size_unit": "GB"
+                            }
+                        }
+                    }
+                ],
+                "topology": {
+                    "links": [
+                        {
+                            "connection_points": [
+                                "d1:eth1",
+                                "d2:input"
+                            ],
+                            "id": "d1:d2",
+                            "network": "s1",
+                            "type": "E-LAN"
+                        },
+                        {
+                            "connection_points": [
+                                "d2:output",
+                                "d3:eth1"
+                            ],
+                            "id": "d2:d3",
+                            "network": "s2",
+                            "type": "E-LAN"
+                        }
+                    ],
+                    "nodes": [
+                        {
+                            "connection_points": [
+                                {
+                                    "address": "172.31.1.2/30",
+                                    "id": "input",
+                                    "interface": "ipv4",
+                                    "type": "internal"
+                                },
+                                {
+                                    "address": "172.31.1.3/30",
+                                    "id": "output",
+                                    "interface": "ipv4",
+                                    "type": "internal"
+                                }
+                            ],
+                            "entrypoint": "./start.sh",
+                            "id": "d2",
+                            "image": "vnf-bench/suricata:0.1",
+                            "image_format": "docker",
+                            "type": "sut"
+                        },
+                        {
+                            "connection_points": [
+                                {
+                                    "address": "172.31.1.1/24",
+                                    "id": "eth1",
+                                    "interface": "ipv4",
+                                    "type": "internal"
+                                }
+                            ],
+                            "entrypoint": "taas_agent --id {host_id} --url http://{host_ip}:8988 > ag1.log 2>&1 &",
+                            "id": "d1",
+                            "image": "taas/beta:0.4",
+                            "image_format": "docker",
+                            "type": "agent"
+                        },
+                        {
+                            "connection_points": [
+                                {
+                                    "address": "172.31.1.4/24",
+                                    "id": "eth1",
+                                    "interface": "ipv4",
+                                    "type": "internal"
+                                }
+                            ],
+                            "entrypoint": "taas_agent --id {host_id} --url http://{host_ip}:8988 > ag1.log 2>&1 &",
+                            "id": "d3",
+                            "image": "taas/beta:0.4",
+                            "image_format": "docker",
+                            "type": "agent"
+                        },
+                        {
+                            "connection_points": [
+                                {
+                                    "address": "172.17.0.4/24",
+                                    "id": "eth0",
+                                    "interface": "ipv4",
+                                    "type": "management"
+                                }
+                            ],
+                            "entrypoint": "taas_manager --id {host_id} --url http://{host_ip}:8989 > man.log 2>&1 &",
+                            "id": "d5",
+                            "image": "taas/beta:0.4",
+                            "image_format": "docker",
+                            "type": "manager"
+                        },
+                        {
+                            "connection_points": null,
+                            "entrypoint": "taas_monitor --id {host_id} --url http://{host_ip}:8987",
+                            "id": "d6",
+                            "image": null,
+                            "image_format": "process",
+                            "type": "monitor"
+                        }
+                    ]
+                }
+            },
+            "target": {
+                "author": "anybody",
+                "description": "A sample VNF description",
+                "id": "d2",
+                "name": "sut",
+                "vendor": "vendor",
+                "version": 0.1
+            },
+            "version": "0.1"
+        },
+        "vnfpp": {
+            "id": "001",
+            "reports": [
+                {
+                    "component": "d5",
+                    "host": "d5",
+                    "id": 500,
+                    "inputs": {
+                        "agent_1_entrypoint": "taas_agent --id {host_id} --url http://{host_ip}:8988 > ag1.log 2>&1 &",
+                        "agent_1_id": "d1",
+                        "agent_1_image": "taas/beta:0.4",
+                        "agent_2_entrypoint": "taas_agent --id {host_id} --url http://{host_ip}:8988 > ag1.log 2>&1 &",
+                        "agent_2_id": "d3",
+                        "agent_2_image": "taas/beta:0.4",
+                        "container_target": "mn.d2",
+                        "duration": 20,
+                        "id": 500,
+                        "interval": 5,
+                        "manager_entrypoint": "taas_manager --id {host_id} --url http://{host_ip}:8989 > man.log 2>&1 &",
+                        "manager_id": "d5",
+                        "manager_image": "taas/beta:0.4",
+                        "monitor_entrypoint": "taas_monitor --id {host_id} --url http://{host_ip}:8987",
+                        "monitor_id": "d6",
+                        "network_id_1": "s1",
+                        "network_id_2": "s2",
+                        "port": "9003",
+                        "protocol": "tcp",
+                        "rate": "1G",
+                        "scenario_entrypoint": "http://127.0.0.1:7878/001/",
+                        "scenario_orchestration": true,
+                        "scenario_plugin": "containernet",
+                        "server": "172.31.1.4",
+                        "vm_entrypoint": "./start.sh",
+                        "vnf_cpu_cores": "0,1",
+                        "vnf_id": "d2",
+                        "vnf_image": "vnf-bench/suricata:0.1",
+                        "vnf_mem_size": 64,
+                        "vnf_name": "sut",
+                        "vnf_vcpus": 1,
+                        "vnf_version": 0.1
+                    },
+                    "role": "manager",
+                    "snapshots": [
+                        {
+                            "component": "d1",
+                            "evaluations": [
+                                {
+                                    "id": "3985",
+                                    "metrics": {
+                                        "bits_per_second": 995751000.0,
+                                        "bytes": 2489406304,
+                                        "end": 20.0002,
+                                        "retransmits": 391,
+                                        "seconds": 20.0002,
+                                        "start": 0
+                                    },
+                                    "series": false,
+                                    "timestamp": "2018-09-26T13:30:28.856904Z",
+                                    "tool": 4,
+                                    "type": "prober"
+                                }
+                            ],
+                            "host": "d1",
+                            "id": "2130",
+                            "role": "agent",
+                            "timestamp": "2018-09-26T13:30:28.857110Z"
+                        },
+                        {
+                            "component": "d6",
+                            "evaluations": [
+                                {
+                                    "id": "3212",
+                                    "metrics": [
+                                        {
+                                            "cpu_percent": 9.009831362467866,
+                                            "cpu_throttling_data": [],
+                                            "cpu_total_usage": 2307898055.0,
+                                            "cpu_usage_in_kernelmode": 580000000.0,
+                                            "cpu_usage_in_usermode": 1640000000.0,
+                                            "io_read": 100696064.0,
+                                            "io_write": 89604096.0,
+                                            "mem_active_anon": 28356608.0,
+                                            "mem_active_file": 3563520.0,
+                                            "mem_cache": 3686400.0,
+                                            "mem_dirty": 20480.0,
+                                            "mem_hierarchical_memory_limit": 67108864.0,
+                                            "mem_hierarchical_memsw_limit": 134217728.0,
+                                            "mem_inactive_anon": 31571968.0,
+                                            "mem_inactive_file": 110592.0,
+                                            "mem_limit": 67108864.0,
+                                            "mem_mapped_file": 3366912.0,
+                                            "mem_max_usage": 69390336.0,
+                                            "mem_percent": 99.945068359375,
+                                            "mem_pgfault": 60768.0,
+                                            "mem_pgmajfault": 2593.0,
+                                            "mem_pgpgin": 62131.0,
+                                            "mem_pgpgout": 46603.0,
+                                            "mem_rss": 59916288.0,
+                                            "mem_rss_huge": 0.0,
+                                            "mem_total_active_anon": 28356608.0,
+                                            "mem_total_active_file": 3563520.0,
+                                            "mem_total_cache": 3686400.0,
+                                            "mem_total_dirty": 20480.0,
+                                            "mem_total_inactive_anon": 31571968.0,
+                                            "mem_total_inactive_file": 110592.0,
+                                            "mem_total_mapped_file": 3366912.0,
+                                            "mem_total_pgfault": 60768.0,
+                                            "mem_total_pgmajfault": 2593.0,
+                                            "mem_total_pgpgin": 62131.0,
+                                            "mem_total_pgpgout": 46603.0,
+                                            "mem_total_rss": 59916288.0,
+                                            "mem_total_rss_huge": 0.0,
+                                            "mem_total_unevictable": 0.0,
+                                            "mem_total_writeback": 0.0,
+                                            "mem_unevictable": 0.0,
+                                            "mem_usage": 67072000.0,
+                                            "mem_writeback": 0.0,
+                                            "system_cpu_usage": 20415980000000.0,
+                                            "timestamp": "2018-09-26T10:30:08.289363Z"
+                                        },
+                                        {
+                                            "cpu_percent": 11.11152101010101,
+                                            "cpu_throttling_data": [],
+                                            "cpu_total_usage": 2968002920.0,
+                                            "cpu_usage_in_kernelmode": 760000000.0,
+                                            "cpu_usage_in_usermode": 1960000000.0,
+                                            "io_read": 100696064.0,
+                                            "io_write": 89604096.0,
+                                            "mem_active_anon": 28356608.0,
+                                            "mem_active_file": 3571712.0,
+                                            "mem_cache": 3702784.0,
+                                            "mem_dirty": 36864.0,
+                                            "mem_hierarchical_memory_limit": 67108864.0,
+                                            "mem_hierarchical_memsw_limit": 134217728.0,
+                                            "mem_inactive_anon": 31571968.0,
+                                            "mem_inactive_file": 118784.0,
+                                            "mem_limit": 67108864.0,
+                                            "mem_mapped_file": 3366912.0,
+                                            "mem_max_usage": 69390336.0,
+                                            "mem_percent": 99.932861328125,
+                                            "mem_pgfault": 60768.0,
+                                            "mem_pgmajfault": 2593.0,
+                                            "mem_pgpgin": 62135.0,
+                                            "mem_pgpgout": 46603.0,
+                                            "mem_rss": 59916288.0,
+                                            "mem_rss_huge": 0.0,
+                                            "mem_total_active_anon": 28356608.0,
+                                            "mem_total_active_file": 3571712.0,
+                                            "mem_total_cache": 3702784.0,
+                                            "mem_total_dirty": 36864.0,
+                                            "mem_total_inactive_anon": 31571968.0,
+                                            "mem_total_inactive_file": 118784.0,
+                                            "mem_total_mapped_file": 3366912.0,
+                                            "mem_total_pgfault": 60768.0,
+                                            "mem_total_pgmajfault": 2593.0,
+                                            "mem_total_pgpgin": 62135.0,
+                                            "mem_total_pgpgout": 46603.0,
+                                            "mem_total_rss": 59916288.0,
+                                            "mem_total_rss_huge": 0.0,
+                                            "mem_total_unevictable": 0.0,
+                                            "mem_total_writeback": 0.0,
+                                            "mem_unevictable": 0.0,
+                                            "mem_usage": 67063808.0,
+                                            "mem_writeback": 0.0,
+                                            "system_cpu_usage": 20443450000000.0,
+                                            "timestamp": "2018-09-26T10:30:15.150941Z"
+                                        },
+                                        {
+                                            "cpu_percent": 8.12826524173028,
+                                            "cpu_throttling_data": [],
+                                            "cpu_total_usage": 3563309730.0,
+                                            "cpu_usage_in_kernelmode": 920000000.0,
+                                            "cpu_usage_in_usermode": 2200000000.0,
+                                            "io_read": 100696064.0,
+                                            "io_write": 89604096.0,
+                                            "mem_active_anon": 28356608.0,
+                                            "mem_active_file": 3588096.0,
+                                            "mem_cache": 3735552.0,
+                                            "mem_dirty": 0.0,
+                                            "mem_hierarchical_memory_limit": 67108864.0,
+                                            "mem_hierarchical_memsw_limit": 134217728.0,
+                                            "mem_inactive_anon": 31571968.0,
+                                            "mem_inactive_file": 135168.0,
+                                            "mem_limit": 67108864.0,
+                                            "mem_mapped_file": 3366912.0,
+                                            "mem_max_usage": 69390336.0,
+                                            "mem_percent": 99.981689453125,
+                                            "mem_pgfault": 60768.0,
+                                            "mem_pgmajfault": 2593.0,
+                                            "mem_pgpgin": 62143.0,
+                                            "mem_pgpgout": 46603.0,
+                                            "mem_rss": 59916288.0,
+                                            "mem_rss_huge": 0.0,
+                                            "mem_total_active_anon": 28356608.0,
+                                            "mem_total_active_file": 3588096.0,
+                                            "mem_total_cache": 3735552.0,
+                                            "mem_total_dirty": 0.0,
+                                            "mem_total_inactive_anon": 31571968.0,
+                                            "mem_total_inactive_file": 135168.0,
+                                            "mem_total_mapped_file": 3366912.0,
+                                            "mem_total_pgfault": 60768.0,
+                                            "mem_total_pgmajfault": 2593.0,
+                                            "mem_total_pgpgin": 62143.0,
+                                            "mem_total_pgpgout": 46603.0,
+                                            "mem_total_rss": 59916288.0,
+                                            "mem_total_rss_huge": 0.0,
+                                            "mem_total_unevictable": 0.0,
+                                            "mem_total_writeback": 0.0,
+                                            "mem_unevictable": 0.0,
+                                            "mem_usage": 67096576.0,
+                                            "mem_writeback": 0.0,
+                                            "system_cpu_usage": 20470910000000.0,
+                                            "timestamp": "2018-09-26T10:30:22.164394Z"
+                                        }
+                                    ],
+                                    "series": true,
+                                    "timestamp": "2018-09-26T13:30:29.283003Z",
+                                    "tool": 17,
+                                    "type": "listener"
+                                }
+                            ],
+                            "host": "paps",
+                            "id": "4050",
+                            "role": "monitor",
+                            "timestamp": "2018-09-26T13:30:29.283430Z"
+                        },
+                        {
+                            "component": "d3",
+                            "evaluations": [
+                                {
+                                    "id": "1070",
+                                    "metrics": {
+                                        "bits_per_second": 994206000.0,
+                                        "bytes": 2489406304,
+                                        "end": 20.0313,
+                                        "retransmits": 391,
+                                        "seconds": 20.0313,
+                                        "start": 0
+                                    },
+                                    "series": false,
+                                    "timestamp": "2018-09-26T13:30:29.158506Z",
+                                    "tool": 4,
+                                    "type": "prober"
+                                }
+                            ],
+                            "host": "d3",
+                            "id": "948",
+                            "role": "agent",
+                            "timestamp": "2018-09-26T13:30:29.158826Z"
+                        }
+                    ],
+                    "timestamp": "2018-09-26T13:30:29.303548Z"
+                },
+                {
+                    "component": "d5",
+                    "host": "d5",
+                    "id": 501,
+                    "inputs": {
+                        "agent_1_entrypoint": "taas_agent --id {host_id} --url http://{host_ip}:8988 > ag1.log 2>&1 &",
+                        "agent_1_id": "d1",
+                        "agent_1_image": "taas/beta:0.4",
+                        "agent_2_entrypoint": "taas_agent --id {host_id} --url http://{host_ip}:8988 > ag1.log 2>&1 &",
+                        "agent_2_id": "d3",
+                        "agent_2_image": "taas/beta:0.4",
+                        "container_target": "mn.d2",
+                        "duration": 20,
+                        "id": 501,
+                        "interval": 5,
+                        "manager_entrypoint": "taas_manager --id {host_id} --url http://{host_ip}:8989 > man.log 2>&1 &",
+                        "manager_id": "d5",
+                        "manager_image": "taas/beta:0.4",
+                        "monitor_entrypoint": "taas_monitor --id {host_id} --url http://{host_ip}:8987",
+                        "monitor_id": "d6",
+                        "network_id_1": "s1",
+                        "network_id_2": "s2",
+                        "port": "9003",
+                        "protocol": "tcp",
+                        "rate": "1G",
+                        "scenario_entrypoint": "http://127.0.0.1:7878/001/",
+                        "scenario_orchestration": true,
+                        "scenario_plugin": "containernet",
+                        "server": "172.31.1.4",
+                        "vm_entrypoint": "./start.sh",
+                        "vnf_cpu_cores": "0,1",
+                        "vnf_id": "d2",
+                        "vnf_image": "vnf-bench/suricata:0.1",
+                        "vnf_mem_size": 64,
+                        "vnf_name": "sut",
+                        "vnf_vcpus": 2,
+                        "vnf_version": 0.1
+                    },
+                    "role": "manager",
+                    "snapshots": [
+                        {
+                            "component": "d1",
+                            "evaluations": [
+                                {
+                                    "id": "3790",
+                                    "metrics": {
+                                        "bits_per_second": 995912000.0,
+                                        "bytes": 2489799520,
+                                        "end": 20.0002,
+                                        "retransmits": 184,
+                                        "seconds": 20.0002,
+                                        "start": 0
+                                    },
+                                    "series": false,
+                                    "timestamp": "2018-09-26T13:31:07.372258Z",
+                                    "tool": 4,
+                                    "type": "prober"
+                                }
+                            ],
+                            "host": "d1",
+                            "id": "2053",
+                            "role": "agent",
+                            "timestamp": "2018-09-26T13:31:07.372492Z"
+                        },
+                        {
+                            "component": "d3",
+                            "evaluations": [
+                                {
+                                    "id": "1659",
+                                    "metrics": {
+                                        "bits_per_second": 994418000.0,
+                                        "bytes": 2489799520,
+                                        "end": 20.0302,
+                                        "retransmits": 184,
+                                        "seconds": 20.0302,
+                                        "start": 0
+                                    },
+                                    "series": false,
+                                    "timestamp": "2018-09-26T13:31:07.721843Z",
+                                    "tool": 4,
+                                    "type": "prober"
+                                }
+                            ],
+                            "host": "d3",
+                            "id": "1806",
+                            "role": "agent",
+                            "timestamp": "2018-09-26T13:31:07.721989Z"
+                        },
+                        {
+                            "component": "d6",
+                            "evaluations": [
+                                {
+                                    "id": "4148",
+                                    "metrics": [
+                                        {
+                                            "cpu_percent": 10.057039593908629,
+                                            "cpu_throttling_data": [],
+                                            "cpu_total_usage": 2060562918.0,
+                                            "cpu_usage_in_kernelmode": 480000000.0,
+                                            "cpu_usage_in_usermode": 1540000000.0,
+                                            "io_read": 50872320.0,
+                                            "io_write": 79929344.0,
+                                            "mem_active_anon": 31211520.0,
+                                            "mem_active_file": 770048.0,
+                                            "mem_cache": 888832.0,
+                                            "mem_dirty": 0.0,
+                                            "mem_hierarchical_memory_limit": 67108864.0,
+                                            "mem_hierarchical_memsw_limit": 134217728.0,
+                                            "mem_inactive_anon": 31526912.0,
+                                            "mem_inactive_file": 106496.0,
+                                            "mem_limit": 67108864.0,
+                                            "mem_mapped_file": 634880.0,
+                                            "mem_max_usage": 69414912.0,
+                                            "mem_percent": 99.90234375,
+                                            "mem_pgfault": 59230.0,
+                                            "mem_pgmajfault": 2016.0,
+                                            "mem_pgpgin": 50022.0,
+                                            "mem_pgpgout": 34489.0,
+                                            "mem_rss": 62734336.0,
+                                            "mem_rss_huge": 0.0,
+                                            "mem_total_active_anon": 31211520.0,
+                                            "mem_total_active_file": 770048.0,
+                                            "mem_total_cache": 888832.0,
+                                            "mem_total_dirty": 0.0,
+                                            "mem_total_inactive_anon": 31526912.0,
+                                            "mem_total_inactive_file": 106496.0,
+                                            "mem_total_mapped_file": 634880.0,
+                                            "mem_total_pgfault": 59230.0,
+                                            "mem_total_pgmajfault": 2016.0,
+                                            "mem_total_pgpgin": 50022.0,
+                                            "mem_total_pgpgout": 34489.0,
+                                            "mem_total_rss": 62734336.0,
+                                            "mem_total_rss_huge": 0.0,
+                                            "mem_total_unevictable": 0.0,
+                                            "mem_total_writeback": 0.0,
+                                            "mem_unevictable": 0.0,
+                                            "mem_usage": 67043328.0,
+                                            "mem_writeback": 0.0,
+                                            "system_cpu_usage": 20565480000000.0,
+                                            "timestamp": "2018-09-26T10:30:46.837257Z"
+                                        },
+                                        {
+                                            "cpu_percent": 9.941974874371859,
+                                            "cpu_throttling_data": [],
+                                            "cpu_total_usage": 2798753483.0,
+                                            "cpu_usage_in_kernelmode": 730000000.0,
+                                            "cpu_usage_in_usermode": 1920000000.0,
+                                            "io_read": 51732480.0,
+                                            "io_write": 80109568.0,
+                                            "mem_active_anon": 31133696.0,
+                                            "mem_active_file": 167936.0,
+                                            "mem_cache": 327680.0,
+                                            "mem_dirty": 20480.0,
+                                            "mem_hierarchical_memory_limit": 67108864.0,
+                                            "mem_hierarchical_memsw_limit": 134217728.0,
+                                            "mem_inactive_anon": 32198656.0,
+                                            "mem_inactive_file": 143360.0,
+                                            "mem_limit": 67108864.0,
+                                            "mem_mapped_file": 294912.0,
+                                            "mem_max_usage": 69414912.0,
+                                            "mem_percent": 99.8046875,
+                                            "mem_pgfault": 59609.0,
+                                            "mem_pgmajfault": 2198.0,
+                                            "mem_pgpgin": 50226.0,
+                                            "mem_pgpgout": 34687.0,
+                                            "mem_rss": 63320064.0,
+                                            "mem_rss_huge": 0.0,
+                                            "mem_total_active_anon": 31133696.0,
+                                            "mem_total_active_file": 167936.0,
+                                            "mem_total_cache": 327680.0,
+                                            "mem_total_dirty": 20480.0,
+                                            "mem_total_inactive_anon": 32198656.0,
+                                            "mem_total_inactive_file": 143360.0,
+                                            "mem_total_mapped_file": 294912.0,
+                                            "mem_total_pgfault": 59609.0,
+                                            "mem_total_pgmajfault": 2198.0,
+                                            "mem_total_pgpgin": 50226.0,
+                                            "mem_total_pgpgout": 34687.0,
+                                            "mem_total_rss": 63320064.0,
+                                            "mem_total_rss_huge": 0.0,
+                                            "mem_total_unevictable": 0.0,
+                                            "mem_total_writeback": 0.0,
+                                            "mem_unevictable": 0.0,
+                                            "mem_usage": 66977792.0,
+                                            "mem_writeback": 0.0,
+                                            "system_cpu_usage": 20593050000000.0,
+                                            "timestamp": "2018-09-26T10:30:53.183696Z"
+                                        },
+                                        {
+                                            "cpu_percent": 12.679987817258883,
+                                            "cpu_throttling_data": [],
+                                            "cpu_total_usage": 3613274361.0,
+                                            "cpu_usage_in_kernelmode": 910000000.0,
+                                            "cpu_usage_in_usermode": 2310000000.0,
+                                            "io_read": 51732480.0,
+                                            "io_write": 80109568.0,
+                                            "mem_active_anon": 31133696.0,
+                                            "mem_active_file": 180224.0,
+                                            "mem_cache": 344064.0,
+                                            "mem_dirty": 32768.0,
+                                            "mem_hierarchical_memory_limit": 67108864.0,
+                                            "mem_hierarchical_memsw_limit": 134217728.0,
+                                            "mem_inactive_anon": 32198656.0,
+                                            "mem_inactive_file": 151552.0,
+                                            "mem_limit": 67108864.0,
+                                            "mem_mapped_file": 294912.0,
+                                            "mem_max_usage": 69414912.0,
+                                            "mem_percent": 99.8291015625,
+                                            "mem_pgfault": 59609.0,
+                                            "mem_pgmajfault": 2198.0,
+                                            "mem_pgpgin": 50230.0,
+                                            "mem_pgpgout": 34687.0,
+                                            "mem_rss": 63320064.0,
+                                            "mem_rss_huge": 0.0,
+                                            "mem_total_active_anon": 31133696.0,
+                                            "mem_total_active_file": 180224.0,
+                                            "mem_total_cache": 344064.0,
+                                            "mem_total_dirty": 32768.0,
+                                            "mem_total_inactive_anon": 32198656.0,
+                                            "mem_total_inactive_file": 151552.0,
+                                            "mem_total_mapped_file": 294912.0,
+                                            "mem_total_pgfault": 59609.0,
+                                            "mem_total_pgmajfault": 2198.0,
+                                            "mem_total_pgpgin": 50230.0,
+                                            "mem_total_pgpgout": 34687.0,
+                                            "mem_total_rss": 63320064.0,
+                                            "mem_total_rss_huge": 0.0,
+                                            "mem_total_unevictable": 0.0,
+                                            "mem_total_writeback": 0.0,
+                                            "mem_unevictable": 0.0,
+                                            "mem_usage": 66994176.0,
+                                            "mem_writeback": 0.0,
+                                            "system_cpu_usage": 20620520000000.0,
+                                            "timestamp": "2018-09-26T10:31:00.190579Z"
+                                        }
+                                    ],
+                                    "series": true,
+                                    "timestamp": "2018-09-26T13:31:07.314571Z",
+                                    "tool": 17,
+                                    "type": "listener"
+                                }
+                            ],
+                            "host": "paps",
+                            "id": "7261",
+                            "role": "monitor",
+                            "timestamp": "2018-09-26T13:31:07.314893Z"
+                        }
+                    ],
+                    "timestamp": "2018-09-26T13:31:07.726655Z"
+                }
+            ],
+            "view_desc": {
+                "filename": "vnfpp_",
+                "inputs": [
+                    "vnf_vcpus"
+                ],
+                "metrics": {
+                    "agent": "all",
+                    "monitor": "all"
+                }
+            }
+        }
+    }
+}
