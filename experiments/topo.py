@@ -6,6 +6,10 @@ from mininet.log import setLogLevel, info
 from mininet.link import TCLink, Link
 from mininet import clean
 
+from multiprocessing import Process
+import exceptions
+import subprocess
+import re
 import os
 import yaml
 import shutil
@@ -13,6 +17,8 @@ import logging
 import coloredlogs
 import time
 LOG = logging.getLogger(os.path.basename(__file__))
+# LOG = logging.getLogger(__name__)
+
 # experiment logs
 coloredlogs.install(level="DEBUG")
 # mininet logs
@@ -24,13 +30,12 @@ logging.getLogger("docker").setLevel(logging.WARNING)
 
 
 # wait between start scripts are triggered
-TRIGGER_DELAY = 5
+TRIGGER_DELAY = 10
 
 
 class Experiment:
-    def __init__(self, run_id, name, parameter, cli_mode=False):
+    def __init__(self, run_id, parameter, cli_mode=False):
         self.run_id = run_id
-        self.name = name
         self.scenario = parameter
         self.cli_mode = cli_mode
         self.net = None
@@ -43,27 +48,46 @@ class Experiment:
         self.topo_parsed = {}
 
     def __repr__(self):
-        return "run_%s_%06d" % (str(self.name), self.run_id)
+        return "run_%06d" % (self.run_id)
 
-    def start(self):
+    def start(self, cli_mode=False):
         # split down experiments in small steps that can be overwritten subclasses
         self._create_network()
         self._add_containers()
         self._add_switches()
         self._add_links()
         self._start_network()
-        self._trigger_container_scripts(cmd="./start.sh")
-        if self.cli_mode:  # interactive mode vs. experiment mode
-            CLI(self.net)
         LOG.info("Experiment %s running." % (self.run_id))
+        host_info = self.hosts_management_info()
+        self._trigger_container_scripts(host_info)
+        if cli_mode:  # interactive mode vs. experiment mode
+            CLI(self.net)
+        return host_info
             # else:
         #     self._wait_experiment()
 
     def stop(self):
         # time.sleep(3)
-        self._trigger_container_scripts(cmd="./stop.sh")
+        # self._trigger_container_scripts(cmd="./stop.sh")
         self._stop_network()
+        self._stop_processes()
         self.mn_cleanup()
+        self.topo_parsed = {}
+
+    def _stop_processes(self):
+        LOG.info("stopping processes")
+        nodes_topo = self.topo_parsed.get("nodes")
+        for node_id in self.nodes:
+            node_req = nodes_topo.get(node_id, None)
+            if node_req:
+                image_format = node_req.get("image_format")
+                if image_format == "process":
+                    node_process = self.nodes[node_id]
+                    # LOG.info("stopping processes node_id %s alive %s", node_id, node_process.is_alive())
+                    # node_process.terminate()
+                    # LOG.info('node_id %s process stopped %s', node_id, node_process.is_alive())
+                    node_process.kill()
+                    LOG.info('node_id %s process stopped %s', node_id, node_process)
 
     def mn_cleanup(self):
         # mininet cleanup
@@ -91,12 +115,28 @@ class Experiment:
             self.net.start()
             LOG.info("Started network: %r" % self.net)
 
-    def _trigger_container_scripts(self, cmd="./start.sh"):
+    def format_host_entrypoint(self, node_id, entrypoint, hosts_info):
+        node_info = hosts_info.get(node_id)
+        node_ip = node_info.get("management").get("ip")               
+        fmt_kwargs = {'host_id': node_id, 'host_ip': node_ip}
+        fmt_entrypoint = entrypoint.format(**fmt_kwargs)
+        return fmt_entrypoint
+
+    def _trigger_container_scripts(self, hosts_info):
+        # time.sleep(TRIGGER_DELAY)
+        nodes_topo = self.topo_parsed.get("nodes")
+        for node_id, node_instance in self.nodes.items():
+            node_req = nodes_topo.get(node_id, None)
+            if node_req:
+                entrypoint = node_req.get("entrypoint")
+                image_format = node_req.get("image_format")
+                if image_format == "docker":
+                    if node_id in hosts_info:
+                        entrypoint = self.format_host_entrypoint(node_id, entrypoint, hosts_info)
+                    if entrypoint:
+                        node_instance.cmd(entrypoint)
+                        LOG.debug("Triggered %r in container %r" % (entrypoint, node_instance))
         time.sleep(TRIGGER_DELAY)
-        for c in self.containers:
-            c.cmd(cmd)
-            LOG.debug("Triggered %r in container %r" % (cmd, c))
-            time.sleep(TRIGGER_DELAY)
 
     def _stop_network(self):
         if self.net:
@@ -126,8 +166,9 @@ class Experiment:
            # volumes=[os.path.join(os.getcwd(), self.out_path) + "share_" + name + ":/mnt/share:rw"],
            cpu_period=cpu_bw_p,
            cpu_quota=cpu_bw_q,
-           cpuset_cpus=cpu_cores,
+           cpuset_cpus=str(cpu_cores) if cpu_cores else '',
            mem_limit=str(mem) + "m",
+           memswap_limit=0,
            environment=environment)
         # bookkeeping
         self.containers.append(c)
@@ -144,15 +185,22 @@ class Experiment:
         for node in nodes:
             node_id = node.get("id")
             node_image = node.get("image")
+            node_entrypoint = node.get("entrypoint")
+            node_type = node.get("type")
+            image_format = node.get("image_format")
             topo_parsed["nodes"][node_id] = {
+                "image_format": image_format,
                 "image": node_image,
                 "interfaces": {},
+                "entrypoint": node_entrypoint,
+                "type": node_type,
             }
             interfaces = node.get("connection_points")
             faces = {}
-            for intf in interfaces:
-                intf_id = intf.get("id")
-                faces[intf_id] = intf
+            if interfaces:
+                for intf in interfaces:
+                    intf_id = intf.get("id")
+                    faces[intf_id] = intf
             topo_parsed["nodes"][node_id]["interfaces"] = faces
 
         topo_parsed["links"] = {}
@@ -213,7 +261,7 @@ class Experiment:
                     'params_dst': params_dst,
                 }
             else:
-                LOG.debug("unknown link type")
+                print "unknown link type"
 
         return topo_parsed
 
@@ -223,9 +271,11 @@ class Experiment:
             req_res = req.get("resources")
             if req_id in topo["nodes"]:
                 vcpus = req_res["cpu"]["vcpus"]
+                cpu_cores = req_res.get("cpu").get("cpu_cores", None)
                 mem = req_res["memory"]["size"]
                 node_res = {
                     "cpu_bw": vcpus,
+                    "cpu_cores": cpu_cores,
                     "mem": mem,
                 }
                 topo["nodes"][req_id].update(node_res)
@@ -236,19 +286,72 @@ class Experiment:
         reqs = self.scenario.get("requirements")
         self._parse_requirements(topo_parsed, reqs)
         self.topo_parsed = topo_parsed
+        print topo_parsed
 
     def add_nodes(self, nodes):
         for node_id, node in nodes.items():
-            added_node = self._new_container(
-                node_id,
-                node.get("addr_input", None),
-                node.get("image"),
-                cpu_cores=node.get("cpu_cores", ''),
-                cpu_bw=node.get("cpu_bw"),
-                mem=node.get("mem"),
-                environment=node.get("environment", None)
-            )
-            self.nodes[node_id] = added_node
+            image_format = node.get("image_format")
+            if image_format == "docker":
+                added_node = self._new_container(
+                    node_id,
+                    node.get("addr_input", None),
+                    node.get("image"),
+                    cpu_cores=node.get("cpu_cores", None),
+                    cpu_bw=node.get("cpu_bw"),
+                    mem=node.get("mem"),
+                    environment=node.get("environment", None)
+                )
+                self.nodes[node_id] = added_node
+            elif image_format == "process":
+                added_node = self._new_process(node_id, node.get("entrypoint"))
+                self.nodes[node_id] = added_node
+            else:
+                LOG.info("unknown node_id %s image_format %s", node_id, image_format)
+
+    def get_host_ip(self):
+        import psutil
+        intf = "docker0"
+        intfs =  psutil.net_if_addrs()
+        intf_info = intfs.get(intf, None)
+        if intf_info:
+            for address in intf_info:
+                if address.family == 2:
+                    host_address = address.address
+                    return host_address
+        return None        
+
+    def process_args(self, cmd):
+        args = cmd.split(" ")
+        # p = subprocess.Popen(args,
+        #                 stdin=subprocess.PIPE,
+        #                 stdout=subprocess.PIPE,
+        #                 stderr=subprocess.PIPE,
+        #                 )
+        subprocess.call(args)
+
+    def _new_process(self, node_id, entrypoint):
+        p = None
+        node_ip = self.get_host_ip()
+        fmt_kwargs = {'host_id': node_id, 'host_ip': node_ip}
+        cmd_entrypoint = entrypoint.format(**fmt_kwargs)
+        LOG.info("node_id %s - process args %s", node_id, cmd_entrypoint)
+        try:
+            # p = Process(target=self.process_args, args=(cmd_entrypoint,))
+            # p.daemon = True
+            # p.start()
+            args = cmd_entrypoint.split(" ")
+            p = subprocess.Popen(args,
+                stdin = subprocess.PIPE,
+                stdout = subprocess.PIPE,
+                stderr = subprocess.PIPE,
+                )            
+        except exceptions.OSError as e:
+            LOG.info('ERROR: process could not be started %s', e)
+        else:
+            # LOG.info('node_id %s - cmd %s - pid %s - alive %s', node_id, cmd_entrypoint, p.pid, p.is_alive())
+            LOG.info('node_id %s - cmd %s - pid %s', node_id, cmd_entrypoint, p.pid)
+        finally:    
+            return p
 
     def add_switches(self, switches):
         for sw_name in switches:
@@ -287,3 +390,37 @@ class Experiment:
         self.net.addLink(src, dst,
                          intfName1=intf_src, intfName2=intf_dst,
                          params1=params_src, params2=params_dst)
+
+    def get_host_ips(self, host):
+        intf = 'eth0'
+        config = host.cmd( 'ifconfig %s 2>/dev/null' % intf)
+        # LOG.info("get host %s config ips %s", host, config)
+        if not config:
+            LOG.info('Error: %s does not exist!\n', intf)
+        ips = re.findall( r'\d+\.\d+\.\d+\.\d+', config )
+        if ips:
+            # LOG.info("host intf ips %s", ips)
+            ips_dict = {'ip': ips[0], 'broadcast': ips[1], 'mask': ips[2]}
+            return ips_dict
+        return None
+        
+    def hosts_management_info(self):
+        info = {}
+        nodes = self.topo_parsed.get("nodes")
+        for host_id,host in self.nodes.items():
+            node_info = nodes.get(host_id)
+            image_format = node_info.get("image_format")
+            if image_format == "docker":
+                mngnt_ips = self.get_host_ips(host)
+                info[host_id] = {
+                    'management':  mngnt_ips,
+                    'type': node_info.get("type"),
+                }
+            if image_format == "process":
+                node_ip = self.get_host_ip()
+                mngnt_ips = {'ip': node_ip}
+                info[host_id] = {
+                    'management':  mngnt_ips,
+                    'type': node_info.get("type"),
+                }          
+        return info

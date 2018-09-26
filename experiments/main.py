@@ -1,97 +1,155 @@
 import logging
-import os
-from yaml import load
-try:
-    from yaml import CLoader as Loader, CDumper as Dumper
-except ImportError:
-    from yaml import Loader, Dumper
+import gevent
+import json
 
-from jinja2 import Environment, FileSystemLoader
+from gevent.queue import Empty, Queue
 
-LOG = logging.getLogger(os.path.basename(__file__))
-coloredlogs.install(level="DEBUG")
-setLogLevel('info')
+
+logger = logging.getLogger(__name__)
 
 from topo import Experiment
+from rest.server import WebServer
+from rest.client import WebClient
 
 
-class TemplateParser:
+class Playground:
     def __init__(self):
-        self.tmp_configs = './vnf-br/templates/'
-
-    def parse(self, input_filename, context):
-        input_folder = self.tmp_configs
-        output_folder = self.tmp_configs
-        output_file = "parsed_" + input_filename
-        rendered = self._render_template(input_filename, input_folder, context)
-        template_output_path = self._full_path(output_folder)
-        open(os.path.join(template_output_path, output_file), 'w').write(
-            rendered.encode('utf8'))
-        return output_file
-
-    def load_file(self, output_file):
-        template_output_path = self._full_path(self.tmp_configs)
-        filename = os.path.join(template_output_path, output_file)
-        data = {}
-        try:
-            with open(filename, 'r') as f:
-                data = load(f, Loader=Loader)
-        except Exception as e:
-            logger.debug('exception: could not load outline file %s', e)
-        finally:
-            return data
-
-    def _full_path(self, temp_dir):
-        return os.path.normpath(
-            os.path.join(
-                os.path.dirname(__file__), temp_dir))
-
-    def _render_template(self, template_file, temp_dir, context):
-        j2_tmpl_path = self._full_path(temp_dir)
-        j2_env = Environment(loader=FileSystemLoader(j2_tmpl_path))
-        j2_tmpl = j2_env.get_template(template_file)
-        rendered = j2_tmpl.render(dict(temp_dir=temp_dir, **context))
-        return rendered.encode('utf8')
-
-
-class Play:
-    def __init__(self):
-        self.experiments = {}
-        self.template_filename = ""
-        self.inputs = {}
-        self.parser = TemplateParser()
         self.exp_topo = None
+        self.running = False
+        self.clear()
 
-    def create_exp_topo(self, template_filename, inputs):
-        exp_template_out_filename = self.parser.parse(template_filename, inputs)
-        exp_template = self.parser.load_file(exp_template_out_filename)
-        _id = exp_template.get("id")
-        _name = exp_template.get("name")
-        _scenario = exp_template.get("scenario")
-        self.exp_topo = Experiment(_id, _name, _scenario)
+    def start(self, run_id, msg):
+        scenario = msg.get("scenario")
+        instance = msg.get("instance")
+        logger.info("received scenario %s", scenario)
+        self.exp_topo = Experiment(instance, scenario)
         self.exp_topo.build()
+        hosts_info = self.exp_topo.start()
+        self.running = True
+        logger.info("expo_topo running %s", self.running)
+        logger.info("hosts info %s", hosts_info)
+        ack = {
+            'running': self.running,
+            'instance': instance,
+            'deploy': hosts_info,
+        }
+        return ack
 
-    def run(self):
-        self.exp_topo.start()
-        self.exp_topo.wait_experiment(10)
+    def stop(self):
         self.exp_topo.stop()
+        self.running = False
+        logger.info("expo_topo running %s", self.running)
+        ack = {'running': self.running}
+        return ack
+
+    def alive(self):
+        return self.running
+
+    def clear(self):
+        exp = Experiment(0, None)
+        exp.mn_cleanup()
+        logger.info("Experiments cleanup OK")
+
+
+class Scenario:
+    def __init__(self, url):
+        self.handlers = {
+            'post':self.post_handler,
+            'put': self.put_handler,
+            'delete': self.delete_handler,
+        }
+        self.server = WebServer(url, self.handlers)
+        self.playground = Playground()
+        self._ids = 0
+        self.in_q = Queue()
+        self.client = WebClient()
+
+    def put_handler(self, msg):
+        address, prefix, request, data = msg
+        logger.info("put_handler - address %s, prefix %s, request %s",
+                    address, prefix, request)
+        self.in_q.put(data)
+        return True, 'Ack'
+
+    def delete_handler(self, msg):
+        return False, 'Nack'
+
+    def post_handler(self, msg):
+        address, prefix, request, data = msg
+        logger.info("post_handler - address %s, prefix %s, request %s",
+                    address, prefix, request)
+        self.in_q.put(data)
+        return True, 'Ack'
+
+    def handle(self, data):
+        cmd = data.get("request")
+        continuous = data.get("continuous")
+        callback = data.get("callback")
+        outputs = []
+        built = Built()
+        built.to(callback)
+        logger.info("received msg: request %s, continuous %s, callback %s")
+        if continuous:
+            if self.playground.alive():
+                self.playground.stop()
+        if cmd == "start":
+            start_info = self.playground.start(self._ids, data)
+            built.set("ack", start_info)
+            self._ids += 1
+            outputs.append(built)
+        elif cmd == "stop":
+            if self.playground.alive():
+                stop_info = self.playground.stop()
+                built.set("ack", stop_info)
+                outputs.append(built)
+        else:
+            logger.info("Handle no cmd in request data")
+        return outputs
+
+    def serve(self):
+        _jobs = self._create_jobs()
+        gevent.joinall(_jobs)
+
+    def _create_jobs(self):
+        web_server_thread = gevent.spawn(self.server.init)
+        msgs_loop = gevent.spawn(self._process_msgs)
+        jobs = [web_server_thread, msgs_loop]
+        return jobs
+
+    def send(self, url, data, method='post'):
+        logger.info("sending msg to %s - data %s", url, data)
+        answer = self.client.send_msg(method, url, data)
+        return answer
+
+    def exit(self, outputs):
+        if outputs:
+            for output in outputs:
+                url = output.get_to()
+                output_json = output.to_json()
+                if url:
+                    exit_reply = self.send(url, output_json)
+                    logger.info("exit_reply %s", exit_reply)
+                else:
+                    logger.info("No callback provided for %s", output_json)
+        else:
+            logger.info("nothing to output")
+
+    def _process_msgs(self):
+        while True:
+            try:
+                data = self.in_q.get()
+            except Empty:
+                continue
+            else:
+                msg = json.loads(data)
+                if msg:
+                    outputs = self.handle(msg)
+                    self.exit(outputs)
+                else:
+                    logger.info("could not parse data %s", data)
 
 
 if __name__ == "__main__":
-    inputs = {
-        "vnf_id": "d2",
-        "vnf_name": "sut",
-        "vnf_version": 0.1,
-        "vnf_image": "vnf-bench/suricata:0.1",
-        "agent_1_id": "d1",
-        "agent_1_image": "taas/beta:0.4",
-        "agent_2_id": "d3",
-        "agent_2_image": "taas/beta:0.4",
-        "monitor_id": "d6",
-        "network_id_1": 's1',
-        "network_id_2": 's2',
-    }
-
-    p = Play()
-    p.create_exp_topo("vnf-bd.yaml", inputs)
-    # p.run()
+    url = "http://0.0.0.0:7878"
+    sc = Scenario(url)
+    sc.serve()
