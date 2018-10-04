@@ -1,0 +1,50 @@
+{
+    "id": "0002",
+    "method": "layout",
+    "params": {
+        "callback": "http://127.0.0.1:7879/001/",
+        "vnf_bd": {
+            "id": "001",
+            "inputs": {
+                "vnf_id": "d2",
+                "vnf_name": "sut",
+                "vnf_version": 0.1,
+                "vnf_image": "vnf-bench/suricata:0.1",
+                "vnf_vcpus": [1,2],
+                "vnf_mem_size": 64,
+                "vnf_cpu_cores": "0,1",
+                "agent_1_id": "d1",
+                "agent_1_image": "gym/beta:0.4",
+                "agent_2_id": "d3",
+                "agent_2_image": "gym/beta:0.4",
+                "monitor_id": "d6",
+                "network_id_1": "s1",
+                "network_id_2": "s2",
+                "server": "172.31.1.4",
+                "port": "9003",
+                "protocol": "tcp",
+                "duration": 20,
+                "rate": "1G",
+                "container_target": "mn.d2",
+                "interval": 5,
+                "manager_id": "d5",
+                "manager_image": "gym/beta:0.4",
+                "manager_entrypoint": "gym_manager --id {host_id} --url http://{host_ip}:8989 > man.log 2>&1 &",
+                "agent_1_entrypoint": "gym_agent --id {host_id} --url http://{host_ip}:8988 > ag1.log 2>&1 &",
+                "agent_2_entrypoint": "gym_agent --id {host_id} --url http://{host_ip}:8988 > ag1.log 2>&1 &",
+                "monitor_entrypoint": "gym_monitor --id {host_id} --url http://{host_ip}:8987",
+                "vm_entrypoint": "./start.sh",
+                "scenario_orchestration": true,
+                "scenario_plugin": "containernet",
+                "scenario_entrypoint": "http://127.0.0.1:7878/001/"
+            }
+        },
+        "time": {
+            "duration": null,
+            "every": 0,
+            "repeat": 0,
+            "timestamp": "Tue, 28 Feb 2017 12:18:05",
+            "when": null
+        }
+    }
+}
