@@ -1,5 +1,6 @@
 Description of VNF-BD example messages in Gym
 
+```
                                                 Deploy VNF-BD Scenario
                         +-------+                 +------------------+
                         |       |                 |                  |
@@ -24,3 +25,5 @@ Layout+----->  Build VNF-BD   (check VNF-BD instances)          Orchestrator
                                             |Finished
                                             v
 VNF-BR  <----------+Build VNF-BR<------+Build VNF-PP
+
+```
