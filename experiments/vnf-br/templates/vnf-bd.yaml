@@ -20,6 +20,7 @@ target:
   description: "A sample VNF description"
 
 scenario:
+  type: internal|osm|5gtango
   topology:
     nodes:
       - id:  {{ vnf_id }}
@@ -28,7 +29,7 @@ scenario:
         connection_points:
         - id: "input"
           interface: "ipv4"
-          type: "internal"
+          type: "internal" (type: internal|osm|5gtango)
           address: "172.31.1.2/30"
         - id: "output"
           interface: "ipv4"
@@ -94,13 +95,15 @@ scenario:
         storage:
           size: 2
           size_unit: "GB"
-  parameters:
-    vnfs:
-      - id: {{ vnf_id }}
-    agents:
-      - id: {{ agent_1_id }}
-        probers:
-          - id: 4
+
+parameters:
+  vnfs:
+    - id: {{ vnf_id }}
+  agents:
+    - id: {{ agent_1_id }}
+      probers:
+        - id: 4
+          parameters:
             client: True
             server: {{ server }}
             port: {{ port }}
@@ -108,17 +111,19 @@ scenario:
             duration: {{ duration }}
             frame_size: {{ frame_size }}
             rate: {{ rate }}
-      - id: {{ agent_2_id }}
-        probers:
-          - id: 4
+    - id: {{ agent_2_id }}
+      probers:
+        - id: 4
+          parameters:
             client: False
             port: {{ port }}
             protocol: {{ protocol }}
             duration: {{ duration }}
-    monitors:
-      - id: {{ monitor_id }}
-        listeners:
-          - id: 17
+  monitors:
+    - id: {{ monitor_id }}
+      listeners:
+        - id: 17
+          parameters:
             target: {{ container_target }}
             duration: {{ duration }}
             interval: {{ interval }}
