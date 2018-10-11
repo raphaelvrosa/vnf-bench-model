@@ -29,7 +29,7 @@ scenario:
         connection_points:
         - id: "input"
           interface: "ipv4"
-          type: "internal" (type: internal|osm|5gtango)
+          type: "internal" # (type: internal|osm|5gtango)
           address: "172.31.1.2/30"
         - id: "output"
           interface: "ipv4"
