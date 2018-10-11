@@ -52,18 +52,18 @@ scenario:
           type: "internal"
           address: "172.31.1.4/24"
     links:
-      - id: "{{ agent_1_id }}":"{{ vnf_id }}"
-        type: "{{ network_type or "E-LAN" }}"
+      - id: "{{ agent_1_id }}:{{ vnf_id }}"
+        type: "{{ network_type }}"
         network: "{{ network_id_1 }}"
         connection_points:
-          - "{{ agent_1_id }}":eth1
-          - "{{ vnf_id }}":input
-      - id: "{{ vnf_id }}":"{{ agent_2_id }}"
-        type: "{{ network_type or "E-LAN" }}"
+          - "{{ agent_1_id }}:eth1"
+          - "{{ vnf_id }}:input"
+      - id: "{{ vnf_id }}:{{ agent_2_id }}"
+        type: "{{ network_type }}"
         network: "{{ network_id_2 }}"
         connection_points:
-          - "{{ vnf_id }}":output
-          - "{{ agent_2_id }}":eth1
+          - "{{ vnf_id }}:output"
+          - "{{ agent_2_id }}:eth1"
   requirements:
     - id: "{{ vnf_id }}"
       resources:
