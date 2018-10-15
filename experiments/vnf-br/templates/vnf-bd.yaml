@@ -1,9 +1,9 @@
 descriptor_version: 0.01
-id: "001"
-name: "vnf-bd-0.01"
-version: "0.1"
-author: "https://github.com/raphaelvrosa/vnf-bench-meth/blob/master/draft-rosa-bmwg-vnfbench-02"
-description: "This is an example of VNF benchmark descriptor (vnf-bd)"
+id: "{{ bd_id }}"
+name: "{{ bd_name }}"
+version: "{{ bd_version }}"
+author: "{{ bd_author }}"
+description: "{{ bd_description }}"
 
 procedures:
   repeat:
@@ -12,20 +12,28 @@ procedures:
     method: 1
 
 target:
-  id: "{{ vnf_id }}"
-  name: "{{ vnf_name }}"
-  version:  "{{ vnf_version }}"
-  author: "anybody"
-  vendor: "vendor"
-  description: "A sample VNF description"
+  id: "{{ sut_id }}"
+  name: "{{ sut_name }}"
+  version:  "{{ sut_version }}"
+  author: "{{ sut_author }}"  # TODO: do we really need this?
+  vendor: "{{ sut_vendor }}"
+  description: "A sample VNF description"  # TODO: do we really need this?
 
 scenario:
-  type: internal  # (type: internal|osm|5gtango)
   topology:
     nodes:
-      - id:  "{{ vnf_id }}"
-        image:  "{{ vnf_image }}"
+      - id:  "{{ sut_id }}"
+        type: "{{ sut_type }}" # (type: internal|osm|5gtango)
+        {% if sut_type == "5gtango"  %}
+        target:  # reference an external SUT definition
+          vendor: "{{ sut_vendor }}"
+          name: "{{ sut_name }}"
+          version: "{{ sut_version }}"
+        {% else %}  # default: internal
+        # reference image to be used as SUT
+        image:  "{{ sut_image }}"
         image_format: "docker"
+        {% endif %}
         connection_points:
         - id: "input"
           interface: "ipv4"
@@ -52,20 +60,20 @@ scenario:
           type: "internal"
           address: "172.31.1.4/24"
     links:
-      - id: "{{ agent_1_id }}:{{ vnf_id }}"
+      - id: "{{ agent_1_id }}:{{ sut_id }}"
         type: "{{ network_type or 'E-LAN' }}"
         network: "{{ network_id_1 }}"
         connection_points:
           - "{{ agent_1_id }}:eth1"
-          - "{{ vnf_id }}:input"
-      - id: "{{ vnf_id }}:{{ agent_2_id }}"
+          - "{{ sut_id }}:input"
+      - id: "{{ sut_id }}:{{ agent_2_id }}"
         type: "{{ network_type or 'E-LAN' }}"
         network: "{{ network_id_2 }}"
         connection_points:
-          - "{{ vnf_id }}:output"
+          - "{{ sut_id }}:output"
           - "{{ agent_2_id }}:eth1"
   requirements:
-    - id: "{{ vnf_id }}"
+    - id: "{{ sut_id }}"
       resources:
         cpu:
           vcpus: 1
@@ -98,7 +106,7 @@ scenario:
 
 parameters:
   vnfs:
-    - id: "{{ vnf_id }}"
+    - id: "{{ sut_id }}"
   agents:
     - id: "{{ agent_1_id }}"
       probers:
