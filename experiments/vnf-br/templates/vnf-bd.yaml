@@ -12,39 +12,39 @@ procedures:
     method: 1
 
 target:
-  id: {{ vnf_id }}
-  name: {{ vnf_name }}
-  version:  {{ vnf_version }}
+  id: "{{ vnf_id }}"
+  name: "{{ vnf_name }}"
+  version:  "{{ vnf_version }}"
   author: "anybody"
   vendor: "vendor"
   description: "A sample VNF description"
 
 scenario:
-  type: internal|osm|5gtango
+  type: internal  # (type: internal|osm|5gtango)
   topology:
     nodes:
-      - id:  {{ vnf_id }}
-        image:  {{ vnf_image }}
+      - id:  "{{ vnf_id }}"
+        image:  "{{ vnf_image }}"
         image_format: "docker"
         connection_points:
         - id: "input"
           interface: "ipv4"
-          type: "internal" (type: internal|osm|5gtango)
+          type: "internal"
           address: "172.31.1.2/30"
         - id: "output"
           interface: "ipv4"
           type: "internal"
           address: "172.31.1.3/30"
-      - id:  {{ agent_1_id }}
-        image:  {{ agent_1_image }}
+      - id:  "{{ agent_1_id }}"
+        image:  "{{ agent_1_image }}"
         image_format: "docker"
         connection_points:
         - id: "eth1"
           interface: "ipv4"
           type: "internal"
           address: "172.31.1.1/24"
-      - id:  {{ agent_2_id }}
-        image:  {{ agent_2_image }}
+      - id:  "{{ agent_2_id }}"
+        image:  "{{ agent_2_image }}"
         image_format: "docker"
         connection_points:
         - id: "eth1"
@@ -52,20 +52,20 @@ scenario:
           type: "internal"
           address: "172.31.1.4/24"
     links:
-      - id: {{ agent_1_id }}:{{ vnf_id }}
-        type: {{ network_type or "E-LAN" }}
-        network: {{ network_id_1 }}
+      - id: "{{ agent_1_id }}:{{ vnf_id }}"
+        type: "{{ network_type or 'E-LAN' }}"
+        network: "{{ network_id_1 }}"
         connection_points:
-          - {{ agent_1_id }}:eth1
-          - {{ vnf_id }}:input
-      - id: {{ vnf_id }}:{{ agent_2_id }}
-        type: {{ network_type or "E-LAN" }}
-        network: {{ network_id_2 }}
+          - "{{ agent_1_id }}:eth1"
+          - "{{ vnf_id }}:input"
+      - id: "{{ vnf_id }}:{{ agent_2_id }}"
+        type: "{{ network_type or 'E-LAN' }}"
+        network: "{{ network_id_2 }}"
         connection_points:
-          - {{ vnf_id }}:output
-          - {{ agent_2_id }}:eth1
+          - "{{ vnf_id }}:output"
+          - "{{ agent_2_id }}:eth1"
   requirements:
-    - id: {{ vnf_id }}
+    - id: "{{ vnf_id }}"
       resources:
         cpu:
           vcpus: 1
@@ -75,7 +75,7 @@ scenario:
         storage:
           size: 2
           size_unit: "GB"
-    - id: {{ agent_1_id }}
+    - id: "{{ agent_1_id }}"
       resources:
         cpu:
           vcpus: 1
@@ -85,7 +85,7 @@ scenario:
         storage:
           size: 2
           size_unit: "GB"
-    - id: {{ agent_2_id }}
+    - id: "{{ agent_2_id }}"
       resources:
         cpu:
           vcpus: 1
@@ -98,32 +98,32 @@ scenario:
 
 parameters:
   vnfs:
-    - id: {{ vnf_id }}
+    - id: "{{ vnf_id }}"
   agents:
-    - id: {{ agent_1_id }}
+    - id: "{{ agent_1_id }}"
       probers:
         - id: 4
           parameters:
             client: True
-            server: {{ server }}
+            server: "{{ server }}"
             port: {{ port }}
-            protocol: {{ protocol }}
+            protocol: "{{ protocol }}"
             duration: {{ duration }}
             frame_size: {{ frame_size }}
             rate: {{ rate }}
-    - id: {{ agent_2_id }}
+    - id: "{{ agent_2_id }}"
       probers:
         - id: 4
           parameters:
             client: False
             port: {{ port }}
-            protocol: {{ protocol }}
+            protocol: "{{ protocol }}"
             duration: {{ duration }}
   monitors:
-    - id: {{ monitor_id }}
+    - id: "{{ monitor_id }}"
       listeners:
         - id: 17
           parameters:
-            target: {{ container_target }}
+            target: "{{ container_target }}"
             duration: {{ duration }}
             interval: {{ interval }}
