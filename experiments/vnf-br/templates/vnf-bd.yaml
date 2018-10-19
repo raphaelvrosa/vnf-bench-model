@@ -11,26 +11,24 @@ procedures:
     tests: 1
     method: 1
 
-target:
-  id: "{{ sut_id }}"
-  name: "{{ sut_name }}"
-  version:  "{{ sut_version }}"
-  author: "{{ sut_author }}"  # TODO: do we really need this?
-  vendor: "{{ sut_vendor }}"
-  description: "A sample VNF description"  # TODO: do we really need this?
+targets:
+  - id: "{{ sut_id }}"
+    name: "{{ sut_name }}"
+    version: "{{ sut_version }}"
+    author: "{{ sut_author }}"
+    vendor: "{{ sut_vendor }}"
+    description: "{{ sut_description }}"
 
 scenario:
   topology:
     nodes:
-      - id:  "{{ sut_id }}"
+      - id: "{{ sut_id }}"  # references item in 'targets' list
         type: "{{ sut_type }}" # (type: internal|osm|5gtango)
         {% if sut_type == "5gtango"  %}
-        target:  # reference an external SUT definition
-          vendor: "{{ sut_vendor }}"
-          name: "{{ sut_name }}"
-          version: "{{ sut_version }}"
+        # reference VNF/NS package used as SUT
+        package_path: "{{ sut_5gtango_pkgpath }}"
         {% else %}  # default: internal
-        # reference image to be used as SUT
+        # reference image used as SUT
         image:  "{{ sut_image }}"
         image_format: "docker"
         {% endif %}
