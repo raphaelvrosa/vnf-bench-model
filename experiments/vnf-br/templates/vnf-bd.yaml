@@ -60,13 +60,13 @@ scenario:
     links:
       - id: "{{ agent_1_id }}-{{ sut_id }}"
         type: "{{ network_type or 'E-LAN' }}"
-        network: "{{ network_id_1 }}"
+        network: "{{ network_id_1 or 's1'}}"
         connection_points:
           - "{{ agent_1_id }}:{{ agent_1_cp_id or 'eth1' }}"
           - "{{ sut_id }}:{{ sut_input_port_id or 'input' }}"
       - id: "{{ sut_id }}-{{ agent_2_id }}"
         type: "{{ network_type or 'E-LAN' }}"
-        network: "{{ network_id_2 }}"
+        network: "{{ network_id_2 or 's2' }}"
         connection_points:
           - "{{ sut_id }}:{{ sut_output_port_id or 'output' }}"
           - "{{ agent_2_id }}:{{ agent_2_cp_id or 'eth1' }}"
@@ -74,9 +74,10 @@ scenario:
     - id: "{{ sut_id }}"
       resources:
         cpu:
-          vcpus: 1
+          vcpus: {{ sut_resource_cpu_cores or '1' }}  # CPU cores
+          bw: {{ sut_resource_cpu_bw or '1.0' }}  # CPU time
         memory:
-          size: 512
+          size: {{ sut_resource_mem or '512' }}
           size_unit: "MB"
         storage:
           size: 2
@@ -84,9 +85,10 @@ scenario:
     - id: "{{ agent_1_id }}"
       resources:
         cpu:
-          vcpus: 1
+          vcpus: {{ agent_1_resource_cpu_cores or '1' }}  # CPU cores
+          bw: {{ agent_1_resource_cpu_bw or '1.0' }}  # CPU time
         memory:
-          size: 512
+          size: {{ agent_1_resource_mem or '512' }}
           size_unit: "MB"
         storage:
           size: 2
@@ -94,9 +96,10 @@ scenario:
     - id: "{{ agent_2_id }}"
       resources:
         cpu:
-          vcpus: 1
+          vcpus: {{ agent_2_resource_cpu_cores or '1' }}  # CPU cores
+          bw: {{ agent_2_resource_cpu_bw or '1.0' }}  # CPU time
         memory:
-          size: 512
+          size: {{ agent_2_resource_mem or '512' }}
           size_unit: "MB"
         storage:
           size: 2
