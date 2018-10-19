@@ -62,14 +62,14 @@ scenario:
         type: "{{ network_type or 'E-LAN' }}"
         network: "{{ network_id_1 }}"
         connection_points:
-          - "{{ agent_1_id }}:{{ agent_1_cp_id }}"
-          - "{{ sut_id }}:{{ sut_input_port_id }}"
+          - "{{ agent_1_id }}:{{ agent_1_cp_id or 'eth1' }}"
+          - "{{ sut_id }}:{{ sut_input_port_id or 'input' }}"
       - id: "{{ sut_id }}-{{ agent_2_id }}"
         type: "{{ network_type or 'E-LAN' }}"
         network: "{{ network_id_2 }}"
         connection_points:
-          - "{{ sut_id }}:{{ sut_output_port_id }}"
-          - "{{ agent_2_id }}:{{ agent_2_cp_id }}"
+          - "{{ sut_id }}:{{ sut_output_port_id or 'output' }}"
+          - "{{ agent_2_id }}:{{ agent_2_cp_id or 'eth1' }}"
   requirements:
     - id: "{{ sut_id }}"
       resources:
