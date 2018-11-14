@@ -33,5 +33,8 @@ RUN chmod +x start.sh
 
 ENV IFIN input
 ENV IFOUT output
+ENV SON_EMU_CMD ./start.sh
+# ENV SON_EMU_CMD_STOP ./my_stop_command
 
 CMD /bin/bash
+
