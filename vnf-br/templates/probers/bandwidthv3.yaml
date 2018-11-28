@@ -1,0 +1,16 @@
+id: 4
+name: 'prober-iperf3'
+version: "0.1"
+description: "A descriptor of a prober for iperf3 tool"
+
+server: {{ server }}
+client: {{ client }}
+port: {{ port }}
+protocol: {{ protocol }}
+duration: {{ duration }}
+frame_size: {{ frame_size }}
+rate: {{ rate }}
+
+metrics:
+  - bps
+  - frame_loss

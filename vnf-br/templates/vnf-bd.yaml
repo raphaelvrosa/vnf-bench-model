@@ -1,0 +1,138 @@
+descriptor_version: 0.01
+id: "{{ bd_id }}"
+name: "{{ bd_name }}"
+version: "{{ bd_version }}"
+author: "{{ bd_author }}"
+description: "{{ bd_description }}"
+
+procedures:
+  repeat:
+    trials: 1
+    tests: 1
+    method: 1
+
+targets:
+  - id: "{{ sut_id }}"
+    name: "{{ sut_name }}"
+    version: "{{ sut_version }}"
+    author: "{{ sut_author }}"
+    vendor: "{{ sut_vendor }}"
+    description: "{{ sut_description }}"
+
+scenario:
+  topology:
+    nodes:
+      - id: "{{ sut_id }}"  # references item in 'targets' list
+        type: "{{ sut_type }}" # (type: internal|osm|5gtango)
+        {% if sut_type == "5gtango"  %}
+        # reference VNF/NS package used as SUT
+        package_path: "{{ sut_5gtango_pkgpath }}"
+        {% else %}  # default: internal
+        # reference image used as SUT
+        image:  "{{ sut_image }}"
+        image_format: "docker"
+        {% endif %}
+        connection_points:
+        - id: "{{ sut_input_port_id }}"
+          interface: "ipv4"  # do we need this?
+          type: "{{ sut_input_port_type or 'internal' }}"
+          address: "{{ sut_input_port_address }}"
+        - id: "{{ sut_output_port_id }}"
+          interface: "ipv4"  # do we need this?
+          type: "{{ sut_output_port_type or 'internal' }}"
+          address: "{{ sut_output_port_address }}"
+      - id:  "{{ agent_1_id }}"
+        image:  "{{ agent_1_image }}"
+        image_format: "docker"
+        connection_points:
+        - id: "{{ agent_1_cp_id or 'eth1' }}"
+          interface: "ipv4"
+          type: "internal"
+          address: "{{ agent_1_cp_address }}"
+      - id:  "{{ agent_2_id }}"
+        image:  "{{ agent_2_image }}"
+        image_format: "docker"
+        connection_points:
+        - id: "{{ agent_2_cp_id or 'eth1' }}"
+          interface: "ipv4"
+          type: "internal"
+          address: "{{ agent_2_cp_address }}"
+    links:
+      - id: "{{ agent_1_id }}-{{ sut_id }}"
+        type: "{{ network_type or 'E-LAN' }}"
+        network: "{{ network_id_1 or 's1'}}"
+        connection_points:
+          - "{{ agent_1_id }}:{{ agent_1_cp_id or 'eth1' }}"
+          - "{{ sut_id }}:{{ sut_input_port_id or 'input' }}"
+      - id: "{{ sut_id }}-{{ agent_2_id }}"
+        type: "{{ network_type or 'E-LAN' }}"
+        network: "{{ network_id_2 or 's2' }}"
+        connection_points:
+          - "{{ sut_id }}:{{ sut_output_port_id or 'output' }}"
+          - "{{ agent_2_id }}:{{ agent_2_cp_id or 'eth1' }}"
+  requirements:
+    - id: "{{ sut_id }}"
+      resources:
+        cpu:
+          vcpus: {{ sut_resource_cpu_cores or '1' }}  # CPU cores
+          bw: {{ sut_resource_cpu_bw or '1.0' }}  # CPU time
+        memory:
+          size: {{ sut_resource_mem or '512' }}
+          size_unit: "MB"
+        storage:
+          size: 2
+          size_unit: "GB"
+    - id: "{{ agent_1_id }}"
+      resources:
+        cpu:
+          vcpus: {{ agent_1_resource_cpu_cores or '1' }}  # CPU cores
+          bw: {{ agent_1_resource_cpu_bw or '1.0' }}  # CPU time
+        memory:
+          size: {{ agent_1_resource_mem or '512' }}
+          size_unit: "MB"
+        storage:
+          size: 2
+          size_unit: "GB"
+    - id: "{{ agent_2_id }}"
+      resources:
+        cpu:
+          vcpus: {{ agent_2_resource_cpu_cores or '1' }}  # CPU cores
+          bw: {{ agent_2_resource_cpu_bw or '1.0' }}  # CPU time
+        memory:
+          size: {{ agent_2_resource_mem or '512' }}
+          size_unit: "MB"
+        storage:
+          size: 2
+          size_unit: "GB"
+
+parameters:
+  vnfs:
+    - id: "{{ sut_id }}"
+  agents:
+    - id: "{{ agent_1_id }}"
+      probers:
+        - id: 4
+          parameters:
+            client: True
+            server: "{{ server }}"
+            port: {{ port }}
+            protocol: "{{ protocol }}"
+            duration: {{ duration }}
+            frame_size: {{ frame_size }}
+            rate: {{ rate }}
+    - id: "{{ agent_2_id }}"
+      probers:
+        - id: 4
+          parameters:
+            client: False
+            port: {{ port }}
+            protocol: "{{ protocol }}"
+            duration: {{ duration }}
+  monitors:
+    - id: "{{ monitor_id }}"
+      listeners:
+        - id: 17
+          parameters:
+            target: "{{ container_target }}"
+            duration: {{ duration }}
+            interval: {{ interval }}
