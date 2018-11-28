@@ -10,6 +10,7 @@ RUN apt-get install libnetfilter-queue-dev libnetfilter-queue1  \
                      libnetfilter-log-dev libnetfilter-log1      \
                      libnfnetlink-dev libnfnetlink0 -y
 RUN apt-get install git autoconf ethtool tcpdump bridge-utils net-tools nano python python-yaml -y
+RUN apt-get install wget
 
 RUN mkdir /suricata
 ADD ./suricata/ /suricata
@@ -22,19 +23,20 @@ WORKDIR /suricata/suricata-4.0.0
 RUN ./configure && make && ldconfig && make install-full && make clean && ldconfig
 
 RUN cp /suricata/config/suricata-ids.yaml /usr/local/etc/suricata/
+RUN cp /suricata/config/suricata-ids-small.yaml /usr/local/etc/suricata/
+RUN cp /suricata/config/suricata-ids-big.yaml /usr/local/etc/suricata/
 
 WORKDIR /suricata/config
 RUN tar xvfz emerging.rules.tar.gz
 RUN cp rules/* /usr/local/etc/suricata/rules/
 RUN rm -rf rules
+RUN cp /suricata/suricata-4.0.0/rules/*.rules /usr/local/etc/suricata/rules/
+
 
 WORKDIR /suricata
 RUN chmod +x start.sh
 
 ENV IFIN input
 ENV IFOUT output
-ENV SON_EMU_CMD ./start.sh
-# ENV SON_EMU_CMD_STOP ./my_stop_command
 
 CMD /bin/bash
-
