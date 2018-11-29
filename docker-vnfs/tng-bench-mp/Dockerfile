@@ -61,6 +61,6 @@ RUN pip install virtualenv
 RUN python setup.py install
 
 WORKDIR /
-
+RUN mkdir /tngbench_share
 CMD /bin/bash
 

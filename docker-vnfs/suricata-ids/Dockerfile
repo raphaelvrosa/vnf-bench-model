@@ -39,4 +39,6 @@ RUN chmod +x start.sh
 ENV IFIN input
 ENV IFOUT output
 
+RUN mkdir /tngbench_share
+
 CMD /bin/bash
