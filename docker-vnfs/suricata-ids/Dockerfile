@@ -35,6 +35,8 @@ RUN cp /suricata/suricata-4.0.0/rules/*.rules /usr/local/etc/suricata/rules/
 
 WORKDIR /suricata
 RUN chmod +x start.sh
+RUN chmod +x stop.sh
+RUN chmod +x stats.py
 
 ENV IFIN input
 ENV IFOUT output
