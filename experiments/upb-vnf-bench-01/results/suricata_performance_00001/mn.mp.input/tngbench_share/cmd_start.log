@@ -1,7 +1,7 @@
 sending out data 
 File Cache is enabled
 processing file: /pcaps/bigFlows.pcap
-Actual: 791615 packets (355417784 bytes) sent in 46.01 seconds.		Rated: 7724794.5 bps, 58.94 Mbps, 17205.28 pps
+Actual: 791615 packets (355417784 bytes) sent in 49.93 seconds.		Rated: 7118321.5 bps, 54.31 Mbps, 15854.50 pps
 Statistics for network device: data
 	Attempted packets:         791615
 	Successful packets:        791615

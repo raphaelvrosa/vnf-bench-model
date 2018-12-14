@@ -1,24 +1,7 @@
-data      Link encap:Ethernet  HWaddr 2e:cd:11:81:93:24  
-          inet addr:20.0.0.254  Bcast:20.0.0.255  Mask:255.255.255.0
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:1788 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1000 
-          RX bytes:232240 (232.2 KB)  TX bytes:0 (0.0 B)
-
-eth0      Link encap:Ethernet  HWaddr 02:42:ac:11:00:03  
-          inet addr:172.17.0.3  Bcast:0.0.0.0  Mask:255.255.0.0
-          UP BROADCAST RUNNING MULTICAST  MTU:1500  Metric:1
-          RX packets:8 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:0 
-          RX bytes:648 (648.0 B)  TX bytes:0 (0.0 B)
-
-lo        Link encap:Local Loopback  
-          inet addr:127.0.0.1  Mask:255.0.0.0
-          UP LOOPBACK RUNNING  MTU:65536  Metric:1
-          RX packets:0 errors:0 dropped:0 overruns:0 frame:0
-          TX packets:0 errors:0 dropped:0 overruns:0 carrier:0
-          collisions:0 txqueuelen:1 
-          RX bytes:0 (0.0 B)  TX bytes:0 (0.0 B)
-
+Collecting intf statistics...
+Out: /tngbench_share/result.yml
+----lo
+----eth0
+----data
+Writing '/tngbench_share/result.yml'
+done.
