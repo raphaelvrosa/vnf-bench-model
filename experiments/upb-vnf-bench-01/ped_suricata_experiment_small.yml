@@ -50,15 +50,15 @@ service_experiments:
       - function: "mp.input"
         cmd_start: ["tcpreplay -i data -tK --loop 70 --preload-pcap /pcaps/smallFlows.pcap",
                     "tcpreplay -i data -tK --loop 1 --preload-pcap /pcaps/bigFlows.pcap"]
-        cmd_stop: "ifconfig"  # dump packet counters to logs
+        cmd_stop: "./stop.sh"
         cpu_bw: 0.2
         cpu_cores: 1
         mem_max: 512
         mem_swap_max: null
         io_bw: null
       - function: "mp.output"
-        cmd_start: "ifconfig"  # dump packet counters to logs
-        cmd_stop: "ifconfig"  # dump packet counters to logs
+        cmd_start: null
+        cmd_stop: "./stop.sh"  # dump packet counters to logs
         cpu_bw: 0.2
         cpu_cores: 1
         mem_max: 512

@@ -70,7 +70,7 @@ processing file: /pcaps/smallFlows.pcap
 processing file: /pcaps/smallFlows.pcap
 processing file: /pcaps/smallFlows.pcap
 processing file: /pcaps/smallFlows.pcap
-Actual: 998270 packets (645157170 bytes) sent in 51.64 seconds.		Rated: 12493361.0 bps, 95.32 Mbps, 19331.33 pps
+Actual: 998270 packets (645157170 bytes) sent in 52.15 seconds.		Rated: 12371183.0 bps, 94.38 Mbps, 19142.28 pps
 Statistics for network device: data
 	Attempted packets:         998270
 	Successful packets:        998270

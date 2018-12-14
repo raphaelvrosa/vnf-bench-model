@@ -1,6 +1,6 @@
 stat__br0__collisions: 0.0
 stat__br0__multicast: 0.0
-stat__br0__rx_bytes: 576828998.0
+stat__br0__rx_bytes: 575056038.0
 stat__br0__rx_compressed: 0.0
 stat__br0__rx_crc_errors: 0.0
 stat__br0__rx_dropped: 0.0
@@ -10,7 +10,7 @@ stat__br0__rx_frame_errors: 0.0
 stat__br0__rx_length_errors: 0.0
 stat__br0__rx_missed_errors: 0.0
 stat__br0__rx_over_errors: 0.0
-stat__br0__rx_packets: 913435.0
+stat__br0__rx_packets: 910655.0
 stat__br0__tx_aborted_errors: 0.0
 stat__br0__tx_bytes: 0.0
 stat__br0__tx_carrier_errors: 0.0
@@ -23,7 +23,7 @@ stat__br0__tx_packets: 0.0
 stat__br0__tx_window_errors: 0.0
 stat__eth0__collisions: 0.0
 stat__eth0__multicast: 0.0
-stat__eth0__rx_bytes: 648.0
+stat__eth0__rx_bytes: 690.0
 stat__eth0__rx_compressed: 0.0
 stat__eth0__rx_crc_errors: 0.0
 stat__eth0__rx_dropped: 0.0
@@ -33,7 +33,7 @@ stat__eth0__rx_frame_errors: 0.0
 stat__eth0__rx_length_errors: 0.0
 stat__eth0__rx_missed_errors: 0.0
 stat__eth0__rx_over_errors: 0.0
-stat__eth0__rx_packets: 8.0
+stat__eth0__rx_packets: 9.0
 stat__eth0__tx_aborted_errors: 0.0
 stat__eth0__tx_bytes: 0.0
 stat__eth0__tx_carrier_errors: 0.0
@@ -127,16 +127,16 @@ stat__output__rx_missed_errors: 0.0
 stat__output__rx_over_errors: 0.0
 stat__output__rx_packets: 8.0
 stat__output__tx_aborted_errors: 0.0
-stat__output__tx_bytes: 794330.0
+stat__output__tx_bytes: 794458.0
 stat__output__tx_carrier_errors: 0.0
 stat__output__tx_compressed: 0.0
 stat__output__tx_dropped: 0.0
 stat__output__tx_errors: 0.0
 stat__output__tx_fifo_errors: 0.0
 stat__output__tx_heartbeat_errors: 0.0
-stat__output__tx_packets: 6240.0
+stat__output__tx_packets: 6241.0
 stat__output__tx_window_errors: 0.0
-suricata_bytes: 11631065.125
+suricata_bytes: 11523968.75
 suricata_dropped: 0.0
 suricata_drops: 0.0
-suricata_packets: 17991.625
+suricata_packets: 17851.0
