@@ -6,7 +6,10 @@ rm -f /usr/local/var/run/suricata.pid
 
 sleep 2
 
+# Gym
 ./stats.py /usr/local/var/log/suricata/result.yml
 python ./log_intf_statistics.py /usr/local/var/log/suricata/result.yml
+# tng-bench (needs results in different folder)
+cp /usr/local/var/log/suricata/result.yml /tngbench_share/result.yml
 
 date > /usr/local/var/log/suricata/stop.txt

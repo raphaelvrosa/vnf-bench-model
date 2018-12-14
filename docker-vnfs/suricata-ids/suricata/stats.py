@@ -165,10 +165,13 @@ bytes_end = []
 delete = 0
 for index in range(len(frames_diff)):
     if delete > 2 and frames_diff[index] > 0:
-        frames_end.append(frames_diff[index] / time_diff[index])
-        drops_end.append(drops_diff[index] / time_diff[index])
-        packets_end.append(packets_diff[index] / time_diff[index])
-        bytes_end.append(bytes_diff[index] / time_diff[index])
+        try:
+            frames_end.append(frames_diff[index] / time_diff[index])
+            drops_end.append(drops_diff[index] / time_diff[index])
+            packets_end.append(packets_diff[index] / time_diff[index])
+            bytes_end.append(bytes_diff[index] / time_diff[index])
+        except BaseException as ex:
+            print("Exception at {}: {}".format(index, ex))
 
     delete += 1
 
@@ -185,10 +188,13 @@ else:
 
 OUTPUT = sys.argv[1]
 result = dict()
-result["packets"] = p
-result["bytes"] = b
-result["dropped"] = d
-result["drops"] = d/f
+result["suricata_packets"] = p
+result["suricata_bytes"] = b
+result["suricata_dropped"] = d
+if f > 0:
+    result["suricata_drops"] = d/f
+else:
+    result["suricata_drops"] = "error f=0"
 # write yml
 print "Writing %r" % OUTPUT
 with open(OUTPUT, "w") as f:
