@@ -1,0 +1,66 @@
+---
+#
+# This is an example for a profiling experiment descriptor (PED) that
+# defines a profiling (benchmarking) experiment for a Suricata VNF
+# that is stimulated by traffic traces replayed with TCP replay.
+# 
+# The tested network service (NSD, VNFDs) can be found in 'nw-services/'.
+#
+descriptor_version: 0.2  # 5GTANGO: 0.2, SONATA 0.1
+vendor: "de.upb"
+name: "example_ped1"
+version: "0.1"
+author: "Manuel Peuster, Paderborn University, manuel.peuster@uni-paderborn.de"
+description: "This is an example profiling experiment testing a Suricata IDS."
+
+# Path to the network service we want to profile (relative from PED location)
+service_package: "nw-services/ns-1vnf-ids-suricata"
+
+# Experiment definition
+service_experiments:
+  - name: "suricata_performance"
+    description: "Suricata performance benchmark using trafic traces."
+    repetitions: 1
+    time_limit: 60 #60  # seconds per experiment
+    # NSD to be used (vendor.name.version reference)
+    target:
+      vendor: "de.upb"
+      name: "ns-1vnf-ids-suricata"
+      version: "0.1"
+    # additional containers for traffic generation/measurements (measurement points)
+    measurement_points:
+      - name: "mp.output"
+        connection_point: "ns:output"
+        container: "mpeuster/tng-bench-mp"
+        address: "20.0.0.254/24"  # address of the data interface of the MP
+      - name: "mp.input"
+        connection_point: "ns:input"
+        container: "mpeuster/tng-bench-mp"
+        address: "20.0.0.1/24"  # address of the data interface of the MP
+    # experiment parameters to be tested during the experiment
+    experiment_parameters:
+      - function: "de.upb.ids-suricata.0.1"
+        cmd_start: "./start.sh"
+        cmd_stop: "./stop.sh"
+        cpu_bw: 0.5 #{min: 0.05, max: 0.15, step: 0.05}       
+        cpu_cores: 1
+        mem_max: [64]
+        mem_swap_max: null
+        io_bw: null
+      - function: "mp.input"
+        cmd_start: ["tcpreplay -i data -tK --loop 70 --preload-pcap /pcaps/smallFlows.pcap",
+                    "tcpreplay -i data -tK --loop 1 --preload-pcap /pcaps/bigFlows.pcap"]
+        cmd_stop: "ifconfig"  # dump packet counters to logs
+        cpu_bw: 0.2
+        cpu_cores: 1
+        mem_max: 512
+        mem_swap_max: null
+        io_bw: null
+      - function: "mp.output"
+        cmd_start: "ifconfig"  # dump packet counters to logs
+        cmd_stop: "ifconfig"  # dump packet counters to logs
+        cpu_bw: 0.2
+        cpu_cores: 1
+        mem_max: 512
+        mem_swap_max: null
+        io_bw: null

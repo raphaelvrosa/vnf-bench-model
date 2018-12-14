@@ -1,0 +1,79 @@
+sending out data 
+File Cache is enabled
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+processing file: /pcaps/smallFlows.pcap
+Actual: 998270 packets (645157170 bytes) sent in 51.64 seconds.		Rated: 12493361.0 bps, 95.32 Mbps, 19331.33 pps
+Statistics for network device: data
+	Attempted packets:         998270
+	Successful packets:        998270
+	Failed packets:            0
+	Retried packets (ENOBUFS): 0
+	Retried packets (EAGAIN):  0
