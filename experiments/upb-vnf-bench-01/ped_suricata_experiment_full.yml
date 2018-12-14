@@ -40,11 +40,13 @@ service_experiments:
     # experiment parameters to be tested during the experiment
     experiment_parameters:
       - function: "de.upb.ids-suricata.0.1"
-        cmd_start: "./start.sh small_ruleset" # ["small_ruleset", "big_ruleset", "empty"]
+        cmd_start: ["./start.sh small_ruleset",
+                    "./start.sh big_ruleset",
+                    "./start.sh empty"]
         cmd_stop: "./stop.sh"
         cpu_bw: 0.8
-        cpu_cores: 1  # [2,8,16]
-        mem_max: 2048  # [2048, 4096, 8192]
+        cpu_cores: [1, 2, 4]  # Gym: [2,8,16]
+        mem_max: [2048, 4096]  # Gym: [2048, 4096, 8192]
         mem_swap_max: null
         io_bw: null
       - function: "mp.input"

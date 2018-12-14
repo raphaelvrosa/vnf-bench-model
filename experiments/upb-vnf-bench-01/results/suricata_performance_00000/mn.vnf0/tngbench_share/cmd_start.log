@@ -1,5 +1,5 @@
-14/12/2018 -- 09:49:23 - <Notice> - This is Suricata version 4.0.0 RELEASE
-14/12/2018 -- 09:49:23 - <Info> - CPUs/cores online: 16
-14/12/2018 -- 09:49:23 - <Info> - Found an MTU of 1500 for 'br0'
-14/12/2018 -- 09:49:23 - <Info> - Found an MTU of 1500 for 'br0'
-Suricata VNF started - AVG ruleset ...
+14/12/2018 -- 11:25:57 - <Notice> - This is Suricata version 4.0.0 RELEASE
+14/12/2018 -- 11:25:57 - <Info> - CPUs/cores online: 16
+14/12/2018 -- 11:25:57 - <Info> - Found an MTU of 1500 for 'br0'
+14/12/2018 -- 11:25:57 - <Info> - Found an MTU of 1500 for 'br0'
+Suricata VNF started - SMALL ruleset ...
