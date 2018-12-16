@@ -1,6 +1,6 @@
 stat__data__collisions: 0.0
 stat__data__multicast: 0.0
-stat__data__rx_bytes: 2381661.0
+stat__data__rx_bytes: 2381924.0
 stat__data__rx_compressed: 0.0
 stat__data__rx_crc_errors: 0.0
 stat__data__rx_dropped: 0.0
@@ -23,7 +23,7 @@ stat__data__tx_packets: 0.0
 stat__data__tx_window_errors: 0.0
 stat__eth0__collisions: 0.0
 stat__eth0__multicast: 0.0
-stat__eth0__rx_bytes: 648.0
+stat__eth0__rx_bytes: 828.0
 stat__eth0__rx_compressed: 0.0
 stat__eth0__rx_crc_errors: 0.0
 stat__eth0__rx_dropped: 0.0
@@ -33,7 +33,7 @@ stat__eth0__rx_frame_errors: 0.0
 stat__eth0__rx_length_errors: 0.0
 stat__eth0__rx_missed_errors: 0.0
 stat__eth0__rx_over_errors: 0.0
-stat__eth0__rx_packets: 8.0
+stat__eth0__rx_packets: 10.0
 stat__eth0__tx_aborted_errors: 0.0
 stat__eth0__tx_bytes: 0.0
 stat__eth0__tx_carrier_errors: 0.0
