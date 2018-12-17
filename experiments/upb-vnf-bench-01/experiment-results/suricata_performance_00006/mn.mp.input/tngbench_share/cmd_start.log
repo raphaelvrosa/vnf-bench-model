@@ -1,0 +1,7 @@
+Actual: 2994810 packets (1935471510 bytes) sent in 13.10 seconds.		Rated: 147745920.0 bps, 1127.21 Mbps, 228611.45 pps
+Statistics for network device: data
+	Attempted packets:         2994810
+	Successful packets:        2994810
+	Failed packets:            0
+	Retried packets (ENOBUFS): 0
+	Retried packets (EAGAIN):  0

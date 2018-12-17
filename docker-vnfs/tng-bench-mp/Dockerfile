@@ -51,7 +51,7 @@ RUN chmod +x stop.sh
 #ADD process_httping_results.py process_httping_results.py
 #RUN chmod +x process_httping_results.py
 
-#ADD log_intf_statistics.py log_intf_statistics.py
+ADD log_intf_statistics.py log_intf_statistics.py
 
 #WORKDIR /
 

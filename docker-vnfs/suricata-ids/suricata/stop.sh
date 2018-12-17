@@ -11,5 +11,6 @@ sleep 2
 python ./log_intf_statistics.py /usr/local/var/log/suricata/result.yml
 # tng-bench (needs results in different folder)
 cp /usr/local/var/log/suricata/result.yml /tngbench_share/result.yml
+cp /usr/local/var/log/suricata/stats.log /tngbench_share/suricata_stats.log
 
 date > /usr/local/var/log/suricata/stop.txt
