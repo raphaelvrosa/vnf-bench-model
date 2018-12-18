@@ -1,6 +1,6 @@
 stat__data__collisions: 0.0
 stat__data__multicast: 0.0
-stat__data__rx_bytes: 1128.0
+stat__data__rx_bytes: 1038.0
 stat__data__rx_compressed: 0.0
 stat__data__rx_crc_errors: 0.0
 stat__data__rx_dropped: 0.0
@@ -10,16 +10,16 @@ stat__data__rx_frame_errors: 0.0
 stat__data__rx_length_errors: 0.0
 stat__data__rx_missed_errors: 0.0
 stat__data__rx_over_errors: 0.0
-stat__data__rx_packets: 14.0
+stat__data__rx_packets: 13.0
 stat__data__tx_aborted_errors: 0.0
-stat__data__tx_bytes: 1066253352.0
+stat__data__tx_bytes: 3095267633.0
 stat__data__tx_carrier_errors: 0.0
 stat__data__tx_compressed: 0.0
 stat__data__tx_dropped: 0.0
 stat__data__tx_errors: 0.0
 stat__data__tx_fifo_errors: 0.0
 stat__data__tx_heartbeat_errors: 0.0
-stat__data__tx_packets: 2374845.0
+stat__data__tx_packets: 6895188.0
 stat__data__tx_window_errors: 0.0
 stat__eth0__collisions: 0.0
 stat__eth0__multicast: 0.0

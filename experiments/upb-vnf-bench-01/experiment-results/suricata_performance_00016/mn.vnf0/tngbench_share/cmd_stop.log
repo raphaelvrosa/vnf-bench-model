@@ -1,16 +1,15 @@
 Started result processing ...
-0.0 0.0 0.0
-zero frames
+57109.5 36362226.75 0.799447263637
 Writing '/usr/local/var/log/suricata/result.yml'
 done.
 Collecting intf statistics...
 Out: /usr/local/var/log/suricata/result.yml
-----mgmt
-----eth0
-----br0
-----lo
-----input
 ----output
+----input
+----lo
+----br0
+----eth0
+----mgmt
 Reading '/usr/local/var/log/suricata/result.yml'
 Writing '/usr/local/var/log/suricata/result.yml'
 done.

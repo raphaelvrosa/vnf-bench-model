@@ -5,11 +5,11 @@ Traceback (most recent call last):
 IOError: [Errno 2] No such file or directory: '/usr/local/var/log/suricata/stats.log'
 Collecting intf statistics...
 Out: /usr/local/var/log/suricata/result.yml
-----input
-----lo
 ----br0
-----eth0
+----lo
 ----mgmt
+----eth0
+----input
 ----output
 Writing '/usr/local/var/log/suricata/result.yml'
 done.

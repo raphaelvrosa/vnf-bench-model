@@ -5,12 +5,12 @@ Traceback (most recent call last):
 IOError: [Errno 2] No such file or directory: '/usr/local/var/log/suricata/stats.log'
 Collecting intf statistics...
 Out: /usr/local/var/log/suricata/result.yml
-----output
-----lo
-----br0
-----eth0
-----mgmt
 ----input
+----br0
+----lo
+----mgmt
+----eth0
+----output
 Writing '/usr/local/var/log/suricata/result.yml'
 done.
 cp: cannot stat '/usr/local/var/log/suricata/stats.log': No such file or directory

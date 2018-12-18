@@ -1,6 +1,6 @@
 stat__br0__collisions: 0.0
 stat__br0__multicast: 0.0
-stat__br0__rx_bytes: 979756525.0
+stat__br0__rx_bytes: 2934565299.0
 stat__br0__rx_compressed: 0.0
 stat__br0__rx_crc_errors: 0.0
 stat__br0__rx_dropped: 0.0
@@ -10,7 +10,7 @@ stat__br0__rx_frame_errors: 0.0
 stat__br0__rx_length_errors: 0.0
 stat__br0__rx_missed_errors: 0.0
 stat__br0__rx_over_errors: 0.0
-stat__br0__rx_packets: 2261532.0
+stat__br0__rx_packets: 6779827.0
 stat__br0__tx_aborted_errors: 0.0
 stat__br0__tx_bytes: 0.0
 stat__br0__tx_carrier_errors: 0.0
@@ -46,7 +46,7 @@ stat__eth0__tx_packets: 0.0
 stat__eth0__tx_window_errors: 0.0
 stat__input__collisions: 0.0
 stat__input__multicast: 0.0
-stat__input__rx_bytes: 1066254000.0
+stat__input__rx_bytes: 3276812087.0
 stat__input__rx_compressed: 0.0
 stat__input__rx_crc_errors: 0.0
 stat__input__rx_dropped: 0.0
@@ -56,7 +56,7 @@ stat__input__rx_frame_errors: 0.0
 stat__input__rx_length_errors: 0.0
 stat__input__rx_missed_errors: 0.0
 stat__input__rx_over_errors: 0.0
-stat__input__rx_packets: 2374853.0
+stat__input__rx_packets: 7306001.0
 stat__input__tx_aborted_errors: 0.0
 stat__input__tx_bytes: 390.0
 stat__input__tx_carrier_errors: 0.0
@@ -127,16 +127,16 @@ stat__output__rx_missed_errors: 0.0
 stat__output__rx_over_errors: 0.0
 stat__output__rx_packets: 8.0
 stat__output__tx_aborted_errors: 0.0
-stat__output__tx_bytes: 653525.0
+stat__output__tx_bytes: 1964396.0
 stat__output__tx_carrier_errors: 0.0
 stat__output__tx_compressed: 0.0
 stat__output__tx_dropped: 0.0
 stat__output__tx_errors: 0.0
 stat__output__tx_fifo_errors: 0.0
 stat__output__tx_heartbeat_errors: 0.0
-stat__output__tx_packets: 5025.0
+stat__output__tx_packets: 15142.0
 stat__output__tx_window_errors: 0.0
-suricata_bytes: 0.0
-suricata_dropped: 0.0
-suricata_drops: 0.0
-suricata_packets: 0.0
+suricata_bytes: 46661525.5
+suricata_dropped: 199438.5
+suricata_drops: 0.6225969361594527
+suricata_packets: 103448.5
