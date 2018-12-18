@@ -12,14 +12,14 @@ stat__data__rx_missed_errors: 0.0
 stat__data__rx_over_errors: 0.0
 stat__data__rx_packets: 13.0
 stat__data__tx_aborted_errors: 0.0
-stat__data__tx_bytes: 1935471510.0
+stat__data__tx_bytes: 4596606984.0
 stat__data__tx_carrier_errors: 0.0
 stat__data__tx_compressed: 0.0
 stat__data__tx_dropped: 0.0
 stat__data__tx_errors: 0.0
 stat__data__tx_fifo_errors: 0.0
 stat__data__tx_heartbeat_errors: 0.0
-stat__data__tx_packets: 2994810.0
+stat__data__tx_packets: 7112444.0
 stat__data__tx_window_errors: 0.0
 stat__eth0__collisions: 0.0
 stat__eth0__multicast: 0.0

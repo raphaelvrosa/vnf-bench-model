@@ -1,7 +1,15 @@
-Actual: 2374845 packets (1066253352 bytes) sent in 8.43 seconds.		Rated: 126483200.0 bps, 964.99 Mbps, 281713.53 pps
-Statistics for network device: data
-	Attempted packets:         2374845
-	Successful packets:        2374845
-	Failed packets:            0
-	Retried packets (ENOBUFS): 0
-	Retried packets (EAGAIN):  0
+sending out data 
+File Cache is enabled
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap
+processing file: /pcaps/bigFlows.pcap

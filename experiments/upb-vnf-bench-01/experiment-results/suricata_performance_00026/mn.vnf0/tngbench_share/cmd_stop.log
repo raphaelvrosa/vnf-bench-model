@@ -6,11 +6,11 @@ IOError: [Errno 2] No such file or directory: '/usr/local/var/log/suricata/stats
 Collecting intf statistics...
 Out: /usr/local/var/log/suricata/result.yml
 ----output
-----input
 ----eth0
 ----mgmt
 ----lo
 ----br0
+----input
 Writing '/usr/local/var/log/suricata/result.yml'
 done.
 cp: cannot stat '/usr/local/var/log/suricata/stats.log': No such file or directory
