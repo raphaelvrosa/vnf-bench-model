@@ -13,7 +13,7 @@
                 "repeat": {
                     "methods": 1,
                     "tests": 1,
-                    "trials": 1
+                    "trials": 2
                 }
             },
             "scenario": {
