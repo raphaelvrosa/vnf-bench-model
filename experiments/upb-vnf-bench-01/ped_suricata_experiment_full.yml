@@ -45,16 +45,16 @@ service_experiments:
                     "./start.sh empty"]
         cmd_stop: "./stop.sh"
         cpu_bw: 0.8
-        cpu_cores: [1, 2, 4]  # Gym: [2,8,16]
+        cpu_cores: [1, 2, 4]  # Gym: [2,8,16] # this is actually "cpu_set" if vim-emu is used
         mem_max: [2048, 4096]  # Gym: [2048, 4096, 8192]
         mem_swap_max: null
         io_bw: null
       - function: "mp.input"
-        cmd_start: ["tcpreplay -i data -tK -q --loop 210 --preload-pcap /pcaps/smallFlows.pcap",
-                    "tcpreplay -i data -tK -q --loop 3 --preload-pcap /pcaps/bigFlows.pcap"]
+        cmd_start: ["tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap",
+                    "tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap"]
         cmd_stop: "./stop.sh"
         cpu_bw: null
-        cpu_cores: 1
+        cpu_cores: 1 # this is actually "cpu_set" if vim-emu is used
         mem_max: 1024
         mem_swap_max: null
         io_bw: null
@@ -62,7 +62,7 @@ service_experiments:
         cmd_start: null
         cmd_stop: "./stop.sh"  # dump packet counters to logs
         cpu_bw: null
-        cpu_cores: 1
+        cpu_cores: 1 # this is actually "cpu_set" if vim-emu is used
         mem_max: 1024
         mem_swap_max: null
         io_bw: null

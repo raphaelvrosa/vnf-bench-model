@@ -1,6 +1,6 @@
 stat__data__collisions: 0.0
 stat__data__multicast: 0.0
-stat__data__rx_bytes: 2381826.0
+stat__data__rx_bytes: 5262317.0
 stat__data__rx_compressed: 0.0
 stat__data__rx_crc_errors: 0.0
 stat__data__rx_dropped: 0.0
@@ -10,7 +10,7 @@ stat__data__rx_frame_errors: 0.0
 stat__data__rx_length_errors: 0.0
 stat__data__rx_missed_errors: 0.0
 stat__data__rx_over_errors: 0.0
-stat__data__rx_packets: 18709.0
+stat__data__rx_packets: 41347.0
 stat__data__tx_aborted_errors: 0.0
 stat__data__tx_bytes: 0.0
 stat__data__tx_carrier_errors: 0.0

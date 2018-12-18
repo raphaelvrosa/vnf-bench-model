@@ -1,17 +1,15 @@
 Started result processing ...
-Exception at 5: float division by zero
-0.0 0.0 0.0
-zero frames
+144017.0 63187526.0 0.852058592918
 Writing '/usr/local/var/log/suricata/result.yml'
 done.
 Collecting intf statistics...
 Out: /usr/local/var/log/suricata/result.yml
-----output
 ----input
-----eth0
-----mgmt
 ----lo
 ----br0
+----eth0
+----mgmt
+----output
 Reading '/usr/local/var/log/suricata/result.yml'
 Writing '/usr/local/var/log/suricata/result.yml'
 done.
