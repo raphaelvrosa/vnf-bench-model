@@ -1,0 +1,16 @@
+Started result processing ...
+Traceback (most recent call last):
+  File "./stats.py", line 103, in <module>
+    source = open(STATS_LOG, "r")
+IOError: [Errno 2] No such file or directory: '/usr/local/var/log/suricata/stats.log'
+Collecting intf statistics...
+Out: /usr/local/var/log/suricata/result.yml
+----output
+----input
+----eth0
+----mgmt
+----lo
+----br0
+Writing '/usr/local/var/log/suricata/result.yml'
+done.
+cp: cannot stat '/usr/local/var/log/suricata/stats.log': No such file or directory
