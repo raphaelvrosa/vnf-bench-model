@@ -1,7 +1,0 @@
-Collecting intf statistics...
-Out: /tngbench_share/result.yml
-----lo
-----data
-----eth0
-Writing '/tngbench_share/result.yml'
-done.

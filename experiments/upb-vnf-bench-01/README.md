@@ -11,6 +11,8 @@ This experiment tires to replicate the Gym experiment using the 5GTANGO [`tng-sd
 | `nw-services/` | Folder with example network services to be benchmarked. Services are given in the [5GTANGO](https://5gtango.eu) service description format (NSD, VNFDs are aligned to ETSI). |
 | `config.yml` | Configuration file for tng-sdk-benchmark defining which target machine should be used to execute the experiments. |
 | `experiment-results/` | Experiment results based on `ped_suricata_experiment_full.yml` |
+| `experiment-results/result_ec_metrics.csv` | Aggregated results from subfolders as Pandas CSV. This table contains all experiment metrics except of monitoring data. |
+| `experiment-results/result_ts_metrics.csv` | Aggregated results from subfolders as Pandas CSV. Tis table contains the timeseries data from the Docker stats API. |
 | `experiment-results/<experiment_name>-bd.yaml` | BD rendered for the particular experiment. |
 | `experiment-results/<experiment_name>/` | Folder containing all the results (logs, metrics, etc.) collected by tng-sdk-benchmark during the experiment runs. |
 
