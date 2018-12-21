@@ -39,4 +39,10 @@ After that, the results (BDs, logs, monitoring logs) will be available in `exper
 
 ### Result Analysis
 
-TODO
+The following step is automatically done after an experiment run. But it can also be triggered manually.
+It will generate the `*.csv` files containing the aggregated metrics.
+
+```sh
+# manually trigger result processing of generated results (to create *.csv files)
+tng-bench-result -rd experiment-results/  
+```
