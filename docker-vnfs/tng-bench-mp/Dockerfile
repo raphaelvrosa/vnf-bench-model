@@ -1,30 +1,30 @@
 FROM ubuntu:xenial
-MAINTAINER manuel.peuster@uni-paderborn.de
+LABEL maintainer="manuel.peuster@uni-paderborn.de"
 
 RUN	apt-get update && apt-get install -y \
-        git \
-        wget \
-        build-essential \
-        python-dev \
+    	git \
+    	wget \
+    	build-essential \
+    	python-dev \
         python-pip \
-	net-tools \
-	iproute \
-	inetutils-ping \
-	curl \
-	iperf3 \
-	iperf \
-	tcpreplay \
-	bmon \
-	nmap \
-	python \
-	python-yaml \
-	siege \
-	httperf \
-        gettext \
-        #httping \
-	apache2-utils \
-        hping3 \
-	polygraph
+		net-tools \
+		iproute \
+		inetutils-ping \
+		curl \
+		iperf3 \
+		iperf \
+		tcpreplay \
+		bmon \
+		nmap \
+		python \
+		python-yaml \
+		siege \
+		httperf \
+    	gettext \
+		apache2-utils \
+    	hping3 \
+		polygraph \
+		stress
 
 
 RUN git clone https://github.com/flok99/httping.git
