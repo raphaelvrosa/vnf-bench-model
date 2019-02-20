@@ -50,6 +50,6 @@ tng-bench-result -rd experiment-results/
 
 ### Result Archive
 
-We archive all (even broken) results in UPB's GitLab: https://git.cs.upb.de/peuster/tng-bench-result-archive
+We archive all (even broken) results in UPB's GitLab: `tng-bench-experiments`
 
 
