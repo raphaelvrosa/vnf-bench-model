@@ -1,0 +1,16 @@
+Started result processing ...
+Exception at 5: float division by zero
+216468.0 95342022.6 0.667503231951
+Writing '/usr/local/var/log/suricata/result.yml'
+done.
+Collecting intf statistics...
+Out: /usr/local/var/log/suricata/result.yml
+----eth0
+----input
+----br0
+----lo
+----mgmt
+----output
+Reading '/usr/local/var/log/suricata/result.yml'
+Writing '/usr/local/var/log/suricata/result.yml'
+done.

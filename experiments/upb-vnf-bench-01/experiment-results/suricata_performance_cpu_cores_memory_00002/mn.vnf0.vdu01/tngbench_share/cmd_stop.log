@@ -1,0 +1,15 @@
+Started result processing ...
+246783.375 151114231.625 0.443483373783
+Writing '/usr/local/var/log/suricata/result.yml'
+done.
+Collecting intf statistics...
+Out: /usr/local/var/log/suricata/result.yml
+----mgmt
+----eth0
+----br0
+----output
+----input
+----lo
+Reading '/usr/local/var/log/suricata/result.yml'
+Writing '/usr/local/var/log/suricata/result.yml'
+done.

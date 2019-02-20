@@ -1,0 +1,7 @@
+Cannot get device udp-fragmentation-offload settings: Operation not supported
+Cannot get device udp-fragmentation-offload settings: Operation not supported
+19/2/2019 -- 15:24:52 - <Notice> - This is Suricata version 4.0.0 RELEASE
+19/2/2019 -- 15:24:52 - <Info> - CPUs/cores online: 16
+19/2/2019 -- 15:24:52 - <Info> - Found an MTU of 1500 for 'br0'
+19/2/2019 -- 15:24:52 - <Info> - Found an MTU of 1500 for 'br0'
+Suricata VNF started - SMALL ruleset ...
