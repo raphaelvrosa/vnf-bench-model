@@ -1,0 +1,37 @@
+,metric_vnf0_eth_input_rx_bytes,metric_vnf0_suricata_bytes,metric_vnf0_suricata_dropped,metric_vnf0_suricata_drops,metric_vnf0_suricata_packets,param_vnf0_cmdstart,param_vnf0_cpubw,param_vnf0_cpuset,param_vnf0_memmax,param_agent0_cmdstart,param_repetition,param_exptimelimit
+0,9216531726.0,126474064.275,170305.75,0.4550358044710634,205760.35,./start.sh small_ruleset,1.0,0,2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+1,8233187782.0,159718788.0,126638.0,0.2382318941183221,405825.0,./start.sh small_ruleset,1.0,0,2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+2,9216531726.0,151114231.625,195820.25,0.44348337378266295,246783.375,./start.sh small_ruleset,1.0,0,4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+3,8000172172.0,159162579.75,120918.25,0.2303608441860288,404406.25,./start.sh small_ruleset,1.0,0,4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+4,9216531726.0,129534135.875,217082.125,0.5096322498647902,204442.875,./start.sh small_ruleset,1.0,"0, 1",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+5,7659392793.0,113605359.25,246622.5,0.4920262509763316,257927.25,./start.sh small_ruleset,1.0,"0, 1",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+6,9216531726.0,135859830.75,285875.5,0.6157681054219001,214179.125,./start.sh small_ruleset,1.0,"0, 1",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+7,7643202938.0,115168495.75,249761.25,0.4872527450017387,258489.25,./start.sh small_ruleset,1.0,"0, 1",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+8,9216531726.0,142102801.0,456866.8,0.6720416251850493,222992.0,./start.sh small_ruleset,1.0,"0, 1, 2, 3",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+9,8250731939.0,95342022.6,434647.8,0.6675032319513676,216468.0,./start.sh small_ruleset,1.0,"0, 1, 2, 3",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+10,9216531726.0,12070168.3,33494.3,0.6415303581689332,18888.7,./start.sh small_ruleset,1.0,"0, 1, 2, 3",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+11,7887601356.0,94138515.2,436963.8,0.6707855595690038,214424.0,./start.sh small_ruleset,1.0,"0, 1, 2, 3",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+12,9216531726.0,7587171.333333332,38041.208333333336,0.742478150304436,13268.458333333336,./start.sh big_ruleset,1.0,0,2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+13,9346610502.0,68077752.875,418442.375,0.6849376647488635,192500.0,./start.sh big_ruleset,1.0,0,2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+14,9216531726.0,39913773.75,196361.75,0.7430001447316269,68646.25,./start.sh big_ruleset,1.0,0,4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+15,9222846822.0,67949077.625,413999.625,0.6808063615985397,194145.0,./start.sh big_ruleset,1.0,0,4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+16,9216531726.0,22018714.5,81194.0,0.6752577105242367,36806.25,./start.sh big_ruleset,1.0,"0, 1",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+17,9318386679.0,63284327.25,424478.25,0.7087677349724044,174053.0,./start.sh big_ruleset,1.0,"0, 1",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+18,9216531726.0,22103003.75,123001.25,0.7715014645834248,36660.0,./start.sh big_ruleset,1.0,"0, 1",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+19,9349971271.0,63448137.875,421609.75,0.7070793297073156,174556.25,./start.sh big_ruleset,1.0,"0, 1",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+20,9216531726.0,34798531.8,175198.2,0.7605316483390548,55510.0,./start.sh big_ruleset,1.0,"0, 1, 2, 3",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+21,9019714724.0,103865776.0,668714.5,0.7320119383117896,245589.5,./start.sh big_ruleset,1.0,"0, 1, 2, 3",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+22,9216531726.0,34025019.8,124625.2,0.6984676051664942,54106.8,./start.sh big_ruleset,1.0,"0, 1, 2, 3",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+23,8872766223.0,132797648.0,885511.0,0.7368745589625467,316704.0,./start.sh big_ruleset,1.0,"0, 1, 2, 3",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+24,9216531726.0,,,,,./start.sh empty,1.0,0,2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+25,11601096256.0,,,,,./start.sh empty,1.0,0,2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+26,9216531726.0,,,,,./start.sh empty,1.0,0,4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+27,11394889148.0,,,,,./start.sh empty,1.0,0,4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+28,9216531726.0,,,,,./start.sh empty,1.0,"0, 1",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+29,10999601196.0,,,,,./start.sh empty,1.0,"0, 1",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+30,9216531726.0,,,,,./start.sh empty,1.0,"0, 1",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+31,11561640243.0,,,,,./start.sh empty,1.0,"0, 1",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+32,9216531726.0,,,,,./start.sh empty,1.0,"0, 1, 2, 3",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+33,11355455499.0,,,,,./start.sh empty,1.0,"0, 1, 2, 3",2048,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
+34,9216531726.0,,,,,./start.sh empty,1.0,"0, 1, 2, 3",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap,0,30
+35,10990158373.0,,,,,./start.sh empty,1.0,"0, 1, 2, 3",4096,tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/bigFlows.pcap,0,30
