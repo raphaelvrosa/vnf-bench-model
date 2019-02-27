@@ -1,166 +1,163 @@
 module vnf-bd {
-  namespace "urn:vnf-br";
-  prefix "vnf-br";
-  organization "IETF/BMWG";
-  contact "Manuel Peuster <peuster@mail.uni-paderborn.de>, Raphael Vicente Rosa <raphaelvrosa@gmail.com>";
-  description "Yang model for a VNF Benchmark Descriptor (VNF-BD) in the scope of IETF/BMWG";
+    namespace "urn:vnf-br";
+    prefix "vnf-br";
+    organization "IETF/BMWG";
+    contact "Manuel Peuster <peuster@mail.uni-paderborn.de>, Raphael Vicente Rosa <raphaelvrosa@gmail.com>";
+    description "Yang model for a VNF Benchmark Descriptor (VNF-BD) in the scope of IETF/BMWG";
 
-  revision "2019-02-28" {
-    description "V0.1: First release";
-  }
-  
-  grouping targets {
-    leaf id { type string; }
-    leaf name { type string; }
-    leaf version { type string; }
-    leaf author { type string; }
-    leaf vendor { type string; }
-    leaf description { type string; }
-  }
-
-  grouping connection_points {
-  	leaf id { type string; }
-    leaf interface { type string; }
-    leaf type { type string; }
-    leaf address { type string; }
-  }
-
-  grouping nodes {
-  	leaf id { type string; }
-    leaf type { type string; }
-    leaf image { type string; }
-    leaf image_format { type string; }
-    leaf entrypoint { type string; }
-    leaf volumes { type string; }
-    
-  	list connection_points {
-        key "id";
-        uses connection_points;
-	}
-  }
-
-  grouping links {
-  	leaf id { type string; }
-    leaf name { type string; }
-    leaf network { type string; }
-    leaf connection_points { type string; }
-  }
-
-  grouping topology {
-	list nodes {
-        key "id";
-        uses nodes;
-  	}
-  	
-  	list links {
-        key "id";
-        uses links;
-	}
-  }
-
-  grouping resources {
-  	leaf id { type string; }
-  	leaf cpu { type string; }
-    leaf memory { type string; }
-    leaf storage { type string; }
-  }
-
-  grouping requirements {
-	list resources {
-        key "id";
-        uses resources;
-  	}  
-  }
-
-  grouping policy {
-  	leaf id { type string; }
-  	leaf name { type string; }
-  	leaf value { type string; }
-  }
-
-  grouping policies {
-	list policy {
-        key "id";
-        uses policy;
-  	}
-  }
-
-
-  grouping scenario {
-    container topology {
-    	uses topology;
-    }
-    container requirements {
-    	uses requirements;
-    }
-    container policies {
-    	uses policies;
-    }
-  }
-
-  grouping tools {
-  	leaf id { type string; }
-  	leaf type { type string; }
-  	leaf instances { type string; }
-  	leaf parameters { type string; }
-  }
-
-  grouping components {
-  	leaf id { type string; }
-  	leaf role { type string; }
-  	leaf configuration { type string; }
-    list tools {
-    	key "id";
-    	uses tools;
-    }  	
-  }
-
-  grouping settings {
-    container run {
-    	leaf trials { type uint32; default 0; }
-	    leaf tests { type uint32; default 0; }
-	    leaf methods { type uint32; default 0; }
+    revision "2019-02-28" {
+        description "V0.1: First release";
     }
 
-	container environment {
-    	leaf name { type string; }
-	    leaf description { type string; }
-	    leaf plugin { type string; }
-
-	    list components {
-	    	key "id";
-	    	uses components;
-	    }
-    }
-  }
-
-
-
-  grouping vnf-bd {
-    description "Grouping for a single vnf-bd";
-
-    leaf id { type string; }
-    leaf name { type string; }
-    leaf author { type string; }
-    leaf description { type string; }
-
-	list targets {
-		key "id";
-		uses targets;
-	}
-
-	container scenario{
-      uses scenario;
+    grouping targets {
+        leaf id { type string; }
+        leaf name { type string; }
+        leaf version { type string; }
+        leaf author { type string; }
+        leaf vendor { type string; }
+        leaf description { type string; }
     }
 
-	container settings{
-      uses settings;
+    grouping connection_points {
+        leaf id { type string; }
+        leaf interface { type string; }
+        leaf type { type string; }
+        leaf address { type string; }
     }
 
-  }
+    grouping nodes {
+        leaf id { type string; }
+        leaf type { type string; }
+        leaf image { type string; }
+        leaf image_format { type string; }
+        leaf entrypoint { type string; }
+        leaf volumes { type string; }
 
-  container vnf-bd {
-    uses vnf-bd;
-  }
+        list connection_points {
+            key "id";
+            uses connection_points;
+        }
+    }
 
+    grouping links {
+        leaf id { type string; }
+        leaf name { type string; }
+        leaf network { type string; }
+        leaf connection_points { type string; }
+    }
+
+    grouping topology {
+        list nodes {
+            key "id";
+            uses nodes;
+        }
+
+        list links {
+            key "id";
+            uses links;
+        }
+    }
+
+    grouping resources {
+        leaf id { type string; }
+        leaf cpu { type string; }
+        leaf memory { type string; }
+        leaf storage { type string; }
+    }
+
+    grouping requirements {
+        list resources {
+            key "id";
+            uses resources;
+        }  
+    }
+
+    grouping policy {
+        leaf id { type string; }
+        leaf name { type string; }
+        leaf value { type string; }
+    }
+
+    grouping policies {
+        list policy {
+            key "id";
+            uses policy;
+        }
+    }
+
+
+    grouping scenario {
+        container topology {
+            uses topology;
+        }
+        container requirements {
+            uses requirements;
+        }
+        container policies {
+            uses policies;
+        }
+    }
+
+    grouping tools {
+        leaf id { type string; }
+        leaf type { type string; }
+        leaf instances { type string; }
+        leaf parameters { type string; }
+    }
+
+    grouping components {
+        leaf id { type string; }
+        leaf role { type string; }
+        leaf configuration { type string; }
+        list tools {
+            key "id";
+            uses tools;
+        }   
+    }
+
+    grouping settings {
+        container run {
+            leaf trials { type uint32; default 0; }
+            leaf tests { type uint32; default 0; }
+            leaf methods { type uint32; default 0; }
+        }
+
+        container environment {
+            leaf name { type string; }
+            leaf description { type string; }
+            leaf plugin { type string; }
+
+            list components {
+                key "id";
+                uses components;
+            }
+        }
+    }
+
+    grouping vnf-bd {
+        description "Grouping for a single vnf-bd";
+
+        leaf id { type string; }
+        leaf name { type string; }
+        leaf author { type string; }
+        leaf description { type string; }
+
+        list targets {
+            key "id";
+            uses targets;
+        }
+
+        container scenario{
+            uses scenario;
+        }
+
+        container settings{
+            uses settings;
+        }
+
+    }
+
+    container vnf-bd {
+        uses vnf-bd;
+    }
 }
