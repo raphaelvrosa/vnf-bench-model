@@ -1,4 +1,4 @@
-module vnf-bd {
+module vnf-bd-b {
     namespace "urn:vnf-br";
     prefix "vnf-br";
     organization "IETF/BMWG";
@@ -18,6 +18,41 @@ module vnf-bd {
         leaf description { type string; }
     }
 
+    grouping tools {
+        leaf id { type string; }
+        leaf instances { type string; }
+        leaf parameters { type string; }
+    }
+
+    grouping requirements {
+        leaf role { type string; }
+        leaf configuration { type string; }
+        
+        list probers {
+            key "id";
+            uses tools;
+        }
+        
+        list listeners {
+            key "id";
+            uses tools;
+        }
+
+        container resources {
+            leaf cpu { type string; }
+            leaf memory { type string; }
+            leaf storage { type string; }
+        }
+        
+        list policies {
+            key "id";
+            leaf id { type uint32; }
+            leaf cpu { type string; }
+            leaf name { type string; }
+            leaf value { type string; }
+        }
+    }  
+
     grouping connection_points {
         leaf id { type string; }
         leaf interface { type string; }
@@ -32,6 +67,10 @@ module vnf-bd {
         leaf image_format { type string; }
         leaf entrypoint { type string; }
         leaf volumes { type string; }
+
+        container requirements {
+            uses requirements;
+        }  
 
         list connection_points {
             key "id";
@@ -58,20 +97,6 @@ module vnf-bd {
         }
     }
 
-    grouping resources {
-        leaf id { type string; }
-        leaf cpu { type string; }
-        leaf memory { type string; }
-        leaf storage { type string; }
-    }
-
-    grouping requirements {
-        list resources {
-            key "id";
-            uses resources;
-        }  
-    }
-
     grouping policy {
         leaf id { type string; }
         leaf name { type string; }
@@ -85,36 +110,6 @@ module vnf-bd {
         }
     }
 
-
-    grouping scenario {
-        container topology {
-            uses topology;
-        }
-        container requirements {
-            uses requirements;
-        }
-        container policies {
-            uses policies;
-        }
-    }
-
-    grouping tools {
-        leaf id { type string; }
-        leaf type { type string; }
-        leaf instances { type string; }
-        leaf parameters { type string; }
-    }
-
-    grouping components {
-        leaf id { type string; }
-        leaf role { type string; }
-        leaf configuration { type string; }
-        list tools {
-            key "id";
-            uses tools;
-        }   
-    }
-
     grouping settings {
         container run {
             leaf trials { type uint32; default 0; }
@@ -126,11 +121,6 @@ module vnf-bd {
             leaf name { type string; }
             leaf description { type string; }
             leaf plugin { type string; }
-
-            list components {
-                key "id";
-                uses components;
-            }
         }
     }
 
@@ -148,7 +138,7 @@ module vnf-bd {
         }
 
         container scenario{
-            uses scenario;
+            uses topology;
         }
 
         container settings{
