@@ -27,15 +27,19 @@ module vnf-bd-b {
     grouping requirements {
         leaf role { type string; }
         leaf configuration { type string; }
+        leaf entrypoint { type string; }
+        leaf volumes { type string; }
         
         list probers {
             key "id";
             uses tools;
+            mandatory false;
         }
         
         list listeners {
             key "id";
             uses tools;
+            mandatory false;
         }
 
         container resources {
@@ -47,7 +51,6 @@ module vnf-bd-b {
         list policies {
             key "id";
             leaf id { type uint32; }
-            leaf cpu { type string; }
             leaf name { type string; }
             leaf value { type string; }
         }
@@ -65,8 +68,6 @@ module vnf-bd-b {
         leaf type { type string; }
         leaf image { type string; }
         leaf image_format { type string; }
-        leaf entrypoint { type string; }
-        leaf volumes { type string; }
 
         container requirements {
             uses requirements;
@@ -85,7 +86,7 @@ module vnf-bd-b {
         leaf connection_points { type string; }
     }
 
-    grouping topology {
+    grouping scenario {
         list nodes {
             key "id";
             uses nodes;
@@ -94,19 +95,6 @@ module vnf-bd-b {
         list links {
             key "id";
             uses links;
-        }
-    }
-
-    grouping policy {
-        leaf id { type string; }
-        leaf name { type string; }
-        leaf value { type string; }
-    }
-
-    grouping policies {
-        list policy {
-            key "id";
-            uses policy;
         }
     }
 
@@ -138,7 +126,7 @@ module vnf-bd-b {
         }
 
         container scenario{
-            uses topology;
+            uses scenario;
         }
 
         container settings{
