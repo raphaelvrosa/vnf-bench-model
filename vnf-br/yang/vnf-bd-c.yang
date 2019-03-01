@@ -1,0 +1,135 @@
+module vnf-bd-c {
+    namespace "urn:vnf-br";
+    prefix "vnf-br";
+    organization "IETF/BMWG";
+    contact "Manuel Peuster <peuster@mail.uni-paderborn.de>, Raphael Vicente Rosa <raphaelvrosa@gmail.com>";
+    description "Yang model for a VNF Benchmark Descriptor (VNF-BD) in the scope of IETF/BMWG";
+
+    revision "2019-02-28" {
+        description "V0.1: First release";
+    }
+
+    grouping targets {
+        leaf id { type string; }
+        leaf name { type string; }
+        leaf version { type string; }
+        leaf author { type string; }
+        leaf vendor { type string; }
+        leaf description { type string; }
+    }
+
+    grouping tools {
+        leaf id { type string; }
+        leaf instances { type string; }
+        leaf parameters { type string; }
+    }
+
+    grouping requirements {
+        leaf role { type string; }
+        leaf configuration { type string; }
+        leaf entrypoint { type string; }
+        leaf volumes { type string; }
+        
+        list probers {
+            key "id";
+            uses tools;
+        }
+        
+        list listeners {
+            key "id";
+            uses tools;
+        }
+
+        container resources {
+            leaf cpu { type string; }
+            leaf memory { type string; }
+            leaf storage { type string; }
+        }
+        
+        list policies {
+            key "id";
+            leaf id { type uint32; }
+            leaf name { type string; }
+            leaf value { type string; }
+        }
+    }  
+
+    grouping connection_points {
+        leaf id { type string; }
+        leaf interface { type string; }
+        leaf type { type string; }
+        leaf address { type string; }
+    }
+
+    grouping nodes {
+        leaf id { type string; }
+        leaf type { type string; }
+        leaf image { type string; }
+        leaf image_format { type string; }
+
+        uses requirements;
+        
+        list connection_points {
+            key "id";
+            uses connection_points;
+        }
+    }
+
+    grouping links {
+        leaf id { type string; }
+        leaf name { type string; }
+        leaf network { type string; }
+        leaf connection_points { type string; }
+    }
+
+    grouping scenario {
+        list nodes {
+            key "id";
+            uses nodes;
+        }
+
+        list links {
+            key "id";
+            uses links;
+        }
+    }
+
+    grouping settings {
+        leaf id { type string; }
+        leaf name { type string; }
+        leaf author { type string; }
+        leaf description { type string; }
+
+        container run {
+            leaf trials { type uint32; default 0; }
+            leaf tests { type uint32; default 0; }
+            leaf methods { type uint32; default 0; }
+        }
+
+        container environment {
+            leaf name { type string; }
+            leaf description { type string; }
+            leaf plugin { type string; }
+        }
+    }
+
+    grouping vnf-bd {
+        description "Grouping for a single vnf-bd";
+
+        uses settings;
+
+        list targets {
+            key "id";
+            uses targets;
+        }
+
+        container scenario{
+            uses scenario;
+        }
+
+    }
+
+    container vnf-bd {
+        uses vnf-bd;
+    }
+}
