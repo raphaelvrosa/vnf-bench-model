@@ -1,12 +1,38 @@
-module vnf-bd-c {
-    namespace "urn:vnf-br";
-    prefix "vnf-br";
+module vnf-bd {
+    namespace "urn:ietf:params:xml:ns:yang:vnf-bd";
+    prefix "vnf-bd";
     organization "IETF/BMWG";
     contact "Manuel Peuster <peuster@mail.uni-paderborn.de>, Raphael Vicente Rosa <raphaelvrosa@gmail.com>";
     description "Yang model for a VNF Benchmark Descriptor (VNF-BD) in the scope of IETF/BMWG";
 
+
+    revision "2019-03-13" {
+        description "V0.2: Reviewed role, policies, connection-points, lifecycle workflows, resources";
+    }
+
     revision "2019-02-28" {
         description "V0.1: First release";
+        reference "https://datatracker.ietf.org/doc/draft-rosa-bmwg-vnfbench/"; 
+    }
+
+    typedef workflows {
+        type enumeration {
+            enum create {
+                description "When calling the create workflow";
+            }
+            enum start {
+                description "When calling the start workflow";
+            }
+            enum stop {
+                description "When calling the stop workflow";
+            }
+            enum delete {
+                description "When calling the delete workflow";
+            }
+            enum custom {
+                description "When calling a custom workflow";
+            }
+        }
     }
 
     grouping targets {
@@ -25,32 +51,37 @@ module vnf-bd-c {
     }
 
     grouping requirements {
-        leaf role { type string; }
-        leaf configuration { type string; }
-        leaf entrypoint { type string; }
         leaf volumes { type string; }
-        
-        list probers {
-            key "id";
-            uses tools;
-        }
-        
-        list listeners {
-            key "id";
-            uses tools;
+
+        choice role {
+            case agent {
+                list probers {
+                    key "id";
+                    uses tools;
+                }
+            }
+            case monitor {
+                list listeners {
+                    key "id";
+                    uses tools;
+                }
+            }
         }
 
         container resources {
-            leaf cpu { type string; }
-            leaf memory { type string; }
-            leaf storage { type string; }
-        }
-        
-        list policies {
-            key "id";
-            leaf id { type uint32; }
-            leaf name { type string; }
-            leaf value { type string; }
+            container cpu { 
+                leaf cpu_set { type string; }
+                leaf cpu_bw { type string; }
+            }
+            container memory { 
+                leaf size { type string; }
+                leaf units { type string; }
+            }
+            container storage { 
+                leaf size { type string; }
+                leaf units { type string; }
+                leaf volumes { type string; }
+            }
         }
     }  
 
@@ -59,6 +90,11 @@ module vnf-bd-c {
         leaf interface { type string; }
         leaf type { type string; }
         leaf address { type string; }
+        leaf link-id { 
+            type leafref {
+                path "../../../links/id";
+            } 
+        }
     }
 
     grouping nodes {
@@ -73,11 +109,23 @@ module vnf-bd-c {
             key "id";
             uses connection_points;
         }
+
+        list lifecycle {
+            key "workflow";
+            leaf workflow {
+                type workflows;
+            }
+            leaf name { type string; }
+            leaf inputs { type string; }
+            leaf implementation { type string; }
+        }
+    
     }
 
     grouping links {
         leaf id { type string; }
         leaf name { type string; }
+        leaf type { type string; }
         leaf network { type string; }
         leaf connection_points { type string; }
     }
@@ -92,11 +140,20 @@ module vnf-bd-c {
             key "id";
             uses links;
         }
+
+        list policies {
+            key "name";
+            leaf name { type string; }
+            leaf type { type string; }
+            leaf targets { type string; }
+            leaf action { type string; }
+        }
     }
 
     grouping settings {
         leaf id { type string; }
         leaf name { type string; }
+        leaf version { type string; }
         leaf author { type string; }
         leaf description { type string; }
 
