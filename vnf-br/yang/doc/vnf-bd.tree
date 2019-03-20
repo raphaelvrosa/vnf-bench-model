@@ -5,7 +5,7 @@ module: vnf-bd
      +--rw version?       string
      +--rw author?        string
      +--rw description?   string
-     +--rw run
+     +--rw experiment
      |  +--rw trials?    uint32
      |  +--rw tests?     uint32
      |  +--rw methods?   uint32
@@ -29,24 +29,29 @@ module: vnf-bd
         |  +--rw (role)?
         |  |  +--:(agent)
         |  |  |  +--rw probers* [id]
-        |  |  |     +--rw id            uint32
-        |  |  |     +--rw name?         string
-        |  |  |     +--rw parameters
-        |  |  |     |  +--rw target?   string
-        |  |  |     +--rw metrics
-        |  |  |        +--rw rtt_mean?   string
+        |  |  |     +--rw id            string
+        |  |  |     +--rw instances?    string
+        |  |  |     +--rw parameters* [name]
+        |  |  |     |  +--rw name     string
+        |  |  |     |  +--rw value?   string
+        |  |  |     +--rw metrics* [name]
+        |  |  |        +--rw name     string
+        |  |  |        +--rw units?   string
         |  |  +--:(monitor)
         |  |     +--rw listeners* [id]
-        |  |        +--rw id            uint32
-        |  |        +--rw name?         string
-        |  |        +--rw parameters
-        |  |        |  +--rw target?   string
-        |  |        +--rw metrics
-        |  |           +--rw cpu_percent_mean?   string
+        |  |        +--rw id            string
+        |  |        +--rw instances?    string
+        |  |        +--rw parameters* [name]
+        |  |        |  +--rw name     string
+        |  |        |  +--rw value?   string
+        |  |        +--rw metrics* [name]
+        |  |           +--rw name     string
+        |  |           +--rw units?   string
         |  +--rw resources
         |  |  +--rw cpu
-        |  |  |  +--rw cpu_set?   string
+        |  |  |  +--rw vcpus?     string
         |  |  |  +--rw cpu_bw?    string
+        |  |  |  +--rw pinning?   string
         |  |  +--rw memory
         |  |  |  +--rw size?    string
         |  |  |  +--rw units?   string
@@ -63,14 +68,16 @@ module: vnf-bd
         |  +--rw lifecycle* [workflow]
         |     +--rw workflow          workflows
         |     +--rw name?             string
-        |     +--rw inputs?           string
+        |     +--rw inputs* [name]
+        |     |  +--rw name     string
+        |     |  +--rw input?   string
         |     +--rw implementation?   string
         +--rw links* [id]
         |  +--rw id                   string
         |  +--rw name?                string
         |  +--rw type?                string
         |  +--rw network?             string
-        |  +--rw connection_points?   string
+        |  +--rw connection_points*   string
         +--rw policies* [name]
            +--rw name       string
            +--rw type?      string

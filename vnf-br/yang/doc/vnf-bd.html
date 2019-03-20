@@ -280,7 +280,7 @@ function expandAllRows() {
                                 onclick="toggleRows(this);return false"
                                 class="folder">&nbsp;
                              </a>
-                             <abbr title="No description">run</abbr>
+                             <abbr title="No description">experiment</abbr>
                           </div>
                        </td> 
 <td nowrap>container</td>
@@ -288,7 +288,7 @@ function expandAllRows() {
                     <td nowrap>config</td>
                     <td></td>
                     <td>current</td>
-                    <td nowrap>/vnf-bd:vnf-bd/vnf-bd:run</td>
+                    <td nowrap>/vnf-bd:vnf-bd/vnf-bd:experiment</td>
                     </tr> 
 <tr id="1-1-6-1" class="a">
                        <td nowrap>
@@ -303,7 +303,7 @@ function expandAllRows() {
                        <td nowrap>config</td>
                        <td>?</td>
                        <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:run/vnf-bd:trials</td</tr> 
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:experiment/vnf-bd:trials</td</tr> 
 <tr id="1-1-6-2" class="a">
                        <td nowrap>
                           <div id=9999 class=tier4>
@@ -317,7 +317,7 @@ function expandAllRows() {
                        <td nowrap>config</td>
                        <td>?</td>
                        <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:run/vnf-bd:tests</td</tr> 
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:experiment/vnf-bd:tests</td</tr> 
 <tr id="1-1-6-3" class="a">
                        <td nowrap>
                           <div id=9999 class=tier4>
@@ -331,7 +331,7 @@ function expandAllRows() {
                        <td nowrap>config</td>
                        <td>?</td>
                        <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:run/vnf-bd:methods</td</tr> 
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:experiment/vnf-bd:methods</td</tr> 
 <tr id="1-1-7" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier3">
@@ -641,8 +641,8 @@ function expandAllRows() {
                           </div>
                        </td>
                        <td>leaf</td>
-                       <td nowrap><abbr title="uint32
-">uint32</abbr></td>
+                       <td nowrap><abbr title="string
+">string</abbr></td>
                        <td nowrap>config</td>
                        <td></td>
                        <td>current</td>
@@ -651,7 +651,7 @@ function expandAllRows() {
                        <td nowrap>
                           <div id=9999 class=tier8>
                              <a class="leaf">&nbsp;</a>
-                             <abbr title="No description"> <em> name </em></abbr>
+                             <abbr title="No description"> <em> instances </em></abbr>
                           </div>
                        </td>
                        <td>leaf</td>
@@ -660,7 +660,7 @@ function expandAllRows() {
                        <td nowrap>config</td>
                        <td>?</td>
                        <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:probers/vnf-bd:name</td</tr> 
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:probers/vnf-bd:instances</td</tr> 
 <tr id="1-1-9-13-5-1-1-3" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier8">
@@ -668,10 +668,10 @@ function expandAllRows() {
                                 onclick="toggleRows(this);return false"
                                 class="folder">&nbsp;
                              </a>
-                             <abbr title="parameters to trigger prober execution">parameters</abbr>
+                             <abbr title="No description">parameters[name]</abbr>
                           </div>
                        </td> 
-<td nowrap>container</td>
+<td nowrap>list</td>
                     <td nowrap></td>
                     <td nowrap>config</td>
                     <td></td>
@@ -682,7 +682,21 @@ function expandAllRows() {
                        <td nowrap>
                           <div id=9999 class=tier9>
                              <a class="leaf">&nbsp;</a>
-                             <abbr title="No description"> <em> target </em></abbr>
+                             <abbr title="No description">  name </abbr>
+                          </div>
+                       </td>
+                       <td>leaf</td>
+                       <td nowrap><abbr title="string
+">string</abbr></td>
+                       <td nowrap>config</td>
+                       <td></td>
+                       <td>current</td>
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:probers/vnf-bd:parameters/vnf-bd:name</td</tr> 
+<tr id="1-1-9-13-5-1-1-3-2" class="a">
+                       <td nowrap>
+                          <div id=9999 class=tier9>
+                             <a class="leaf">&nbsp;</a>
+                             <abbr title="No description"> <em> value </em></abbr>
                           </div>
                        </td>
                        <td>leaf</td>
@@ -691,7 +705,7 @@ function expandAllRows() {
                        <td nowrap>config</td>
                        <td>?</td>
                        <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:probers/vnf-bd:parameters/vnf-bd:target</td</tr> 
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:probers/vnf-bd:parameters/vnf-bd:value</td</tr> 
 <tr id="1-1-9-13-5-1-1-4" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier8">
@@ -699,21 +713,35 @@ function expandAllRows() {
                                 onclick="toggleRows(this);return false"
                                 class="folder">&nbsp;
                              </a>
-                             <abbr title="metrics output from prober execution">metrics</abbr>
+                             <abbr title="No description">metrics[name]</abbr>
                           </div>
                        </td> 
-<td nowrap>container</td>
+<td nowrap>list</td>
                     <td nowrap></td>
                     <td nowrap>config</td>
                     <td></td>
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:probers/vnf-bd:metrics</td>
                     </tr> 
-<tr id="1-1-9-13-5-1-1-4-2" class="a">
+<tr id="1-1-9-13-5-1-1-4-3" class="a">
                        <td nowrap>
                           <div id=9999 class=tier9>
                              <a class="leaf">&nbsp;</a>
-                             <abbr title="No description"> <em> rtt_mean </em></abbr>
+                             <abbr title="No description">  name </abbr>
+                          </div>
+                       </td>
+                       <td>leaf</td>
+                       <td nowrap><abbr title="string
+">string</abbr></td>
+                       <td nowrap>config</td>
+                       <td></td>
+                       <td>current</td>
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:probers/vnf-bd:metrics/vnf-bd:name</td</tr> 
+<tr id="1-1-9-13-5-1-1-4-4" class="a">
+                       <td nowrap>
+                          <div id=9999 class=tier9>
+                             <a class="leaf">&nbsp;</a>
+                             <abbr title="No description"> <em> units </em></abbr>
                           </div>
                        </td>
                        <td>leaf</td>
@@ -722,7 +750,7 @@ function expandAllRows() {
                        <td nowrap>config</td>
                        <td>?</td>
                        <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:probers/vnf-bd:metrics/vnf-bd:rtt_mean</td</tr> 
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:probers/vnf-bd:metrics/vnf-bd:units</td</tr> 
 <tr id="1-1-9-13-5-2" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier6">
@@ -765,8 +793,8 @@ function expandAllRows() {
                           </div>
                        </td>
                        <td>leaf</td>
-                       <td nowrap><abbr title="uint32
-">uint32</abbr></td>
+                       <td nowrap><abbr title="string
+">string</abbr></td>
                        <td nowrap>config</td>
                        <td></td>
                        <td>current</td>
@@ -775,7 +803,7 @@ function expandAllRows() {
                        <td nowrap>
                           <div id=9999 class=tier8>
                              <a class="leaf">&nbsp;</a>
-                             <abbr title="No description"> <em> name </em></abbr>
+                             <abbr title="No description"> <em> instances </em></abbr>
                           </div>
                        </td>
                        <td>leaf</td>
@@ -784,7 +812,7 @@ function expandAllRows() {
                        <td nowrap>config</td>
                        <td>?</td>
                        <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:listeners/vnf-bd:name</td</tr> 
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:listeners/vnf-bd:instances</td</tr> 
 <tr id="1-1-9-13-5-2-2-7" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier8">
@@ -792,21 +820,35 @@ function expandAllRows() {
                                 onclick="toggleRows(this);return false"
                                 class="folder">&nbsp;
                              </a>
-                             <abbr title="parameters to trigger prober execution">parameters</abbr>
+                             <abbr title="No description">parameters[name]</abbr>
                           </div>
                        </td> 
-<td nowrap>container</td>
+<td nowrap>list</td>
                     <td nowrap></td>
                     <td nowrap>config</td>
                     <td></td>
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:listeners/vnf-bd:parameters</td>
                     </tr> 
-<tr id="1-1-9-13-5-2-2-7-3" class="a">
+<tr id="1-1-9-13-5-2-2-7-5" class="a">
                        <td nowrap>
                           <div id=9999 class=tier9>
                              <a class="leaf">&nbsp;</a>
-                             <abbr title="No description"> <em> target </em></abbr>
+                             <abbr title="No description">  name </abbr>
+                          </div>
+                       </td>
+                       <td>leaf</td>
+                       <td nowrap><abbr title="string
+">string</abbr></td>
+                       <td nowrap>config</td>
+                       <td></td>
+                       <td>current</td>
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:listeners/vnf-bd:parameters/vnf-bd:name</td</tr> 
+<tr id="1-1-9-13-5-2-2-7-6" class="a">
+                       <td nowrap>
+                          <div id=9999 class=tier9>
+                             <a class="leaf">&nbsp;</a>
+                             <abbr title="No description"> <em> value </em></abbr>
                           </div>
                        </td>
                        <td>leaf</td>
@@ -815,7 +857,7 @@ function expandAllRows() {
                        <td nowrap>config</td>
                        <td>?</td>
                        <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:listeners/vnf-bd:parameters/vnf-bd:target</td</tr> 
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:listeners/vnf-bd:parameters/vnf-bd:value</td</tr> 
 <tr id="1-1-9-13-5-2-2-8" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier8">
@@ -823,21 +865,35 @@ function expandAllRows() {
                                 onclick="toggleRows(this);return false"
                                 class="folder">&nbsp;
                              </a>
-                             <abbr title="metrics output from prober execution">metrics</abbr>
+                             <abbr title="No description">metrics[name]</abbr>
                           </div>
                        </td> 
-<td nowrap>container</td>
+<td nowrap>list</td>
                     <td nowrap></td>
                     <td nowrap>config</td>
                     <td></td>
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:listeners/vnf-bd:metrics</td>
                     </tr> 
-<tr id="1-1-9-13-5-2-2-8-4" class="a">
+<tr id="1-1-9-13-5-2-2-8-7" class="a">
                        <td nowrap>
                           <div id=9999 class=tier9>
                              <a class="leaf">&nbsp;</a>
-                             <abbr title="No description"> <em> cpu_percent_mean </em></abbr>
+                             <abbr title="No description">  name </abbr>
+                          </div>
+                       </td>
+                       <td>leaf</td>
+                       <td nowrap><abbr title="string
+">string</abbr></td>
+                       <td nowrap>config</td>
+                       <td></td>
+                       <td>current</td>
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:listeners/vnf-bd:metrics/vnf-bd:name</td</tr> 
+<tr id="1-1-9-13-5-2-2-8-8" class="a">
+                       <td nowrap>
+                          <div id=9999 class=tier9>
+                             <a class="leaf">&nbsp;</a>
+                             <abbr title="No description"> <em> units </em></abbr>
                           </div>
                        </td>
                        <td>leaf</td>
@@ -846,7 +902,7 @@ function expandAllRows() {
                        <td nowrap>config</td>
                        <td>?</td>
                        <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:listeners/vnf-bd:metrics/vnf-bd:cpu_percent_mean</td</tr> 
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:listeners/vnf-bd:metrics/vnf-bd:units</td</tr> 
 <tr id="1-1-9-13-6" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier5">
@@ -885,7 +941,7 @@ function expandAllRows() {
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
-                             <abbr title="No description"> <em> cpu_set </em></abbr>
+                             <abbr title="No description"> <em> vcpus </em></abbr>
                           </div>
                        </td>
                        <td>leaf</td>
@@ -894,7 +950,7 @@ function expandAllRows() {
                        <td nowrap>config</td>
                        <td>?</td>
                        <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:resources/vnf-bd:cpu/vnf-bd:cpu_set</td</tr> 
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:resources/vnf-bd:cpu/vnf-bd:vcpus</td</tr> 
 <tr id="1-1-9-13-6-3-4" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
@@ -909,6 +965,20 @@ function expandAllRows() {
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:resources/vnf-bd:cpu/vnf-bd:cpu_bw</td</tr> 
+<tr id="1-1-9-13-6-3-5" class="a">
+                       <td nowrap>
+                          <div id=9999 class=tier7>
+                             <a class="leaf">&nbsp;</a>
+                             <abbr title="No description"> <em> pinning </em></abbr>
+                          </div>
+                       </td>
+                       <td>leaf</td>
+                       <td nowrap><abbr title="string
+">string</abbr></td>
+                       <td nowrap>config</td>
+                       <td>?</td>
+                       <td>current</td>
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:resources/vnf-bd:cpu/vnf-bd:pinning</td</tr> 
 <tr id="1-1-9-13-6-4" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier6">
@@ -926,7 +996,7 @@ function expandAllRows() {
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:resources/vnf-bd:memory</td>
                     </tr> 
-<tr id="1-1-9-13-6-4-5" class="a">
+<tr id="1-1-9-13-6-4-6" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
@@ -940,7 +1010,7 @@ function expandAllRows() {
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:resources/vnf-bd:memory/vnf-bd:size</td</tr> 
-<tr id="1-1-9-13-6-4-6" class="a">
+<tr id="1-1-9-13-6-4-7" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
@@ -971,7 +1041,7 @@ function expandAllRows() {
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:resources/vnf-bd:storage</td>
                     </tr> 
-<tr id="1-1-9-13-6-5-7" class="a">
+<tr id="1-1-9-13-6-5-8" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
@@ -985,7 +1055,7 @@ function expandAllRows() {
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:resources/vnf-bd:storage/vnf-bd:size</td</tr> 
-<tr id="1-1-9-13-6-5-8" class="a">
+<tr id="1-1-9-13-6-5-9" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
@@ -999,7 +1069,7 @@ function expandAllRows() {
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:resources/vnf-bd:storage/vnf-bd:units</td</tr> 
-<tr id="1-1-9-13-6-5-9" class="a">
+<tr id="1-1-9-13-6-5-10" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
@@ -1147,10 +1217,41 @@ enumeration
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:lifecycle/vnf-bd:name</td</tr> 
 <tr id="1-1-9-13-8-13" class="a">
+                       <td nowrap id="p4000">
+                          <div id="p5000" class="tier6">
+                             <a href="#" id="p6000"
+                                onclick="toggleRows(this);return false"
+                                class="folder">&nbsp;
+                             </a>
+                             <abbr title="No description">inputs[name]</abbr>
+                          </div>
+                       </td> 
+<td nowrap>list</td>
+                    <td nowrap></td>
+                    <td nowrap>config</td>
+                    <td></td>
+                    <td>current</td>
+                    <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:lifecycle/vnf-bd:inputs</td>
+                    </tr> 
+<tr id="1-1-9-13-8-13-11" class="a">
                        <td nowrap>
-                          <div id=9999 class=tier6>
+                          <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
-                             <abbr title="No description"> <em> inputs </em></abbr>
+                             <abbr title="No description">  name </abbr>
+                          </div>
+                       </td>
+                       <td>leaf</td>
+                       <td nowrap><abbr title="string
+">string</abbr></td>
+                       <td nowrap>config</td>
+                       <td></td>
+                       <td>current</td>
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:lifecycle/vnf-bd:inputs/vnf-bd:name</td</tr> 
+<tr id="1-1-9-13-8-13-12" class="a">
+                       <td nowrap>
+                          <div id=9999 class=tier7>
+                             <a class="leaf">&nbsp;</a>
+                             <abbr title="No description"> <em> input </em></abbr>
                           </div>
                        </td>
                        <td>leaf</td>
@@ -1159,7 +1260,7 @@ enumeration
                        <td nowrap>config</td>
                        <td>?</td>
                        <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:lifecycle/vnf-bd:inputs</td</tr> 
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:lifecycle/vnf-bd:inputs/vnf-bd:input</td</tr> 
 <tr id="1-1-9-13-8-14" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
@@ -1250,15 +1351,15 @@ enumeration
 <tr id="1-1-9-14-13" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
-                             <a class="leaf">&nbsp;</a>
-                             <abbr title="No description"> <em> connection_points </em></abbr>
+                             <a class="leaf-list">&nbsp;</a>
+                             <abbr title="No description">  connection_points </abbr>
                           </div>
                        </td>
-                       <td>leaf</td>
+                       <td>leaf-list</td>
                        <td nowrap><abbr title="string
 ">string</abbr></td>
                        <td nowrap>config</td>
-                       <td>?</td>
+                       <td>*</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:links/vnf-bd:connection_points</td</tr> 
 <tr id="1-1-9-15" class="a">

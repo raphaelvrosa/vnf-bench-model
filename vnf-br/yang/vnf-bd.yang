@@ -47,7 +47,7 @@ module vnf-bd {
         leaf description { type string; }
     }
 
-    grouping tools {
+    grouping tool {
         leaf id { type string; }
         leaf instances { type string; }
         list parameters { 
@@ -65,14 +65,22 @@ module vnf-bd {
     grouping agent {
         list probers {
             key "id";
+            uses tool;
+
+            /* Optional change to
             uses prober;
+            */
         }
     }
 
     grouping monitor {
         list listeners {
             key "id";
+            uses tool;
+            
+            /* Optional change to 
             uses listener;
+            */
         }
     }
 
@@ -89,8 +97,9 @@ module vnf-bd {
 
         container resources {
             container cpu { 
-                leaf cpu_set { type string; }
+                leaf vcpus { type string; }
                 leaf cpu_bw { type string; }
+                leaf pinning { type string; }
             }
             container memory { 
                 leaf size { type string; }
@@ -134,8 +143,16 @@ module vnf-bd {
             leaf workflow {
                 type workflows;
             }
-            leaf name { type string; }
-            leaf inputs { type string; }
+            leaf name { 
+                type string; 
+                when "../workflow = 'custom'";
+            }
+            
+            list inputs { 
+                key "name";
+                leaf name { type string; }
+                leaf input { type string; }
+            }
             leaf implementation { type string; }
         }
     
@@ -146,7 +163,7 @@ module vnf-bd {
         leaf name { type string; }
         leaf type { type string; }
         leaf network { type string; }
-        leaf connection_points { type string; }
+        leaf-list connection_points { type string; }
     }
 
     grouping scenario {
@@ -176,10 +193,10 @@ module vnf-bd {
         leaf author { type string; }
         leaf description { type string; }
 
-        container run {
-            leaf trials { type uint32; default 0; }
-            leaf tests { type uint32; default 0; }
-            leaf methods { type uint32; default 0; }
+        container experiment {
+            leaf trials { type uint32; default 1; }
+            leaf tests { type uint32; default 1; }
+            leaf methods { type uint32; default 1; }
         }
 
         container environment {
