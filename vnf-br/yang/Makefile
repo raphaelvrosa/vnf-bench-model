@@ -8,8 +8,8 @@ validate:
 	pyang vnf-bd.yang -f tree -o "$(DOC_DIR)/vnf-bd.tree"
 	pyang vnf-bd.yang -f jstree -o "$(DOC_DIR)/vnf-bd.html"
 	pyang vnf-bd.yang -f uml -o "$(DOC_DIR)/vnf-bd.uml"
-	# finally validate
-	pyang vnf-bd.yang --ietf
+	# finally validate - Not ready yet
+	# pyang vnf-bd.yang --ietf
 
 build:
 	# generate / compile python model
