@@ -1,0 +1,153 @@
+'Download plantuml from http://plantuml.sourceforge.net/ 
+'Generate png with java -jar plantuml.jar <file> 
+'Output in img/<module>.png 
+'If Java spits out memory error increase heap size with java -Xmx1024m  -jar plantuml.jar <file> 
+@startuml img/vnf-bd.png 
+hide empty fields 
+hide empty methods 
+hide <<case>> circle
+hide <<augment>> circle
+hide <<choice>> circle
+hide <<leafref>> stereotype
+hide <<leafref>> circle
+page 1x1 
+Title vnf-bd 
+note top of vnf_bd_vnf_bd : <b>Namespace: </b> urn:ietf:params:xml:ns:yang:vnf-bd \n<b>Prefix: </b> vnf-bd \n<b>Organization : </b>\nIETF/BMWG \n<b>Contact : </b>\nManuel Peuster <peuster@mail.uni-paderborn.de>, Raphael Vicente Rosa <raphaelvrosa@gmail.com> \n<b>Revision : </b> 2019-03-13 \n
+package "vnf-bd:vnf-bd" as vnf_bd_vnf_bd { 
+package "probers" as probers { 
+}
+package "listeners" as listeners { 
+}
+class "vnf-bd" as vnf_bd << (M, #33CCFF) module>> 
+enum "workflows" as vnf_bd_I_workflows {
+create
+start
+stop
+MORE
+}
+class "targets" as vnf_bd_I_targets_grouping <<(G,Lime) grouping>> 
+vnf_bd_I_targets_grouping : id : string  
+vnf_bd_I_targets_grouping : name : string  
+vnf_bd_I_targets_grouping : version : string  
+vnf_bd_I_targets_grouping : author : string  
+vnf_bd_I_targets_grouping : vendor : string  
+vnf_bd_I_targets_grouping : description : string  
+class "tools" as vnf_bd_I_tools_grouping <<(G,Lime) grouping>> 
+vnf_bd_I_tools_grouping : id : string  
+vnf_bd_I_tools_grouping : instances : string  
+vnf_bd_I_tools_grouping : parameters : string  
+class "agent" as vnf_bd_I_agent_grouping <<(G,Lime) grouping>> 
+class "probers" as vnf_bd_I_agent_I_probers << (L, #FF7700) list>> 
+vnf_bd_I_agent_grouping *-- "0..N" vnf_bd_I_agent_I_probers 
+vnf_bd_I_agent_I_probers : prober {uses} 
+class "monitor" as vnf_bd_I_monitor_grouping <<(G,Lime) grouping>> 
+class "listeners" as vnf_bd_I_monitor_I_listeners << (L, #FF7700) list>> 
+vnf_bd_I_monitor_grouping *-- "0..N" vnf_bd_I_monitor_I_listeners 
+vnf_bd_I_monitor_I_listeners : listener {uses} 
+class "requirements" as vnf_bd_I_requirements_grouping <<(G,Lime) grouping>> 
+class "role" as vnf_bd_I_requirements_I_role <<choice>> 
+vnf_bd_I_requirements_grouping .. vnf_bd_I_requirements_I_role : choice 
+class "agent" as vnf_bd_I_requirements_I_role_I_agent_case <<case>>
+vnf_bd_I_requirements_I_role .. vnf_bd_I_requirements_I_role_I_agent_case  : choice role
+vnf_bd_I_requirements_I_role_I_agent_case : agent {uses} 
+class "monitor" as vnf_bd_I_requirements_I_role_I_monitor_case <<case>>
+vnf_bd_I_requirements_I_role .. vnf_bd_I_requirements_I_role_I_monitor_case  : choice role
+vnf_bd_I_requirements_I_role_I_monitor_case : monitor {uses} 
+class "resources" as  vnf_bd_I_requirements_I_resources <<container>> 
+vnf_bd_I_requirements_grouping *-- "1" vnf_bd_I_requirements_I_resources 
+class "cpu" as  vnf_bd_I_requirements_I_resources_I_cpu <<container>> 
+vnf_bd_I_requirements_I_resources *-- "1" vnf_bd_I_requirements_I_resources_I_cpu 
+vnf_bd_I_requirements_I_resources_I_cpu : cpu_set : string  
+vnf_bd_I_requirements_I_resources_I_cpu : cpu_bw : string  
+class "memory" as  vnf_bd_I_requirements_I_resources_I_memory <<container>> 
+vnf_bd_I_requirements_I_resources *-- "1" vnf_bd_I_requirements_I_resources_I_memory 
+vnf_bd_I_requirements_I_resources_I_memory : size : string  
+vnf_bd_I_requirements_I_resources_I_memory : units : string  
+class "storage" as  vnf_bd_I_requirements_I_resources_I_storage <<container>> 
+vnf_bd_I_requirements_I_resources *-- "1" vnf_bd_I_requirements_I_resources_I_storage 
+vnf_bd_I_requirements_I_resources_I_storage : size : string  
+vnf_bd_I_requirements_I_resources_I_storage : units : string  
+vnf_bd_I_requirements_I_resources_I_storage : volumes : string  
+class "connection_points" as vnf_bd_I_connection_points_grouping <<(G,Lime) grouping>> 
+vnf_bd_I_connection_points_grouping : +id : string  {key} 
+vnf_bd_I_connection_points_grouping : interface : string  
+vnf_bd_I_connection_points_grouping : type : string  
+vnf_bd_I_connection_points_grouping : address : string  
+vnf_bd_I_connection_points_grouping : link-id : leafref : ../../../links/id  
+class "nodes" as vnf_bd_I_nodes_grouping <<(G,Lime) grouping>> 
+vnf_bd_I_nodes_grouping : +id : string  {key} 
+vnf_bd_I_nodes_grouping : type : string  
+vnf_bd_I_nodes_grouping : image : string  
+vnf_bd_I_nodes_grouping : image_format : string  
+vnf_bd_I_nodes_grouping : requirements {uses} 
+class "connection_points" as vnf_bd_I_nodes_I_connection_points << (L, #FF7700) list>> 
+vnf_bd_I_nodes_grouping *-- "0..N" vnf_bd_I_nodes_I_connection_points 
+vnf_bd_I_nodes_I_connection_points : connection_points {uses} 
+class "lifecycle" as vnf_bd_I_nodes_I_lifecycle << (L, #FF7700) list>> 
+vnf_bd_I_nodes_grouping *-- "0..N" vnf_bd_I_nodes_I_lifecycle 
+vnf_bd_I_nodes_I_lifecycle : +workflow : workflows  {key} 
+vnf_bd_I_nodes_I_lifecycle : name : string  
+vnf_bd_I_nodes_I_lifecycle : inputs : string  
+vnf_bd_I_nodes_I_lifecycle : implementation : string  
+class "links" as vnf_bd_I_links_grouping <<(G,Lime) grouping>> 
+vnf_bd_I_links_grouping : id : string  
+vnf_bd_I_links_grouping : name : string  
+vnf_bd_I_links_grouping : type : string  
+vnf_bd_I_links_grouping : network : string  
+vnf_bd_I_links_grouping : connection_points : string  
+class "scenario" as vnf_bd_I_scenario_grouping <<(G,Lime) grouping>> 
+class "nodes" as vnf_bd_I_scenario_I_nodes << (L, #FF7700) list>> 
+vnf_bd_I_scenario_grouping *-- "0..N" vnf_bd_I_scenario_I_nodes 
+vnf_bd_I_scenario_I_nodes : nodes {uses} 
+class "links" as vnf_bd_I_scenario_I_links << (L, #FF7700) list>> 
+vnf_bd_I_scenario_grouping *-- "0..N" vnf_bd_I_scenario_I_links 
+vnf_bd_I_scenario_I_links : links {uses} 
+class "policies" as vnf_bd_I_scenario_I_policies << (L, #FF7700) list>> 
+vnf_bd_I_scenario_grouping *-- "0..N" vnf_bd_I_scenario_I_policies 
+vnf_bd_I_scenario_I_policies : +name : string  {key} 
+vnf_bd_I_scenario_I_policies : type : string  
+vnf_bd_I_scenario_I_policies : targets : string  
+vnf_bd_I_scenario_I_policies : action : string  
+class "settings" as vnf_bd_I_settings_grouping <<(G,Lime) grouping>> 
+vnf_bd_I_settings_grouping : id : string  
+vnf_bd_I_settings_grouping : +name : string  {key} 
+vnf_bd_I_settings_grouping : version : string  
+vnf_bd_I_settings_grouping : author : string  
+vnf_bd_I_settings_grouping : description : string  
+class "run" as  vnf_bd_I_settings_I_run <<container>> 
+vnf_bd_I_settings_grouping *-- "1" vnf_bd_I_settings_I_run 
+vnf_bd_I_settings_I_run : trials : uint32   = 0 
+vnf_bd_I_settings_I_run : tests : uint32   = 0 
+vnf_bd_I_settings_I_run : methods : uint32   = 0 
+class "environment" as  vnf_bd_I_settings_I_environment <<container>> 
+vnf_bd_I_settings_grouping *-- "1" vnf_bd_I_settings_I_environment 
+vnf_bd_I_settings_I_environment : +name : string  {key} 
+vnf_bd_I_settings_I_environment : description : string  
+vnf_bd_I_settings_I_environment : plugin : string  
+class "vnf-bd" as vnf_bd_I_vnf_bd_grouping <<(G,Lime) grouping>> 
+vnf_bd_I_vnf_bd_grouping : settings {uses} 
+class "targets" as vnf_bd_I_vnf_bd_I_targets << (L, #FF7700) list>> 
+vnf_bd_I_vnf_bd_grouping *-- "0..N" vnf_bd_I_vnf_bd_I_targets 
+vnf_bd_I_vnf_bd_I_targets : targets {uses} 
+class "scenario" as  vnf_bd_I_vnf_bd_I_scenario <<container>> 
+vnf_bd_I_vnf_bd_grouping *-- "1" vnf_bd_I_vnf_bd_I_scenario 
+vnf_bd_I_vnf_bd_I_scenario : scenario {uses} 
+class "vnf-bd" as  vnf_bd_I_vnf_bd <<container>> 
+vnf_bd *-- "1" vnf_bd_I_vnf_bd 
+vnf_bd_I_vnf_bd : vnf-bd {uses} 
+} 
+
+vnf_bd_I_requirements_I_role_I_agent_case --> vnf_bd_I_agent_grouping : uses 
+vnf_bd_I_requirements_I_role_I_monitor_case --> vnf_bd_I_monitor_grouping : uses 
+vnf_bd_I_nodes_grouping --> vnf_bd_I_requirements_grouping : uses 
+vnf_bd_I_nodes_I_connection_points --> vnf_bd_I_connection_points_grouping : uses 
+vnf_bd_I_scenario_I_nodes --> vnf_bd_I_nodes_grouping : uses 
+vnf_bd_I_scenario_I_links --> vnf_bd_I_links_grouping : uses 
+vnf_bd_I_vnf_bd_grouping --> vnf_bd_I_settings_grouping : uses 
+vnf_bd_I_vnf_bd_I_targets --> vnf_bd_I_targets_grouping : uses 
+vnf_bd_I_vnf_bd_I_scenario --> vnf_bd_I_scenario_grouping : uses 
+vnf_bd_I_vnf_bd --> vnf_bd_I_vnf_bd_grouping : uses 
+center footer
+ <size:20> UML Generated : 2019-03-20 10:02 </size>
+ endfooter 
+@enduml 

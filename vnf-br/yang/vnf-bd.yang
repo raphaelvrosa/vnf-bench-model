@@ -1,10 +1,13 @@
 module vnf-bd {
     namespace "urn:ietf:params:xml:ns:yang:vnf-bd";
     prefix "vnf-bd";
+
+    include "probers";
+    include "listeners";
+
     organization "IETF/BMWG";
     contact "Manuel Peuster <peuster@mail.uni-paderborn.de>, Raphael Vicente Rosa <raphaelvrosa@gmail.com>";
     description "Yang model for a VNF Benchmark Descriptor (VNF-BD) in the scope of IETF/BMWG";
-
 
     revision "2019-03-13" {
         description "V0.2: Reviewed role, policies, connection-points, lifecycle workflows, resources";
@@ -47,24 +50,40 @@ module vnf-bd {
     grouping tools {
         leaf id { type string; }
         leaf instances { type string; }
-        leaf parameters { type string; }
+        list parameters { 
+            key "name";
+            leaf name { type string; }
+            leaf value { type string; }
+        }
+        list metrics { 
+            key "name";
+            leaf name { type string; }
+            leaf units { type string; }
+        }
+    }
+
+    grouping agent {
+        list probers {
+            key "id";
+            uses prober;
+        }
+    }
+
+    grouping monitor {
+        list listeners {
+            key "id";
+            uses listener;
+        }
     }
 
     grouping requirements {
-        leaf volumes { type string; }
 
         choice role {
             case agent {
-                list probers {
-                    key "id";
-                    uses tools;
-                }
+                uses agent;
             }
             case monitor {
-                list listeners {
-                    key "id";
-                    uses tools;
-                }
+                uses monitor;
             }
         }
 

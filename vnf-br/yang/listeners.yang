@@ -1,0 +1,50 @@
+submodule listeners {
+	belongs-to vnf-bd {
+		prefix "listeners";
+	}
+
+  	grouping listener-base {
+		leaf name { type string; }
+		container parameters {
+			description "parameters to trigger prober execution";
+		}
+		container metrics {
+			description "metrics output from prober execution";
+		}
+	}
+
+	grouping process {
+		uses listener-base {
+			refine name {
+				default "process";
+			}
+			augment parameters {
+				leaf target { type string; } 
+			}
+			augment metrics {
+				leaf cpu_percent_mean { type string; }
+			}
+		}
+	}
+
+	grouping container {
+		uses listener-base {
+			refine name {
+				default "container";
+			}
+			augment parameters {
+				leaf target { type string; } 
+			}
+			augment metrics {
+				leaf memory_percent_mean { type string; }
+			}
+		}
+	}
+
+	grouping listener {
+		leaf id { type uint32; }
+		uses process {
+			when "../id = 1";
+		}
+	}
+}

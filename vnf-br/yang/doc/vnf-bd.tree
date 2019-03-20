@@ -26,18 +26,23 @@ module: vnf-bd
         |  +--rw type?                string
         |  +--rw image?               string
         |  +--rw image_format?        string
-        |  +--rw volumes?             string
         |  +--rw (role)?
         |  |  +--:(agent)
         |  |  |  +--rw probers* [id]
-        |  |  |     +--rw id            string
-        |  |  |     +--rw instances?    string
-        |  |  |     +--rw parameters?   string
+        |  |  |     +--rw id            uint32
+        |  |  |     +--rw name?         string
+        |  |  |     +--rw parameters
+        |  |  |     |  +--rw target?   string
+        |  |  |     +--rw metrics
+        |  |  |        +--rw rtt_mean?   string
         |  |  +--:(monitor)
         |  |     +--rw listeners* [id]
-        |  |        +--rw id            string
-        |  |        +--rw instances?    string
-        |  |        +--rw parameters?   string
+        |  |        +--rw id            uint32
+        |  |        +--rw name?         string
+        |  |        +--rw parameters
+        |  |        |  +--rw target?   string
+        |  |        +--rw metrics
+        |  |           +--rw cpu_percent_mean?   string
         |  +--rw resources
         |  |  +--rw cpu
         |  |  |  +--rw cpu_set?   string

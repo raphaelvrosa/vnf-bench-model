@@ -1,0 +1,56 @@
+submodule probers {
+	belongs-to vnf-bd {
+		prefix "probers";
+	}
+
+	grouping prober-base {
+		leaf name { type string; }
+		container parameters {
+			description "parameters to trigger prober execution";
+		}
+		container metrics {
+			description "metrics output from prober execution";
+		}
+	}
+
+	grouping ping {
+		uses prober-base {
+		    refine name {
+	        	default "ping";
+	        }
+			augment parameters {
+				leaf target { type string; } 
+			}
+			augment metrics {
+				leaf rtt_mean { type string; }
+			}
+		}
+	}
+
+	grouping iperf3 {
+		uses prober-base {
+		    refine name {
+	        	default "iperf3";
+	        }
+			augment parameters {
+				leaf target { type string; } 
+			}
+			augment metrics {
+				leaf bits_per_second { type string; }
+			}
+		}
+	}
+
+	grouping prober {
+		leaf id { type uint32; }
+		uses ping {
+			when "../id = 1";
+		}
+
+		/* Causes ERROR if added
+		uses iperf3 {
+			when "../id = 2";
+		}
+		*/	
+	}
+}
