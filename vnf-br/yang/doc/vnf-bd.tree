@@ -12,13 +12,16 @@ module: vnf-bd
      +--rw environment
      |  +--rw name?          string
      |  +--rw description?   string
-     |  +--rw plugin?        string
+     |  +--rw plugin
+     |     +--rw type?         string
+     |     +--rw parameters* [input]
+     |        +--rw input    string
+     |        +--rw value?   string
      +--rw targets* [id]
      |  +--rw id             string
      |  +--rw name?          string
      |  +--rw version?       string
      |  +--rw author?        string
-     |  +--rw vendor?        string
      |  +--rw description?   string
      +--rw scenario
         +--rw nodes* [id]
@@ -26,37 +29,69 @@ module: vnf-bd
         |  +--rw type?                string
         |  +--rw image?               string
         |  +--rw image_format?        string
-        |  +--rw (role)?
+        |  +--rw role?                string
+        |  +--rw (mode)?
         |  |  +--:(agent)
         |  |  |  +--rw probers* [id]
-        |  |  |     +--rw id            string
-        |  |  |     +--rw instances?    string
-        |  |  |     +--rw parameters* [name]
-        |  |  |     |  +--rw name     string
-        |  |  |     |  +--rw value?   string
-        |  |  |     +--rw metrics* [name]
-        |  |  |        +--rw name     string
-        |  |  |        +--rw units?   string
+        |  |  |     +--rw id              uint32
+        |  |  |     +--rw instances?      uint32
+        |  |  |     +--rw (type)?
+        |  |  |        +--:(ping)
+        |  |  |        |  +--rw ping
+        |  |  |        |     +--rw name?         string
+        |  |  |        |     +--rw parameters
+        |  |  |        |     |  +--rw target?   string
+        |  |  |        |     +--rw metrics
+        |  |  |        |        +--rw rtt_mean?   string
+        |  |  |        +--:(iperf3)
+        |  |  |           +--rw iperf3
+        |  |  |              +--rw name?         string
+        |  |  |              +--rw parameters
+        |  |  |              |  +--rw client?       string
+        |  |  |              |  +--rw server?       string
+        |  |  |              |  +--rw port?         string
+        |  |  |              |  +--rw protocol?     string
+        |  |  |              |  +--rw duration?     string
+        |  |  |              |  +--rw frame_size?   string
+        |  |  |              |  +--rw rate?         string
+        |  |  |              +--rw metrics
+        |  |  |                 +--rw bits_per_second?   string
         |  |  +--:(monitor)
+        |  |     +--rw habitat
+        |  |     |  +--rw setting?    string
+        |  |     |  +--rw location?   string
+        |  |     |  +--rw target?     string
         |  |     +--rw listeners* [id]
-        |  |        +--rw id            string
-        |  |        +--rw instances?    string
-        |  |        +--rw parameters* [name]
-        |  |        |  +--rw name     string
-        |  |        |  +--rw value?   string
-        |  |        +--rw metrics* [name]
-        |  |           +--rw name     string
-        |  |           +--rw units?   string
+        |  |        +--rw id               uint32
+        |  |        +--rw (type)?
+        |  |           +--:(docker)
+        |  |           |  +--rw docker
+        |  |           |     +--rw name?         string
+        |  |           |     +--rw parameters
+        |  |           |     |  +--rw target?     string
+        |  |           |     |  +--rw interval?   string
+        |  |           |     |  +--rw duration?   string
+        |  |           |     +--rw metrics
+        |  |           |        +--rw memory_percent_mean?   string
+        |  |           +--:(process)
+        |  |              +--rw process
+        |  |                 +--rw name?         string
+        |  |                 +--rw parameters
+        |  |                 |  +--rw target?     string
+        |  |                 |  +--rw interval?   string
+        |  |                 |  +--rw duration?   string
+        |  |                 +--rw metrics
+        |  |                    +--rw cpu_percent_mean?   string
         |  +--rw resources
         |  |  +--rw cpu
-        |  |  |  +--rw vcpus?     string
+        |  |  |  +--rw vcpus?     uint32
         |  |  |  +--rw cpu_bw?    string
         |  |  |  +--rw pinning?   string
         |  |  +--rw memory
-        |  |  |  +--rw size?    string
+        |  |  |  +--rw size?    uint32
         |  |  |  +--rw units?   string
         |  |  +--rw storage
-        |  |     +--rw size?      string
+        |  |     +--rw size?      uint32
         |  |     +--rw units?     string
         |  |     +--rw volumes?   string
         |  +--rw connection_points* [id]
@@ -64,20 +99,19 @@ module: vnf-bd
         |  |  +--rw interface?   string
         |  |  +--rw type?        string
         |  |  +--rw address?     string
-        |  |  +--rw link-id?     -> ../../../links/id
+        |  |  +--rw link-id?     string
         |  +--rw lifecycle* [workflow]
         |     +--rw workflow          workflows
         |     +--rw name?             string
-        |     +--rw inputs* [name]
-        |     |  +--rw name     string
-        |     |  +--rw input?   string
+        |     +--rw parameters* [input]
+        |     |  +--rw input    string
+        |     |  +--rw value?   string
         |     +--rw implementation?   string
         +--rw links* [id]
-        |  +--rw id                   string
-        |  +--rw name?                string
-        |  +--rw type?                string
-        |  +--rw network?             string
-        |  +--rw connection_points*   string
+        |  +--rw id         uint32
+        |  +--rw name?      string
+        |  +--rw type?      string
+        |  +--rw network?   string
         +--rw policies* [name]
            +--rw name       string
            +--rw type?      string

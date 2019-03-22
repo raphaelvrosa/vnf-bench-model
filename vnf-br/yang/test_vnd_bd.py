@@ -4,7 +4,6 @@ import yaml
 import os
 import pyangbind.lib.pybindJSON as pybindJSON
 
-
 MODEL_NAME = "vnf_bd"
 EXAMPLE_DIR = "examples/"
 
@@ -36,3 +35,11 @@ class TestStringMethods(unittest.TestCase):
                 check_against_model(os.path.join(EXAMPLE_DIR, ep)))
             print("File: '{}' is valid against model '{}'."
                 .format(ep, MODEL_NAME))
+
+    def test_example_vnf_bds_dump_json(self):
+        example_vnf_bds = os.listdir(EXAMPLE_DIR)
+        # check each vnf_bd file against the model
+        print("Validating: {} VNF-BD files.".format(len(example_vnf_bds)))
+        for ep in example_vnf_bds:
+            parsed_vnfbd = check_against_model(os.path.join(EXAMPLE_DIR, ep))
+            print(pybindJSON.dumps(parsed_vnfbd))

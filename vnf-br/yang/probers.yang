@@ -33,7 +33,13 @@ submodule probers {
 	        	default "iperf3";
 	        }
 			augment parameters {
-				leaf target { type string; } 
+				leaf client { type string; } 
+				leaf server { type string; } 
+				leaf port { type string; } 
+				leaf protocol { type string; } 
+				leaf duration { type string; } 
+				leaf frame_size { type string; } 
+				leaf rate { type string; }
 			}
 			augment metrics {
 				leaf bits_per_second { type string; }
@@ -43,14 +49,18 @@ submodule probers {
 
 	grouping prober {
 		leaf id { type uint32; }
-		uses ping {
-			when "../id = 1";
+		leaf instances { type uint32; }
+		choice type {
+			case ping {
+				container ping {
+					uses ping;
+				}
+			}
+			case iperf3 {
+				container iperf3 {
+					uses iperf3;
+				}
+			}
 		}
-
-		/* Causes ERROR if added
-		uses iperf3 {
-			when "../id = 2";
-		}
-		*/
 	}
 }

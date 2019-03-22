@@ -20,6 +20,8 @@ submodule listeners {
 			}
 			augment parameters {
 				leaf target { type string; } 
+				leaf interval { type string; } 
+				leaf duration { type string; } 
 			}
 			augment metrics {
 				leaf cpu_percent_mean { type string; }
@@ -27,13 +29,15 @@ submodule listeners {
 		}
 	}
 
-	grouping container {
+	grouping docker {
 		uses listener-base {
 			refine name {
 				default "container";
 			}
 			augment parameters {
 				leaf target { type string; } 
+				leaf interval { type string; } 
+				leaf duration { type string; } 
 			}
 			augment metrics {
 				leaf memory_percent_mean { type string; }
@@ -43,8 +47,18 @@ submodule listeners {
 
 	grouping listener {
 		leaf id { type uint32; }
-		uses process {
-			when "../id = 1";
+		
+		choice type {
+			case docker {
+				container docker {
+					uses docker;
+				}
+			}
+			case process {
+				container process {
+					uses process;
+				}
+			}
 		}
 	}
 }
