@@ -1,5 +1,5 @@
 descriptor_version: 0.01
-id: "001"
+id: "002"
 name: "vnf-bd-0.01"
 version: "0.1"
 author: "https://github.com/raphaelvrosa/vnf-bench-meth/blob/master/draft-rosa-bmwg-vnfbench-02"
@@ -8,7 +8,7 @@ description: "This is an example of VNF benchmark descriptor (vnf-bd)"
 
 procedures:
   repeat:
-    trials: 1
+    trials: {{ settings.trials }}
     tests: 1
     methods: 1
 
@@ -39,12 +39,12 @@ scenario:
         {% endif %}
         entrypoint: "{{ sut.entrypoint }}"
         connection_points:
-        - id: "{{ sut.ports.input.id }}"
-          type: "{{ sut.ports.input.type }}"
-          address: "{{ sut.ports.input.address }}"
-        - id: "{{ sut.ports.output.id }}"
-          type: "{{ sut.ports.output.type }}"
-          address: "{{ sut.ports.output.address }}"
+          - id: "{{ sut.ports.input.id }}"
+            type: "{{ sut.ports.input.type }}"
+            address: "{{ sut.ports.input.address }}"
+          - id: "{{ sut.ports.output.id }}"
+            type: "{{ sut.ports.output.type }}"
+            address: "{{ sut.ports.output.address }}"
       - id:  "{{ agent_one.id }}"
         image:  "{{ agent_one.image }}"
         image_format: "docker"
@@ -52,20 +52,20 @@ scenario:
         entrypoint: "{{ agent_one.entrypoint }}"
         volumes: "{{ agent_one.volumes }}"
         connection_points:
-        - id: "{{ agent_one.ports.input.id or 'eth1' }}"
-          interface: "ipv4"
-          type: "internal"
-          address: "{{ agent_one.ports.input.address }}"
+          - id: "{{ agent_one.ports.input.id or 'eth1' }}"
+            interface: "ipv4"
+            type: "internal"
+            address: "{{ agent_one.ports.input.address }}"
       - id:  "{{ agent_two.id }}"
         image:  "{{ agent_two.image }}"
         image_format: "docker"
         type: "{{ agent_two.type }}"
         entrypoint: "{{ agent_two.entrypoint }}"
         connection_points:
-        - id: "{{ agent_two.ports.input.id or 'eth1' }}"
-          interface: "ipv4"
-          type: "internal"
-          address: "{{ agent_two.ports.input.address }}"
+          - id: "{{ agent_two.ports.input.id or 'eth1' }}"
+            interface: "ipv4"
+            type: "internal"
+            address: "{{ agent_two.ports.input.address }}"
       - id:  "{{ manager.id }}"
         image:  "{{ manager.image }}"
         image_format: "docker"
@@ -78,6 +78,20 @@ scenario:
         type: "{{ monitor.type }}"
         entrypoint: "{{ monitor.entrypoint }}"
         connection_points: null
+        habitat:
+          setting: "process"
+          location: "external"
+          target: "{{ sut.id }}"
+      - id:  "{{ monitor_tap.id }}"
+        image:  null
+        image_format: "process"
+        type: "{{ monitor.type }}"
+        entrypoint: "{{ monitor.entrypoint }}"
+        connection_points: null
+        habitat:
+          setting: "process"
+          location: "internal"
+          target: "{{ sut.id }}"
     links:
       - id: "{{ agent_one.id }}-{{ sut.id }}"
         type: "{{ links.network_type or 'E-LAN' }}"
@@ -109,7 +123,7 @@ scenario:
           vcpus: {{ agent_one_resource_cpu_cores or 1 }}  # CPU cores
           bw: {{ agent_one_resource_cpu_bw or 1.0 }}  # CPU time
         memory:
-          size: {{ agent_one_resource_mem or 1024 }}
+          size: {{ agent_one_resource_mem or 2048 }}
           size_unit: "MB"
         storage:
           size: 2
@@ -120,7 +134,7 @@ scenario:
           vcpus: {{ agent_two_resource_cpu_cores or 1 }}  # CPU cores
           bw: {{ agent_two_resource_cpu_bw or '1.0' }}  # CPU time
         memory:
-          size: {{ agent_two_resource_mem or 1024 }}
+          size: {{ agent_two_resource_mem or 2048 }}
           size_unit: "MB"
         storage:
           size: 2
@@ -131,7 +145,7 @@ scenario:
           vcpus: {{ manager_resource_cpu_cores or 1 }}  # CPU cores
           bw: {{ manager_resource_cpu_bw or '1.0' }}  # CPU time
         memory:
-          size: {{ manager_resource_mem or 1024 }}
+          size: {{ manager_resource_mem or 2048 }}
           size_unit: "MB"
         storage:
           size: 2
@@ -160,3 +174,9 @@ settings:
             target: {{ settings.monitor.mon_container_target }}
             duration: {{ settings.duration }}
             interval: {{ settings.interval }}
+    - id: {{ monitor_tap.id }}
+      listeners:
+        - id: 20
+          parameters:
+            duration: {{ settings.duration }}
+            interface: {{ settings.vm_mon_interface }}

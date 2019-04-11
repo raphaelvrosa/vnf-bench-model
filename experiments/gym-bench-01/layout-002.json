@@ -1,10 +1,10 @@
 {
-    "id": "001",
+    "id": "002",
     "method": "layout",
     "params": {
         "callback": "http://127.0.0.1:7879/001/",
         "vnf_bd": {
-            "id": "001",
+            "id": "002",
             "inputs": {
                 "orchestration": {
                     "deploy": true,
@@ -16,11 +16,11 @@
                     "name": "suricata_vnf",
                     "type": "sut",
                     "version": 0.1,
-                    "image": "vnf/suricata:0.1",
+                    "image": "vnf/suricata:0.3",
                     "author": "None",
                     "vendor": "None",
                     "description": "Suricata VNF for testing only",
-                    "entrypoint": "./start.sh small_ruleset",
+                    "entrypoint": ["./start.sh small_ruleset", "./start.sh big_ruleset", "./start.sh empty"],
                     "ports": {
                         "input":{
                             "id": "input",
@@ -34,14 +34,14 @@
                         }
                     },
                     "resources": {
-                        "vcpus": 1, 
-                        "mem_size": 2048
+                        "vcpus": [1,2,4],
+                        "mem_size": [2048, 4096]
                     }
                 },
                 "agent_one": {
                     "id":"d1",
                     "type": "agent",
-                    "image": "gym/test:0.1",
+                    "image": "gym/test:0.3",
                     "entrypoint": "gym-agent --id {host_id} --url http://{host_ip}:8988 > gym-agent.log 2>&1 &",
                     "volumes": "/mnt/pcaps/:/mnt/pcaps:rw",
                     "ports": {
@@ -55,7 +55,7 @@
                 "agent_two": {
                     "id":"d3",
                     "type": "agent",
-                    "image": "gym/test:0.1",
+                    "image": "gym/test:0.3",
                     "entrypoint": "gym-agent --id {host_id} --url http://{host_ip}:8988 > gym-agent.log 2>&1 &",
                     "volumes": "",
                     "ports": {
@@ -67,23 +67,31 @@
                     }
                 },
                 "manager": {
-                    "id":"d5",
+                    "id":"d6",
                     "type": "manager",
-                    "image": "gym/test:0.1",
+                    "image": "gym/test:0.3",
                     "entrypoint": "gym-manager --id {host_id} --url http://{host_ip}:8989 > gym-mngr.log 2>&1 &",
                     "volumes": ""
                 },
                 "monitor": {
                     "id":"d4",
                     "type": "monitor",
-                    "image": "gym/test:0.1",
-                    "entrypoint": "gym-monitor --id {host_id} --url http://{host_ip}:8987",
+                    "image": "",
+                    "entrypoint": "gym-monitor --id {host_id} --url http://{host_ip}:8987 &",
                     "volumes": ""
                 },
-
+                "monitor_tap": {
+                    "id":"d5",
+                    "type": "monitor",
+                    "image": "",
+                    "entrypoint": "gym-monitor --id {host_id} --url http://{host_ip}:8987 > gym-mon.log 2>&1 &",
+                    "volumes": ""
+                },
                 "settings": {
-                    "duration":"5",
+                    "trials": 1,
+                    "duration":"30",
                     "interval": "1",
+                    "vm_mon_interface": "input",
                     "agent_one": {
                         "replay_instances": "0",
                         "replay_interface": "eth1",
