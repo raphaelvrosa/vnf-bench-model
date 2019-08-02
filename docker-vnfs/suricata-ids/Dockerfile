@@ -9,8 +9,11 @@ RUN apt-get install libpcre3 libpcre3-dbg libpcre3-dev build-essential libpcap-d
 RUN apt-get install libnetfilter-queue-dev libnetfilter-queue1  \
                      libnetfilter-log-dev libnetfilter-log1      \
                      libnfnetlink-dev libnfnetlink0 -y
-RUN apt-get install git autoconf ethtool tcpdump bridge-utils net-tools nano python python-yaml -y
+RUN apt-get install git autoconf ethtool tcpdump bridge-utils net-tools nano python python-yaml python3 python3-pip python3-yaml -y
 RUN apt-get install wget
+
+RUN pip3 install flatten_json
+RUN pip3 install prometheus_client
 
 RUN mkdir /suricata
 ADD ./suricata/ /suricata
