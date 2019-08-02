@@ -42,7 +42,7 @@ vars:
 ##
 ## Step 2: select the rules to enable or disable
 ##
-
+# emerging rules: https://rules.emergingthreats.net/OPEN_download_instructions.html
 default-rule-path: /usr/local/etc/suricata/rules
 rule-files:
 # - botcc.rules

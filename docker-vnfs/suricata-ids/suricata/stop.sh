@@ -8,6 +8,8 @@ sleep 2
 
 # Gym
 ./stats.py /usr/local/var/log/suricata/result.yml
+# tng-bench
+python3 stats2.py /usr/local/var/log/suricata/result.yml
 python ./log_intf_statistics.py /usr/local/var/log/suricata/result.yml
 # tng-bench (needs results in different folder)
 cp /usr/local/var/log/suricata/suricata.log /tngbench_share/
