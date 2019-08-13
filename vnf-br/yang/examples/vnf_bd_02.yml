@@ -4,7 +4,7 @@ vnf-bd:
   version: "0.01"
   author: "VNF Developer"
   description: "VNF-BD test scenario"
-  experiment:
+  experiments:
     trials: 1
     tests: 1 
     methods: 1
@@ -28,19 +28,6 @@ vnf-bd:
         type: "internal"
         image: "gym/test:0.1"
         image_format: "docker"
-        role: "agent"
-        probers:
-          - id: 1
-            instances: 1
-            iperf3:
-              parameters:
-                client: "True"
-                server: "172.31.0.4"
-                port: "9015"
-                protocol: "udp"
-                duration: "30"
-                frame_size: "512"
-                rate: "1G"
         resources:
           cpu:
             vcpus: 1
@@ -71,7 +58,6 @@ vnf-bd:
         type: "internal"
         image: "vnf/suricata:0.1"
         image_format: "docker"
-        role: "sut"
         resources:
           cpu:
             vcpus: 1
@@ -104,16 +90,6 @@ vnf-bd:
         type: "internal"
         image: "gym/test:0.1"
         image_format: "docker"
-        role: "agent"
-        probers:
-          - id: 1
-            instances: 1
-            iperf3:
-              parameters:
-                client: "False"
-                port: "9015"
-                protocol: "udp"
-                duration: "30"
         resources:
           cpu:
             vcpus: 1
@@ -143,18 +119,6 @@ vnf-bd:
         type: "internal"
         image: ""
         image_format: ""
-        role: "monitor"
-        habitat:
-          setting: "process"
-          location: "internal"
-          target: "d2"
-        listeners:
-          - id: 1
-            docker:
-              parameters:
-                target: "d2"
-                interval: "1"
-                duration: "30"
         resources:
           cpu:
             vcpus: 1
@@ -178,7 +142,6 @@ vnf-bd:
         type: "internal"
         image: "gym/test:0.1"
         image_format: "docker"
-        role: "manager"
         lifecycle:
           - workflow: "start"
             parameters:
@@ -196,3 +159,64 @@ vnf-bd:
         name: "d2-d3"
         type: "E-Line"
         network: "s2"
+
+  proceedings:
+    attributes:
+      - name: duration
+        value: "30"
+    agents:
+      - id: 1
+        host: 
+          setting: "internal"
+          node: "d1"
+        probers:
+          - id: 1
+            instances: 1
+            name: iperf3
+            parameters:
+              - input: client
+                value: "True"
+              - input: server
+                value: "172.31.0.4"
+              - input: port
+                value: "9015"
+              - input: protocol
+                value: "udp"
+              - input: duration
+                value: "30"
+              - input: frame_size
+                value: "512"
+              - input: rate
+                value: "1G"
+      - id: 2
+        host: 
+          setting: "internal"
+          node: "d3"
+        probers:
+          - id: 1
+            instances: 1
+            name: iperf3
+            parameters:
+              - input: client
+                value: "False"
+              - input: port
+                value: "9015"
+              - input: protocol
+                value: "udp"
+              - input: duration
+                value: "30"
+    monitors:
+      - id: 3
+        host:
+          setting: "external"
+          node: "d2"
+        listeners:
+          - id: 1
+            name: docker
+            parameters:
+              - input: target
+                value: "d2"
+              - input: interval
+                value: "1"
+              - input: duration
+                value: "30"

@@ -2,12 +2,13 @@ module vnf-bd {
     namespace "urn:ietf:params:xml:ns:yang:vnf-bd";
     prefix "vnf-bd";
 
-    include "probers";
-    include "listeners";
-
     organization "IETF/BMWG";
     contact "Manuel Peuster <peuster@mail.uni-paderborn.de>, Raphael Vicente Rosa <raphaelvrosa@gmail.com>";
     description "Yang model for a VNF Benchmark Descriptor (VNF-BD) in the scope of IETF/BMWG";
+
+    revision "2019-08-13" {
+        description "V0.3: Reviewed proceedings, tool - not VNF specific";
+    }
 
     revision "2019-03-13" {
         description "V0.2: Reviewed role, policies, connection-points, lifecycle workflows, resources";
@@ -38,6 +39,33 @@ module vnf-bd {
         }
     }
 
+    grouping settings {
+        leaf id { type string; }
+        leaf name { type string; }
+        leaf version { type string; }
+        leaf author { type string; }
+        leaf description { type string; }
+
+        container experiments {
+            leaf trials { type uint32; default 1; }
+            leaf tests { type uint32; default 1; }
+            leaf methods { type uint32; default 1; }
+        }
+
+        container environment {
+            leaf name { type string; }
+            leaf description { type string; }
+            container plugin {
+                leaf type { type string; }
+                list parameters {
+                    key "input";
+                    leaf input { type string; }
+                    leaf value { type string; }
+                } 
+            }
+        }
+    }
+
     grouping targets {
         leaf id { type string; }
         leaf name { type string; }
@@ -46,65 +74,7 @@ module vnf-bd {
         leaf description { type string; }
     }
 
-    grouping tool {
-        leaf id { type uint32; }
-        leaf instances { type uint32; }
-        list parameters { 
-            key "input";
-            leaf input { type string; }
-            leaf value { type string; }
-        }
-        list metrics { 
-            key "name";
-            leaf name { type string; }
-            leaf units { type string; }
-        }
-    }
-
-    grouping agent {
-        list probers {
-            key "id";
-            uses prober;
-
-            /* Optional change to
-            uses tool;
-            */
-        }
-    }
-
-    grouping monitor {
-        container habitat { 
-            leaf setting { type string; }
-            leaf location { type string; }
-            leaf target { type string; }
-        }
-        list listeners {
-            key "id";
-            uses listener;
-            
-            /* Optional change to 
-            uses tool;
-            */
-        }
-    }
-
-    grouping role {
-        leaf role { type string; }
-
-        choice mode {
-            case agent {
-                uses agent;
-            }
-            case monitor {
-                uses monitor;
-            }
-        }
-    }
-
-    grouping requirements {
-
-        uses role;
-        
+    grouping requirements {        
         container resources {
             container cpu { 
                 leaf vcpus { type uint32; }
@@ -199,30 +169,60 @@ module vnf-bd {
         }
     }
 
-    grouping settings {
-        leaf id { type string; }
+    grouping tool {
+        leaf id { type uint32; }
+        leaf instances { type uint32; }
         leaf name { type string; }
-        leaf version { type string; }
-        leaf author { type string; }
-        leaf description { type string; }
+        list parameters { 
+            key "input";
+            leaf input { type string; }
+            leaf value { type string; }
+        }
+    }
 
-        container experiment {
-            leaf trials { type uint32; default 1; }
-            leaf tests { type uint32; default 1; }
-            leaf methods { type uint32; default 1; }
+    grouping component {
+        leaf id { type uint32; }
+        leaf name { type string; }
+
+        container host { 
+            leaf setting { type string; }
+            leaf node { type string; }
+        }
+    }
+
+    grouping agent {
+        uses component; 
+
+        list probers {
+            key "id";
+            uses tool;
+        }
+    }
+
+    grouping monitor {
+        uses component; 
+        
+        list listeners {
+            key "id";           
+            uses tool;
+        }
+    }
+
+    grouping proceedings {
+        list attributes {
+            key "name";
+            leaf name { type string; }
+            leaf value { type string; }
         }
 
-        container environment {
-            leaf name { type string; }
-            leaf description { type string; }
-            container plugin {
-                leaf type { type string; }
-                list parameters {
-                    key "input";
-                    leaf input { type string; }
-                    leaf value { type string; }
-                } 
-            }
+        list agents {
+            key "id";
+            uses agent;
+        }
+
+        list monitors {
+            key "id";
+            uses monitor;
         }
     }
 
@@ -236,8 +236,12 @@ module vnf-bd {
             uses targets;
         }
 
-        container scenario{
+        container scenario {
             uses scenario;
+        }
+
+        container proceedings {
+            uses proceedings;
         }
 
     }
