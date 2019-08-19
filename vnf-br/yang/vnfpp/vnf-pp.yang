@@ -1,0 +1,96 @@
+module vnf-pp {
+    namespace "urn:ietf:params:xml:ns:yang:vnf-pp";
+    prefix "vnf-pp";
+
+    organization "IETF/BMWG";
+    contact "Manuel Peuster <peuster@mail.uni-paderborn.de>, Raphael Vicente Rosa <raphaelvrosa@gmail.com>";
+    description "Yang model for a VNF Performance Profile (vnf-pp) in the scope of IETF/BMWG";
+
+    revision "2019-08-13" {
+        description "V0.1: First release";
+        reference "https://datatracker.ietf.org/doc/draft-rosa-bmwg-vnfbench/"; 
+    }
+
+    grouping settings {
+        leaf id { type string; }
+        leaf name { type string; }
+        leaf version { type string; }
+        leaf author { type string; }
+        leaf description { type string; }
+        leaf timestamp { type string; }
+    }
+
+    grouping targets {
+        leaf id { type string; }
+        leaf name { type string; }
+        leaf version { type string; }
+        leaf author { type string; }
+        leaf description { type string; }
+    }
+
+    grouping component {
+        leaf id { type uint32; }
+        leaf name { type string; }
+
+        container host { 
+            leaf setting { type string; }
+            leaf node { type string; }
+        }
+    }
+
+    grouping metric {
+        leaf name { type string; }
+        leaf value { type string; }
+        leaf type { type string; }
+        leaf units { type string; }
+    }
+
+    grouping agent {
+        uses component; 
+
+        list metrics {
+            key "name";
+            uses metric;
+        }
+    }
+
+    grouping monitor {
+        uses component; 
+
+        list metrics {
+            key "name";
+            uses metric;
+        }
+    }
+
+    grouping measurements {
+
+        list agents {
+            key "id";
+            uses agent;
+        }
+
+        list monitors {
+            key "id";
+            uses monitor;
+        }
+    }
+
+    grouping vnf-pp {
+        description "Grouping for a single vnf-pp";
+
+        uses settings;
+
+        container targets {
+            uses targets;
+        }
+
+        container measurements {
+            uses measurements;
+        }
+    }
+
+    container vnf-pp {
+        uses vnf-pp;
+    }
+}
