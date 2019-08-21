@@ -16,7 +16,7 @@ def check_against_model(yaml_path):
     model.
     """
     with open(yaml_path, "r") as f:
-        vnf_bd_data = yaml.load(f)
+        vnf_bd_data = yaml.load(f, Loader=yaml.FullLoader)
         vnf_bd_model = pybindJSON.loads_ietf(
             vnf_bd_data, vnf_bd, MODEL_NAME)
         #  print(ped_model.ped.name)  # example how to use model
@@ -26,7 +26,7 @@ def check_against_model(yaml_path):
 class TestStringMethods(unittest.TestCase):
 
     def test_example_vnf_bds_against_model(self):
-        # collect all example vnf_bd files which should be checked against model
+        # collect all example files which should be checked against model
         example_vnf_bds = os.listdir(EXAMPLE_DIR)
         # check each vnf_bd file against the model
         print("Validating: {} VNF-BD files.".format(len(example_vnf_bds)))
@@ -34,7 +34,7 @@ class TestStringMethods(unittest.TestCase):
             self.assertIsNotNone(
                 check_against_model(os.path.join(EXAMPLE_DIR, ep)))
             print("File: '{}' is valid against model '{}'."
-                .format(ep, MODEL_NAME))
+                  .format(ep, MODEL_NAME))
 
     def test_example_vnf_bds_dump_json(self):
         example_vnf_bds = os.listdir(EXAMPLE_DIR)
@@ -42,4 +42,5 @@ class TestStringMethods(unittest.TestCase):
         print("Validating: {} VNF-BD files.".format(len(example_vnf_bds)))
         for ep in example_vnf_bds:
             parsed_vnfbd = check_against_model(os.path.join(EXAMPLE_DIR, ep))
-            print(pybindJSON.dumps(parsed_vnfbd))
+            # print(pybindJSON.dumps(parsed_vnfbd))
+            self.assertIsNotNone(parsed_vnfbd)
