@@ -35,11 +35,11 @@ module: vnf-bd
      |  |  |  |  +--rw cpu_bw?    string
      |  |  |  |  +--rw pinning?   string
      |  |  |  +--rw memory
-     |  |  |  |  +--rw size?    uint32
-     |  |  |  |  +--rw units?   string
+     |  |  |  |  +--rw size?   uint32
+     |  |  |  |  +--rw unit?   string
      |  |  |  +--rw storage
      |  |  |     +--rw size?      uint32
-     |  |  |     +--rw units?     string
+     |  |  |     +--rw unit?      string
      |  |  |     +--rw volumes?   string
      |  |  +--rw connection_points* [id]
      |  |  |  +--rw id           string

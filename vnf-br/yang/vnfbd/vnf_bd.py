@@ -967,7 +967,7 @@ class yc_memory_vnf_bd__vnf_bd_scenario_nodes_resources_memory(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
   """
-  __slots__ = ('_path_helper', '_extmethods', '__size','__units',)
+  __slots__ = ('_path_helper', '_extmethods', '__size','__unit',)
 
   _yang_name = 'memory'
 
@@ -979,7 +979,7 @@ class yc_memory_vnf_bd__vnf_bd_scenario_nodes_resources_memory(PybindBase):
 
     self._extmethods = False
     self.__size = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='uint32', is_config=True)
-    self.__units = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="units", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
+    self.__unit = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="unit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
 
     load = kwargs.pop("load", None)
     if args:
@@ -1041,43 +1041,43 @@ class yc_memory_vnf_bd__vnf_bd_scenario_nodes_resources_memory(PybindBase):
     self.__size = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='uint32', is_config=True)
 
 
-  def _get_units(self):
+  def _get_unit(self):
     """
-    Getter method for units, mapped from YANG variable /vnf_bd/scenario/nodes/resources/memory/units (string)
+    Getter method for unit, mapped from YANG variable /vnf_bd/scenario/nodes/resources/memory/unit (string)
     """
-    return self.__units
+    return self.__unit
       
-  def _set_units(self, v, load=False):
+  def _set_unit(self, v, load=False):
     """
-    Setter method for units, mapped from YANG variable /vnf_bd/scenario/nodes/resources/memory/units (string)
+    Setter method for unit, mapped from YANG variable /vnf_bd/scenario/nodes/resources/memory/unit (string)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_units is considered as a private
+    source YANG file, then _set_unit is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_units() directly.
+    do so via calling thisObj._set_unit() directly.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=six.text_type, is_leaf=True, yang_name="units", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
+      t = YANGDynClass(v,base=six.text_type, is_leaf=True, yang_name="unit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """units must be of a type compatible with string""",
+          'error-string': """unit must be of a type compatible with string""",
           'defined-type': "string",
-          'generated-type': """YANGDynClass(base=six.text_type, is_leaf=True, yang_name="units", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)""",
+          'generated-type': """YANGDynClass(base=six.text_type, is_leaf=True, yang_name="unit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)""",
         })
 
-    self.__units = t
+    self.__unit = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_units(self):
-    self.__units = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="units", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
+  def _unset_unit(self):
+    self.__unit = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="unit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
 
   size = __builtin__.property(_get_size, _set_size)
-  units = __builtin__.property(_get_units, _set_units)
+  unit = __builtin__.property(_get_unit, _set_unit)
 
 
-  _pyangbind_elements = OrderedDict([('size', size), ('units', units), ])
+  _pyangbind_elements = OrderedDict([('size', size), ('unit', unit), ])
 
 
 class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
@@ -1087,7 +1087,7 @@ class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
   """
-  __slots__ = ('_path_helper', '_extmethods', '__size','__units','__volumes',)
+  __slots__ = ('_path_helper', '_extmethods', '__size','__unit','__volumes',)
 
   _yang_name = 'storage'
 
@@ -1099,7 +1099,7 @@ class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
 
     self._extmethods = False
     self.__size = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='uint32', is_config=True)
-    self.__units = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="units", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
+    self.__unit = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="unit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
     self.__volumes = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="volumes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
 
     load = kwargs.pop("load", None)
@@ -1162,37 +1162,37 @@ class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
     self.__size = YANGDynClass(base=RestrictedClassType(base_type=long, restriction_dict={'range': ['0..4294967295']}, int_size=32), is_leaf=True, yang_name="size", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='uint32', is_config=True)
 
 
-  def _get_units(self):
+  def _get_unit(self):
     """
-    Getter method for units, mapped from YANG variable /vnf_bd/scenario/nodes/resources/storage/units (string)
+    Getter method for unit, mapped from YANG variable /vnf_bd/scenario/nodes/resources/storage/unit (string)
     """
-    return self.__units
+    return self.__unit
       
-  def _set_units(self, v, load=False):
+  def _set_unit(self, v, load=False):
     """
-    Setter method for units, mapped from YANG variable /vnf_bd/scenario/nodes/resources/storage/units (string)
+    Setter method for unit, mapped from YANG variable /vnf_bd/scenario/nodes/resources/storage/unit (string)
     If this variable is read-only (config: false) in the
-    source YANG file, then _set_units is considered as a private
+    source YANG file, then _set_unit is considered as a private
     method. Backends looking to populate this variable should
-    do so via calling thisObj._set_units() directly.
+    do so via calling thisObj._set_unit() directly.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
     try:
-      t = YANGDynClass(v,base=six.text_type, is_leaf=True, yang_name="units", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
+      t = YANGDynClass(v,base=six.text_type, is_leaf=True, yang_name="unit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
     except (TypeError, ValueError):
       raise ValueError({
-          'error-string': """units must be of a type compatible with string""",
+          'error-string': """unit must be of a type compatible with string""",
           'defined-type': "string",
-          'generated-type': """YANGDynClass(base=six.text_type, is_leaf=True, yang_name="units", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)""",
+          'generated-type': """YANGDynClass(base=six.text_type, is_leaf=True, yang_name="unit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)""",
         })
 
-    self.__units = t
+    self.__unit = t
     if hasattr(self, '_set'):
       self._set()
 
-  def _unset_units(self):
-    self.__units = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="units", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
+  def _unset_unit(self):
+    self.__unit = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="unit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
 
 
   def _get_volumes(self):
@@ -1228,11 +1228,11 @@ class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
     self.__volumes = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="volumes", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-bd', defining_module='vnf-bd', yang_type='string', is_config=True)
 
   size = __builtin__.property(_get_size, _set_size)
-  units = __builtin__.property(_get_units, _set_units)
+  unit = __builtin__.property(_get_unit, _set_unit)
   volumes = __builtin__.property(_get_volumes, _set_volumes)
 
 
-  _pyangbind_elements = OrderedDict([('size', size), ('units', units), ('volumes', volumes), ])
+  _pyangbind_elements = OrderedDict([('size', size), ('unit', unit), ('volumes', volumes), ])
 
 
 class yc_resources_vnf_bd__vnf_bd_scenario_nodes_resources(PybindBase):

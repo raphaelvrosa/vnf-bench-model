@@ -35,10 +35,10 @@ vnf-bd:
             pinning: 
           memory:
             size: 512
-            units: "MB"
+            unit: "MB"
           storage:
             size: 2
-            units: "GB"
+            unit: "GB"
             volumes: "/mnt/pcaps/:/mnt/pcaps:rw"
         connection_points:
           - id: "eth1"
@@ -65,10 +65,10 @@ vnf-bd:
             pinning: 
           memory:
             size: 2048
-            units: "MB"
+            unit: "MB"
           storage:
             size: 2
-            units: "GB"
+            unit: "GB"
         connection_points:
           - id: "input"
             interface: "ipv4"
@@ -97,10 +97,10 @@ vnf-bd:
             pinning: 
           memory:
             size: 512
-            units: "MB"
+            unit: "MB"
           storage:
             size: 2
-            units: "GB"
+            unit: "GB"
         connection_points:
           - id: "eth1"
             interface: "ipv4"
@@ -126,10 +126,10 @@ vnf-bd:
             pinning: 
           memory:
             size: 2048
-            units: "MB"
+            unit: "MB"
           storage:
             size: 2
-            units: "GB"
+            unit: "GB"
         lifecycle:
           - workflow: "start"
             parameters:

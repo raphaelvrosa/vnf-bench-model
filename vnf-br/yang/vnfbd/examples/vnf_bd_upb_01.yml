@@ -53,10 +53,10 @@ vnf-bd:vnf-bd:
           vcpus: 0
         memory:
           size: 1024
-          units: MB
+          unit: MB
         storage:
           size: 10
-          units: GB
+          unit: GB
           volumes: None
       type: external
     - connection_points:
@@ -77,9 +77,9 @@ vnf-bd:vnf-bd:
           vcpus: 3
         memory:
           size: 1024
-          units: MB
+          unit: MB
         storage:
-          units: MB
+          unit: MB
           volumes: None
       type: external
     - connection_points:
@@ -100,9 +100,9 @@ vnf-bd:vnf-bd:
           vcpus: 2
         memory:
           size: 1024
-          units: MB
+          unit: MB
         storage:
-          units: MB
+          unit: MB
           volumes: None
       type: external
   targets:

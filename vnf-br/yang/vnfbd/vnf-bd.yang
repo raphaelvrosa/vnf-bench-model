@@ -83,11 +83,11 @@ module vnf-bd {
             }
             container memory { 
                 leaf size { type uint32; }
-                leaf units { type string; }
+                leaf unit { type string; }
             }
             container storage { 
                 leaf size { type uint32; }
-                leaf units { type string; }
+                leaf unit { type string; }
                 leaf volumes { type string; }
             }
         }
