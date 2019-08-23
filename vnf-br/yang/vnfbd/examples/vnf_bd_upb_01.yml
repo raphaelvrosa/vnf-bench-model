@@ -16,29 +16,89 @@ vnf-bd:vnf-bd:
   id: '00000'
   name: upb_bench_02-01_00000
   proceedings:
+    agents:
+    - host:
+        node: mp.output
+        setting: internal
+      id: mp.output
+      probers:
+      - id: '1'
+        instances: 1
+        name: mp.output
+        parameters:
+        - input: name
+          value: mp.output
+        - input: connection_point
+          value: ns:output
+        - input: container
+          value: mpeuster/tng-bench-mp
+        - input: address
+          value: 20.0.0.254/24
+        - input: start
+          value: None
+        - input: stop
+          value: ./stop.sh
+    - host:
+        node: mp.input
+        setting: internal
+      id: mp.input
+      probers:
+      - id: '1'
+        instances: 1
+        name: mp.input
+        parameters:
+        - input: name
+          value: mp.input
+        - input: connection_point
+          value: ns:input
+        - input: container
+          value: mpeuster/tng-bench-mp
+        - input: address
+          value: 20.0.0.1/24
+        - input: start
+          value: tcpreplay -i data -tK --loop 1000 --preload-pcap /pcaps/smallFlows.pcap
+        - input: stop
+          value: ./stop.sh
     attributes:
     - name: duration
       value: '30'
+    monitors:
+    - host:
+        node: de.upb.ns-1vnf-ids-suricata.0.1
+        setting: external
+      id: default
+      listeners:
+      - id: '1'
+        name: prometheus
+        parameters:
+        - input: target
+          value: de.upb.ns-1vnf-ids-suricata.0.1
   scenario:
     links:
-    - id: mgmt-elan
+    - connection_point_refs:
+      - vnf0:mgmt
+      - ns:mgmt
+      id: mgmt-elan
       type: E-LAN
-      connection_point_refs:
-        - "mp.input:data"
-        - "de.upb.ids-suricata.0.1:input"
-    - id: input-2-vnf0
+    - connection_point_refs:
+      - mp.input:data
+      - vnf0:input
+      id: input-2-vnf0
       type: E-Line
-    - id: vnf0-2-output
+    - connection_point_refs:
+      - vnf0:output
+      - mp.output:data
+      id: vnf0-2-output
       type: E-Line
     nodes:
     - connection_points:
-      - id: de.upb.ids-suricata.0.1:mgmt
+      - id: vnf0:mgmt
         interface: ipv4
         type: management
-      - id: de.upb.ids-suricata.0.1:input
+      - id: vnf0:input
         interface: ipv4
         type: external
-      - id: de.upb.ids-suricata.0.1:output
+      - id: vnf0:output
         interface: ipv4
         type: external
       id: de.upb.ids-suricata.0.1

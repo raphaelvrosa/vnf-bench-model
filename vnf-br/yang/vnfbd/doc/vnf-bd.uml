@@ -181,6 +181,6 @@ vnf_bd_I_vnf_bd_I_scenario --> vnf_bd_I_scenario_grouping : uses
 vnf_bd_I_vnf_bd_I_proceedings --> vnf_bd_I_proceedings_grouping : uses 
 vnf_bd_I_vnf_bd --> vnf_bd_I_vnf_bd_grouping : uses 
 center footer
- <size:20> UML Generated : 2019-08-23 10:46 </size>
+ <size:20> UML Generated : 2019-08-23 12:36 </size>
  endfooter 
 @enduml 
