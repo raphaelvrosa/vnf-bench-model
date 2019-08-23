@@ -23,19 +23,22 @@ vnf-bd:vnf-bd:
     links:
     - id: mgmt-elan
       type: E-LAN
+      connection_point_refs:
+        - "mp.input:data"
+        - "de.upb.ids-suricata.0.1:input"
     - id: input-2-vnf0
       type: E-Line
     - id: vnf0-2-output
       type: E-Line
     nodes:
     - connection_points:
-      - id: mgmt
+      - id: de.upb.ids-suricata.0.1:mgmt
         interface: ipv4
         type: management
-      - id: input
+      - id: de.upb.ids-suricata.0.1:input
         interface: ipv4
         type: external
-      - id: output
+      - id: de.upb.ids-suricata.0.1:output
         interface: ipv4
         type: external
       id: de.upb.ids-suricata.0.1
@@ -60,7 +63,7 @@ vnf-bd:vnf-bd:
           volumes: None
       type: external
     - connection_points:
-      - id: data
+      - id: mp.output:data
         interface: ipv4
         type: external
       id: mp.output
@@ -83,7 +86,7 @@ vnf-bd:vnf-bd:
           volumes: None
       type: external
     - connection_points:
-      - id: data
+      - id: mp.input:data
         interface: ipv4
         type: external
       id: mp.input

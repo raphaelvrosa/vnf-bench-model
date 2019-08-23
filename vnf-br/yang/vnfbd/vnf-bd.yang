@@ -98,8 +98,8 @@ module vnf-bd {
         leaf interface { type string; }
         leaf type { type string; }
         leaf address { type string; }
+        /* disabled. we use connection_point_refs in links instead
         leaf link-id { type string; }
-        /*
         leaf link-id { 
             type leafref {
                 path "../../../links/id";
@@ -146,7 +146,11 @@ module vnf-bd {
         leaf name { type string; }
         leaf type { type string; }
         leaf network { type string; }
-        /* leaf-list connection_points { type string; } */
+        leaf-list connection_point_refs { 
+            type leafref {
+                path "../../nodes/connection_points/id";
+            } 
+        }
     }
 
     grouping scenario {

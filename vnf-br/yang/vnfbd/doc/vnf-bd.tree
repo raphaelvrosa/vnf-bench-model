@@ -46,7 +46,6 @@ module: vnf-bd
      |  |  |  +--rw interface?   string
      |  |  |  +--rw type?        string
      |  |  |  +--rw address?     string
-     |  |  |  +--rw link-id?     string
      |  |  +--rw lifecycle* [workflow]
      |  |     +--rw workflow          workflows
      |  |     +--rw name?             string
@@ -55,10 +54,11 @@ module: vnf-bd
      |  |     |  +--rw value?   string
      |  |     +--rw implementation?   string
      |  +--rw links* [id]
-     |  |  +--rw id         string
-     |  |  +--rw name?      string
-     |  |  +--rw type?      string
-     |  |  +--rw network?   string
+     |  |  +--rw id                       string
+     |  |  +--rw name?                    string
+     |  |  +--rw type?                    string
+     |  |  +--rw network?                 string
+     |  |  +--rw connection_point_refs*   -> ../../nodes/connection_points/id
      |  +--rw policies* [name]
      |     +--rw name       string
      |     +--rw type?      string
