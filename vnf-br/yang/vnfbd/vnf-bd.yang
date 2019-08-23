@@ -142,7 +142,7 @@ module vnf-bd {
     }
 
     grouping links {
-        leaf id { type uint32; }
+        leaf id { type string; }
         leaf name { type string; }
         leaf type { type string; }
         leaf network { type string; }
@@ -170,7 +170,7 @@ module vnf-bd {
     }
 
     grouping tool {
-        leaf id { type uint32; }
+        leaf id { type string; }
         leaf instances { type uint32; }
         leaf name { type string; }
         list parameters { 
@@ -181,7 +181,7 @@ module vnf-bd {
     }
 
     grouping component {
-        leaf id { type uint32; }
+        leaf id { type string; }
         leaf name { type string; }
 
         container host { 

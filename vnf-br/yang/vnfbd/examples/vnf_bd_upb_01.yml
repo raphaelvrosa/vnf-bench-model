@@ -21,14 +21,11 @@ vnf-bd:vnf-bd:
       value: '30'
   scenario:
     links:
-    - id: 0
-      network: mgmt-elan
+    - id: mgmt-elan
       type: E-LAN
-    - id: 1
-      network: input-2-vnf0
+    - id: input-2-vnf0
       type: E-Line
-    - id: 2
-      network: vnf0-2-output
+    - id: vnf0-2-output
       type: E-Line
     nodes:
     - connection_points:

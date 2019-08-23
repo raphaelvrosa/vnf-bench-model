@@ -55,7 +55,7 @@ module: vnf-bd
      |  |     |  +--rw value?   string
      |  |     +--rw implementation?   string
      |  +--rw links* [id]
-     |  |  +--rw id         uint32
+     |  |  +--rw id         string
      |  |  +--rw name?      string
      |  |  +--rw type?      string
      |  |  +--rw network?   string
@@ -69,26 +69,26 @@ module: vnf-bd
         |  +--rw name     string
         |  +--rw value?   string
         +--rw agents* [id]
-        |  +--rw id         uint32
+        |  +--rw id         string
         |  +--rw name?      string
         |  +--rw host
         |  |  +--rw setting?   string
         |  |  +--rw node?      string
         |  +--rw probers* [id]
-        |     +--rw id            uint32
+        |     +--rw id            string
         |     +--rw instances?    uint32
         |     +--rw name?         string
         |     +--rw parameters* [input]
         |        +--rw input    string
         |        +--rw value?   string
         +--rw monitors* [id]
-           +--rw id           uint32
+           +--rw id           string
            +--rw name?        string
            +--rw host
            |  +--rw setting?   string
            |  +--rw node?      string
            +--rw listeners* [id]
-              +--rw id            uint32
+              +--rw id            string
               +--rw instances?    uint32
               +--rw name?         string
               +--rw parameters* [input]
