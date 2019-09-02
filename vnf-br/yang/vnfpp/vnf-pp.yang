@@ -20,7 +20,7 @@ module vnf-pp {
         leaf timestamp { type string; }
     }
 
-    grouping targets {
+    grouping target {
         leaf id { type string; }
         leaf name { type string; }
         leaf version { type string; }
@@ -28,25 +28,35 @@ module vnf-pp {
         leaf description { type string; }
     }
 
-    grouping component {
-        leaf id { type uint32; }
-        leaf name { type string; }
-
-        container host { 
-            leaf setting { type string; }
-            leaf node { type string; }
-        }
-    }
-
     grouping metric {
         leaf name { type string; }
         leaf value { type string; }
         leaf type { type string; }
-        leaf units { type string; }
+        leaf series { type boolean; }
+        leaf unit { type string; }
     }
 
-    grouping agent {
-        uses component; 
+    grouping evaluation {
+        leaf id { type uint32; }
+
+        container source {
+            leaf id { type string; }
+            leaf role { type string; }
+            leaf host { type string; }
+
+            container tool {
+                leaf id { type uint32; }
+                leaf name { type string; }
+                leaf type { type string; }
+                leaf version { type string; }
+                leaf call { type string; }
+            }
+        }
+
+        container timestamp {
+            leaf start { type string; }
+            leaf stop { type string; }
+        }
 
         list metrics {
             key "name";
@@ -54,25 +64,22 @@ module vnf-pp {
         }
     }
 
-    grouping monitor {
-        uses component; 
 
-        list metrics {
-            key "name";
-            uses metric;
+    grouping snapshot {
+        leaf trial { type uint32; }
+
+        list evaluations {
+            key "id";
+            uses evaluation;
         }
     }
 
-    grouping measurements {
-
-        list agents {
-            key "id";
-            uses agent;
-        }
-
-        list monitors {
-            key "id";
-            uses monitor;
+    grouping report {
+        leaf test { type uint32; }        
+        
+        list snapshots {
+            key "trial";
+            uses snapshot;
         }
     }
 
@@ -81,12 +88,13 @@ module vnf-pp {
 
         uses settings;
 
-        container targets {
-            uses targets;
+        container target {
+            uses target;
         }
 
-        container measurements {
-            uses measurements;
+        list reports {
+            key "test";
+            uses report;
         }
     }
 

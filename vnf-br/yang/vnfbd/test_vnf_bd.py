@@ -42,5 +42,5 @@ class TestStringMethods(unittest.TestCase):
         print("Validating: {} VNF-BD files.".format(len(example_vnf_bds)))
         for ep in example_vnf_bds:
             parsed_vnfbd = check_against_model(os.path.join(EXAMPLE_DIR, ep))
-            # print(pybindJSON.dumps(parsed_vnfbd))
+            print(pybindJSON.dumps(parsed_vnfbd))
             self.assertIsNotNone(parsed_vnfbd)
