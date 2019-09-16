@@ -40,17 +40,11 @@ module vnf-pp {
         leaf id { type uint32; }
 
         container source {
-            leaf id { type string; }
-            leaf role { type string; }
-            leaf host { type string; }
-
-            container tool {
-                leaf id { type uint32; }
-                leaf name { type string; }
-                leaf type { type string; }
-                leaf version { type string; }
-                leaf call { type string; }
-            }
+            leaf id { type uint32; }
+            leaf name { type string; }
+            leaf type { type string; }
+            leaf version { type string; }
+            leaf call { type string; }
         }
 
         container timestamp {
@@ -66,7 +60,15 @@ module vnf-pp {
 
 
     grouping snapshot {
+        leaf id { type uint32; }
         leaf trial { type uint32; }
+
+        container origin {
+            leaf id { type string; }
+            leaf role { type string; }
+            leaf host { type string; }
+
+        }
 
         list evaluations {
             key "id";
@@ -78,7 +80,7 @@ module vnf-pp {
         leaf test { type uint32; }        
         
         list snapshots {
-            key "trial";
+            key "id";
             uses snapshot;
         }
     }

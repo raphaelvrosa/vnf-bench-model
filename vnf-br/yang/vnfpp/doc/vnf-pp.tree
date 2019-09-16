@@ -14,20 +14,21 @@ module: vnf-pp
      |  +--rw description?   string
      +--rw reports* [test]
         +--rw test         uint32
-        +--rw snapshots* [trial]
-           +--rw trial          uint32
+        +--rw snapshots* [id]
+           +--rw id             uint32
+           +--rw trial?         uint32
+           +--rw origin
+           |  +--rw id?     string
+           |  +--rw role?   string
+           |  +--rw host?   string
            +--rw evaluations* [id]
               +--rw id           uint32
               +--rw source
-              |  +--rw id?     string
-              |  +--rw role?   string
-              |  +--rw host?   string
-              |  +--rw tool
-              |     +--rw id?        uint32
-              |     +--rw name?      string
-              |     +--rw type?      string
-              |     +--rw version?   string
-              |     +--rw call?      string
+              |  +--rw id?        uint32
+              |  +--rw name?      string
+              |  +--rw type?      string
+              |  +--rw version?   string
+              |  +--rw call?      string
               +--rw timestamp
               |  +--rw start?   string
               |  +--rw stop?    string

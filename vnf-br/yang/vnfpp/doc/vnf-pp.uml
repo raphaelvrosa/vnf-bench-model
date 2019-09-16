@@ -38,16 +38,11 @@ class "evaluation" as vnf_pp_I_evaluation_grouping <<(G,Lime) grouping>>
 vnf_pp_I_evaluation_grouping : id : uint32  
 class "source" as  vnf_pp_I_evaluation_I_source <<container>> 
 vnf_pp_I_evaluation_grouping *-- "1" vnf_pp_I_evaluation_I_source 
-vnf_pp_I_evaluation_I_source : id : string  
-vnf_pp_I_evaluation_I_source : role : string  
-vnf_pp_I_evaluation_I_source : host : string  
-class "tool" as  vnf_pp_I_evaluation_I_source_I_tool <<container>> 
-vnf_pp_I_evaluation_I_source *-- "1" vnf_pp_I_evaluation_I_source_I_tool 
-vnf_pp_I_evaluation_I_source_I_tool : id : uint32  
-vnf_pp_I_evaluation_I_source_I_tool : name : string  
-vnf_pp_I_evaluation_I_source_I_tool : type : string  
-vnf_pp_I_evaluation_I_source_I_tool : version : string  
-vnf_pp_I_evaluation_I_source_I_tool : call : string  
+vnf_pp_I_evaluation_I_source : id : uint32  
+vnf_pp_I_evaluation_I_source : name : string  
+vnf_pp_I_evaluation_I_source : type : string  
+vnf_pp_I_evaluation_I_source : version : string  
+vnf_pp_I_evaluation_I_source : call : string  
 class "timestamp" as  vnf_pp_I_evaluation_I_timestamp <<container>> 
 vnf_pp_I_evaluation_grouping *-- "1" vnf_pp_I_evaluation_I_timestamp 
 vnf_pp_I_evaluation_I_timestamp : start : string  
@@ -56,7 +51,13 @@ class "metrics" as vnf_pp_I_evaluation_I_metrics << (L, #FF7700) list>>
 vnf_pp_I_evaluation_grouping *-- "0..N" vnf_pp_I_evaluation_I_metrics 
 vnf_pp_I_evaluation_I_metrics : metric {uses} 
 class "snapshot" as vnf_pp_I_snapshot_grouping <<(G,Lime) grouping>> 
+vnf_pp_I_snapshot_grouping : id : uint32  
 vnf_pp_I_snapshot_grouping : trial : uint32  
+class "origin" as  vnf_pp_I_snapshot_I_origin <<container>> 
+vnf_pp_I_snapshot_grouping *-- "1" vnf_pp_I_snapshot_I_origin 
+vnf_pp_I_snapshot_I_origin : id : string  
+vnf_pp_I_snapshot_I_origin : role : string  
+vnf_pp_I_snapshot_I_origin : host : string  
 class "evaluations" as vnf_pp_I_snapshot_I_evaluations << (L, #FF7700) list>> 
 vnf_pp_I_snapshot_grouping *-- "0..N" vnf_pp_I_snapshot_I_evaluations 
 vnf_pp_I_snapshot_I_evaluations : evaluation {uses} 
@@ -86,6 +87,6 @@ vnf_pp_I_vnf_pp_I_target --> vnf_pp_I_target_grouping : uses
 vnf_pp_I_vnf_pp_I_reports --> vnf_pp_I_report_grouping : uses 
 vnf_pp_I_vnf_pp --> vnf_pp_I_vnf_pp_grouping : uses 
 center footer
- <size:20> UML Generated : 2019-09-02 16:16 </size>
+ <size:20> UML Generated : 2019-09-16 13:29 </size>
  endfooter 
 @enduml 

@@ -14,19 +14,20 @@ vnf-pp:
   reports:
     - test: 1
       snapshots:
-        - trial: 1
+        - id: 1
+          trial: 1
+          origin: 
+            id: 1
+            host: "d1"
+            role: "agent"
           evaluations:
-            - id: 1
-              source: 
+            - id: 1             
+              source:
                 id: 1
-                host: "d1"
-                role: "agent"
-                tool:
-                  id: 1
-                  type: "prober"
-                  name: "ping"
-                  version: "1.9.4"
-                  call: "ping -c 60 127.0.0.1"
+                type: "prober"
+                name: "ping"
+                version: "1.9.4"
+                call: "ping -c 60 127.0.0.1"
               timestamp:
                 start: "2019-05-13T18:09:42.478884Z"
                 stop: "2019-05-13T18:09:43.478884Z"
@@ -56,17 +57,20 @@ vnf-pp:
                   type: "uint32"
                   unit: "%"
                   value: 0
-            - id: 2
+        - id: 2
+          trial: 1
+          origin: 
+            id: 1
+            host: "d4"
+            role: "monitor"
+          evaluations:
+            - id: 1
               source: 
-                id: 3
-                host: "d4"
-                role: "monitor"
-                tool:
-                  id: 1
-                  type: "listener"
-                  name: "docker-py"
-                  version: "1.9.4"
-                  call: "docker-py -i 1 -t 60"
+                id: 1
+                type: "listener"
+                name: "docker-py"
+                version: "1.9.4"
+                call: "docker-py -i 1 -t 60"
               timestamp:
                 start: "2019-05-13T18:09:42.478884Z"
                 stop: "2019-05-13T18:09:43.478884Z"
