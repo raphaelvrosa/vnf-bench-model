@@ -60,18 +60,17 @@ vnf_bd_I_requirements_I_resources_I_cpu : pinning : string
 class "memory" as  vnf_bd_I_requirements_I_resources_I_memory <<container>> 
 vnf_bd_I_requirements_I_resources *-- "1" vnf_bd_I_requirements_I_resources_I_memory 
 vnf_bd_I_requirements_I_resources_I_memory : size : uint32  
-vnf_bd_I_requirements_I_resources_I_memory : units : string  
+vnf_bd_I_requirements_I_resources_I_memory : unit : string  
 class "storage" as  vnf_bd_I_requirements_I_resources_I_storage <<container>> 
 vnf_bd_I_requirements_I_resources *-- "1" vnf_bd_I_requirements_I_resources_I_storage 
 vnf_bd_I_requirements_I_resources_I_storage : size : uint32  
-vnf_bd_I_requirements_I_resources_I_storage : units : string  
+vnf_bd_I_requirements_I_resources_I_storage : unit : string  
 vnf_bd_I_requirements_I_resources_I_storage : volumes : string  
 class "connection_points" as vnf_bd_I_connection_points_grouping <<(G,Lime) grouping>> 
 vnf_bd_I_connection_points_grouping : id : string  
 vnf_bd_I_connection_points_grouping : interface : string  
 vnf_bd_I_connection_points_grouping : type : string  
 vnf_bd_I_connection_points_grouping : address : string  
-vnf_bd_I_connection_points_grouping : link-id : string  
 class "nodes" as vnf_bd_I_nodes_grouping <<(G,Lime) grouping>> 
 vnf_bd_I_nodes_grouping : id : string  
 vnf_bd_I_nodes_grouping : type : string  
@@ -96,10 +95,11 @@ vnf_bd_I_nodes_I_lifecycle_I_parameters : +input : string  {key}
 vnf_bd_I_nodes_I_lifecycle_I_parameters : value : string  
 vnf_bd_I_nodes_I_lifecycle : implementation : string  
 class "links" as vnf_bd_I_links_grouping <<(G,Lime) grouping>> 
-vnf_bd_I_links_grouping : id : uint32  
+vnf_bd_I_links_grouping : id : string  
 vnf_bd_I_links_grouping : name : string  
 vnf_bd_I_links_grouping : type : string  
 vnf_bd_I_links_grouping : network : string  
+vnf_bd_I_links_grouping : connection_point_refs []: leafref : ../../nodes/connection_points/id 
 class "scenario" as vnf_bd_I_scenario_grouping <<(G,Lime) grouping>> 
 class "nodes" as vnf_bd_I_scenario_I_nodes << (L, #FF7700) list>> 
 vnf_bd_I_scenario_grouping *-- "0..N" vnf_bd_I_scenario_I_nodes 
@@ -114,7 +114,7 @@ vnf_bd_I_scenario_I_policies : type : string
 vnf_bd_I_scenario_I_policies : targets : string  
 vnf_bd_I_scenario_I_policies : action : string  
 class "tool" as vnf_bd_I_tool_grouping <<(G,Lime) grouping>> 
-vnf_bd_I_tool_grouping : id : uint32  
+vnf_bd_I_tool_grouping : id : string  
 vnf_bd_I_tool_grouping : instances : uint32  
 vnf_bd_I_tool_grouping : +name : string  {key} 
 class "parameters" as vnf_bd_I_tool_I_parameters << (L, #FF7700) list>> 
@@ -122,7 +122,7 @@ vnf_bd_I_tool_grouping *-- "0..N" vnf_bd_I_tool_I_parameters
 vnf_bd_I_tool_I_parameters : +input : string  {key} 
 vnf_bd_I_tool_I_parameters : value : string  
 class "component" as vnf_bd_I_component_grouping <<(G,Lime) grouping>> 
-vnf_bd_I_component_grouping : id : uint32  
+vnf_bd_I_component_grouping : id : string  
 vnf_bd_I_component_grouping : name : string  
 class "host" as  vnf_bd_I_component_I_host <<container>> 
 vnf_bd_I_component_grouping *-- "1" vnf_bd_I_component_I_host 
@@ -181,6 +181,6 @@ vnf_bd_I_vnf_bd_I_scenario --> vnf_bd_I_scenario_grouping : uses
 vnf_bd_I_vnf_bd_I_proceedings --> vnf_bd_I_proceedings_grouping : uses 
 vnf_bd_I_vnf_bd --> vnf_bd_I_vnf_bd_grouping : uses 
 center footer
- <size:20> UML Generated : 2019-08-22 15:29 </size>
+ <size:20> UML Generated : 2019-09-19 14:31 </size>
  endfooter 
 @enduml 
