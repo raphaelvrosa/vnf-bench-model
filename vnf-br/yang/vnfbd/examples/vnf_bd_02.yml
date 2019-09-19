@@ -32,7 +32,7 @@ vnf-bd:
           cpu:
             vcpus: 1
             cpu_bw: '1.0'
-            pinning: 
+            pinning: null
           memory:
             size: 512
             unit: "MB"
@@ -61,7 +61,7 @@ vnf-bd:
           cpu:
             vcpus: 1
             cpu_bw: '1.0'
-            pinning: 
+            pinning: null
           memory:
             size: 2048
             unit: "MB"
@@ -91,7 +91,7 @@ vnf-bd:
           cpu:
             vcpus: 1
             cpu_bw: "1.0"
-            pinning: 
+            pinning: null
           memory:
             size: 512
             unit: "MB"
@@ -119,7 +119,7 @@ vnf-bd:
           cpu:
             vcpus: 1
             cpu_bw: '1.0'
-            pinning: 
+            pinning: null
           memory:
             size: 2048
             unit: "MB"
