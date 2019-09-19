@@ -318,20 +318,6 @@ function expandAllRows() {
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:experiments/vnf-bd:tests</td</tr> 
-<tr id="1-1-6-3" class="a">
-                       <td nowrap>
-                          <div id=9999 class=tier4>
-                             <a class="leaf">&nbsp;</a>
-                             <abbr title="No description"> <em> methods </em></abbr>
-                          </div>
-                       </td>
-                       <td>leaf</td>
-                       <td nowrap><abbr title="uint32
-">uint32</abbr></td>
-                       <td nowrap>config</td>
-                       <td>?</td>
-                       <td>current</td>
-                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:experiments/vnf-bd:methods</td</tr> 
 <tr id="1-1-7" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier3">
@@ -349,7 +335,7 @@ function expandAllRows() {
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:environment</td>
                     </tr> 
-<tr id="1-1-7-4" class="a">
+<tr id="1-1-7-3" class="a">
                        <td nowrap>
                           <div id=9999 class=tier4>
                              <a class="leaf">&nbsp;</a>
@@ -363,7 +349,7 @@ function expandAllRows() {
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:environment/vnf-bd:name</td</tr> 
-<tr id="1-1-7-5" class="a">
+<tr id="1-1-7-4" class="a">
                        <td nowrap>
                           <div id=9999 class=tier4>
                              <a class="leaf">&nbsp;</a>
@@ -377,6 +363,20 @@ function expandAllRows() {
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:environment/vnf-bd:description</td</tr> 
+<tr id="1-1-7-5" class="a">
+                       <td nowrap>
+                          <div id=9999 class=tier4>
+                             <a class="leaf">&nbsp;</a>
+                             <abbr title="No description"> <em> deploy </em></abbr>
+                          </div>
+                       </td>
+                       <td>leaf</td>
+                       <td nowrap><abbr title="boolean
+">boolean</abbr></td>
+                       <td nowrap>config</td>
+                       <td>?</td>
+                       <td>current</td>
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:environment/vnf-bd:deploy</td</tr> 
 <tr id="1-1-7-6" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier4">
@@ -890,6 +890,51 @@ function expandAllRows() {
                                 onclick="toggleRows(this);return false"
                                 class="folder">&nbsp;
                              </a>
+                             <abbr title="No description">relationships[type]</abbr>
+                          </div>
+                       </td> 
+<td nowrap>list</td>
+                    <td nowrap></td>
+                    <td nowrap>config</td>
+                    <td></td>
+                    <td>current</td>
+                    <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:relationships</td>
+                    </tr> 
+<tr id="1-1-9-12-9-10" class="a">
+                       <td nowrap>
+                          <div id=9999 class=tier6>
+                             <a class="leaf">&nbsp;</a>
+                             <abbr title="No description">  type </abbr>
+                          </div>
+                       </td>
+                       <td>leaf</td>
+                       <td nowrap><abbr title="string
+">string</abbr></td>
+                       <td nowrap>config</td>
+                       <td></td>
+                       <td>current</td>
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:relationships/vnf-bd:type</td</tr> 
+<tr id="1-1-9-12-9-11" class="a">
+                       <td nowrap>
+                          <div id=9999 class=tier6>
+                             <a class="leaf">&nbsp;</a>
+                             <abbr title="No description"> <em> target </em></abbr>
+                          </div>
+                       </td>
+                       <td>leaf</td>
+                       <td nowrap><abbr title="string
+">string</abbr></td>
+                       <td nowrap>config</td>
+                       <td>?</td>
+                       <td>current</td>
+                       <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:relationships/vnf-bd:target</td</tr> 
+<tr id="1-1-9-12-10" class="a">
+                       <td nowrap id="p4000">
+                          <div id="p5000" class="tier5">
+                             <a href="#" id="p6000"
+                                onclick="toggleRows(this);return false"
+                                class="folder">&nbsp;
+                             </a>
                              <abbr title="No description">lifecycle[workflow]</abbr>
                           </div>
                        </td> 
@@ -900,7 +945,7 @@ function expandAllRows() {
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:lifecycle</td>
                     </tr> 
-<tr id="1-1-9-12-9-10" class="a">
+<tr id="1-1-9-12-10-12" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -915,7 +960,7 @@ enumeration
                        <td></td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:lifecycle/vnf-bd:workflow</td</tr> 
-<tr id="1-1-9-12-9-11" class="a">
+<tr id="1-1-9-12-10-13" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -929,7 +974,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:lifecycle/vnf-bd:name</td</tr> 
-<tr id="1-1-9-12-9-12" class="a">
+<tr id="1-1-9-12-10-14" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier6">
                              <a href="#" id="p6000"
@@ -946,7 +991,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:lifecycle/vnf-bd:parameters</td>
                     </tr> 
-<tr id="1-1-9-12-9-12-9" class="a">
+<tr id="1-1-9-12-10-14-9" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
@@ -960,7 +1005,7 @@ enumeration
                        <td></td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:lifecycle/vnf-bd:parameters/vnf-bd:input</td</tr> 
-<tr id="1-1-9-12-9-12-10" class="a">
+<tr id="1-1-9-12-10-14-10" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
@@ -974,7 +1019,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:nodes/vnf-bd:lifecycle/vnf-bd:parameters/vnf-bd:value</td</tr> 
-<tr id="1-1-9-12-9-13" class="a">
+<tr id="1-1-9-12-10-15" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -1005,7 +1050,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:links</td>
                     </tr> 
-<tr id="1-1-9-13-10" class="a">
+<tr id="1-1-9-13-11" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1019,7 +1064,7 @@ enumeration
                        <td></td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:links/vnf-bd:id</td</tr> 
-<tr id="1-1-9-13-11" class="a">
+<tr id="1-1-9-13-12" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1033,7 +1078,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:links/vnf-bd:name</td</tr> 
-<tr id="1-1-9-13-12" class="a">
+<tr id="1-1-9-13-13" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1047,7 +1092,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:links/vnf-bd:type</td</tr> 
-<tr id="1-1-9-13-13" class="a">
+<tr id="1-1-9-13-14" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1061,7 +1106,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:links/vnf-bd:network</td</tr> 
-<tr id="1-1-9-13-14" class="a">
+<tr id="1-1-9-13-15" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf-list">&nbsp;</a>
@@ -1092,7 +1137,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:policies</td>
                     </tr> 
-<tr id="1-1-9-14-15" class="a">
+<tr id="1-1-9-14-16" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1106,7 +1151,7 @@ enumeration
                        <td></td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:policies/vnf-bd:name</td</tr> 
-<tr id="1-1-9-14-16" class="a">
+<tr id="1-1-9-14-17" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1120,7 +1165,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:policies/vnf-bd:type</td</tr> 
-<tr id="1-1-9-14-17" class="a">
+<tr id="1-1-9-14-18" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1134,7 +1179,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:scenario/vnf-bd:policies/vnf-bd:targets</td</tr> 
-<tr id="1-1-9-14-18" class="a">
+<tr id="1-1-9-14-19" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1182,7 +1227,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:attributes</td>
                     </tr> 
-<tr id="1-1-10-15-19" class="a">
+<tr id="1-1-10-15-20" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1196,7 +1241,7 @@ enumeration
                        <td></td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:attributes/vnf-bd:name</td</tr> 
-<tr id="1-1-10-15-20" class="a">
+<tr id="1-1-10-15-21" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1227,7 +1272,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents</td>
                     </tr> 
-<tr id="1-1-10-16-21" class="a">
+<tr id="1-1-10-16-22" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1241,7 +1286,7 @@ enumeration
                        <td></td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents/vnf-bd:id</td</tr> 
-<tr id="1-1-10-16-22" class="a">
+<tr id="1-1-10-16-23" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1255,7 +1300,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents/vnf-bd:name</td</tr> 
-<tr id="1-1-10-16-23" class="a">
+<tr id="1-1-10-16-24" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier5">
                              <a href="#" id="p6000"
@@ -1272,7 +1317,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents/vnf-bd:host</td>
                     </tr> 
-<tr id="1-1-10-16-23-14" class="a">
+<tr id="1-1-10-16-24-16" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -1286,7 +1331,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents/vnf-bd:host/vnf-bd:setting</td</tr> 
-<tr id="1-1-10-16-23-15" class="a">
+<tr id="1-1-10-16-24-17" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -1300,7 +1345,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents/vnf-bd:host/vnf-bd:node</td</tr> 
-<tr id="1-1-10-16-24" class="a">
+<tr id="1-1-10-16-25" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier5">
                              <a href="#" id="p6000"
@@ -1317,7 +1362,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents/vnf-bd:probers</td>
                     </tr> 
-<tr id="1-1-10-16-24-16" class="a">
+<tr id="1-1-10-16-25-18" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -1331,7 +1376,7 @@ enumeration
                        <td></td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents/vnf-bd:probers/vnf-bd:id</td</tr> 
-<tr id="1-1-10-16-24-17" class="a">
+<tr id="1-1-10-16-25-19" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -1345,7 +1390,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents/vnf-bd:probers/vnf-bd:instances</td</tr> 
-<tr id="1-1-10-16-24-18" class="a">
+<tr id="1-1-10-16-25-20" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -1359,7 +1404,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents/vnf-bd:probers/vnf-bd:name</td</tr> 
-<tr id="1-1-10-16-24-19" class="a">
+<tr id="1-1-10-16-25-21" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier6">
                              <a href="#" id="p6000"
@@ -1376,7 +1421,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents/vnf-bd:probers/vnf-bd:parameters</td>
                     </tr> 
-<tr id="1-1-10-16-24-19-11" class="a">
+<tr id="1-1-10-16-25-21-11" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
@@ -1390,7 +1435,7 @@ enumeration
                        <td></td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:agents/vnf-bd:probers/vnf-bd:parameters/vnf-bd:input</td</tr> 
-<tr id="1-1-10-16-24-19-12" class="a">
+<tr id="1-1-10-16-25-21-12" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
@@ -1421,7 +1466,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors</td>
                     </tr> 
-<tr id="1-1-10-17-25" class="a">
+<tr id="1-1-10-17-26" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1435,7 +1480,7 @@ enumeration
                        <td></td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors/vnf-bd:id</td</tr> 
-<tr id="1-1-10-17-26" class="a">
+<tr id="1-1-10-17-27" class="a">
                        <td nowrap>
                           <div id=9999 class=tier5>
                              <a class="leaf">&nbsp;</a>
@@ -1449,7 +1494,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors/vnf-bd:name</td</tr> 
-<tr id="1-1-10-17-27" class="a">
+<tr id="1-1-10-17-28" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier5">
                              <a href="#" id="p6000"
@@ -1466,7 +1511,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors/vnf-bd:host</td>
                     </tr> 
-<tr id="1-1-10-17-27-20" class="a">
+<tr id="1-1-10-17-28-22" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -1480,7 +1525,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors/vnf-bd:host/vnf-bd:setting</td</tr> 
-<tr id="1-1-10-17-27-21" class="a">
+<tr id="1-1-10-17-28-23" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -1494,7 +1539,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors/vnf-bd:host/vnf-bd:node</td</tr> 
-<tr id="1-1-10-17-28" class="a">
+<tr id="1-1-10-17-29" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier5">
                              <a href="#" id="p6000"
@@ -1511,7 +1556,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors/vnf-bd:listeners</td>
                     </tr> 
-<tr id="1-1-10-17-28-22" class="a">
+<tr id="1-1-10-17-29-24" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -1525,7 +1570,7 @@ enumeration
                        <td></td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors/vnf-bd:listeners/vnf-bd:id</td</tr> 
-<tr id="1-1-10-17-28-23" class="a">
+<tr id="1-1-10-17-29-25" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -1539,7 +1584,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors/vnf-bd:listeners/vnf-bd:instances</td</tr> 
-<tr id="1-1-10-17-28-24" class="a">
+<tr id="1-1-10-17-29-26" class="a">
                        <td nowrap>
                           <div id=9999 class=tier6>
                              <a class="leaf">&nbsp;</a>
@@ -1553,7 +1598,7 @@ enumeration
                        <td>?</td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors/vnf-bd:listeners/vnf-bd:name</td</tr> 
-<tr id="1-1-10-17-28-25" class="a">
+<tr id="1-1-10-17-29-27" class="a">
                        <td nowrap id="p4000">
                           <div id="p5000" class="tier6">
                              <a href="#" id="p6000"
@@ -1570,7 +1615,7 @@ enumeration
                     <td>current</td>
                     <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors/vnf-bd:listeners/vnf-bd:parameters</td>
                     </tr> 
-<tr id="1-1-10-17-28-25-13" class="a">
+<tr id="1-1-10-17-29-27-13" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>
@@ -1584,7 +1629,7 @@ enumeration
                        <td></td>
                        <td>current</td>
                        <td nowrap>/vnf-bd:vnf-bd/vnf-bd:proceedings/vnf-bd:monitors/vnf-bd:listeners/vnf-bd:parameters/vnf-bd:input</td</tr> 
-<tr id="1-1-10-17-28-25-14" class="a">
+<tr id="1-1-10-17-29-27-14" class="a">
                        <td nowrap>
                           <div id=9999 class=tier7>
                              <a class="leaf">&nbsp;</a>

@@ -6,12 +6,12 @@ module: vnf-bd
      +--rw author?        string
      +--rw description?   string
      +--rw experiments
-     |  +--rw trials?    uint32
-     |  +--rw tests?     uint32
-     |  +--rw methods?   uint32
+     |  +--rw trials?   uint32
+     |  +--rw tests?    uint32
      +--rw environment
      |  +--rw name?          string
      |  +--rw description?   string
+     |  +--rw deploy?        boolean
      |  +--rw plugin
      |     +--rw type?         string
      |     +--rw parameters* [input]
@@ -46,6 +46,9 @@ module: vnf-bd
      |  |  |  +--rw interface?   string
      |  |  |  +--rw type?        string
      |  |  |  +--rw address?     string
+     |  |  +--rw relationships* [type]
+     |  |  |  +--rw type      string
+     |  |  |  +--rw target?   string
      |  |  +--rw lifecycle* [workflow]
      |  |     +--rw workflow          workflows
      |  |     +--rw name?             string

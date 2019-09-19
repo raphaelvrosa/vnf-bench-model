@@ -31,11 +31,11 @@ class "experiments" as  vnf_bd_I_settings_I_experiments <<container>>
 vnf_bd_I_settings_grouping *-- "1" vnf_bd_I_settings_I_experiments 
 vnf_bd_I_settings_I_experiments : trials : uint32   = 1 
 vnf_bd_I_settings_I_experiments : tests : uint32   = 1 
-vnf_bd_I_settings_I_experiments : methods : uint32   = 1 
 class "environment" as  vnf_bd_I_settings_I_environment <<container>> 
 vnf_bd_I_settings_grouping *-- "1" vnf_bd_I_settings_I_environment 
 vnf_bd_I_settings_I_environment : name : string  
 vnf_bd_I_settings_I_environment : description : string  
+vnf_bd_I_settings_I_environment : deploy : boolean  
 class "plugin" as  vnf_bd_I_settings_I_environment_I_plugin <<container>> 
 vnf_bd_I_settings_I_environment *-- "1" vnf_bd_I_settings_I_environment_I_plugin 
 vnf_bd_I_settings_I_environment_I_plugin : type : string  
@@ -80,6 +80,10 @@ vnf_bd_I_nodes_grouping : requirements {uses}
 class "connection_points" as vnf_bd_I_nodes_I_connection_points << (L, #FF7700) list>> 
 vnf_bd_I_nodes_grouping *-- "0..N" vnf_bd_I_nodes_I_connection_points 
 vnf_bd_I_nodes_I_connection_points : connection_points {uses} 
+class "relationships" as vnf_bd_I_nodes_I_relationships << (L, #FF7700) list>> 
+vnf_bd_I_nodes_grouping *-- "0..N" vnf_bd_I_nodes_I_relationships 
+vnf_bd_I_nodes_I_relationships : +type : string  {key} 
+vnf_bd_I_nodes_I_relationships : target : string  
 class "lifecycle" as vnf_bd_I_nodes_I_lifecycle << (L, #FF7700) list>> 
 vnf_bd_I_nodes_grouping *-- "0..N" vnf_bd_I_nodes_I_lifecycle 
 vnf_bd_I_nodes_I_lifecycle : +workflow : workflows  {key} 
@@ -181,6 +185,6 @@ vnf_bd_I_vnf_bd_I_scenario --> vnf_bd_I_scenario_grouping : uses
 vnf_bd_I_vnf_bd_I_proceedings --> vnf_bd_I_proceedings_grouping : uses 
 vnf_bd_I_vnf_bd --> vnf_bd_I_vnf_bd_grouping : uses 
 center footer
- <size:20> UML Generated : 2019-09-19 14:31 </size>
+ <size:20> UML Generated : 2019-09-19 14:29 </size>
  endfooter 
 @enduml 

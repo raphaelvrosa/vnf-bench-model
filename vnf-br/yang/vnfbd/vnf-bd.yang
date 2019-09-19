@@ -49,12 +49,12 @@ module vnf-bd {
         container experiments {
             leaf trials { type uint32; default 1; }
             leaf tests { type uint32; default 1; }
-            leaf methods { type uint32; default 1; }
         }
 
         container environment {
             leaf name { type string; }
             leaf description { type string; }
+            leaf deploy { type boolean; }
             container plugin {
                 leaf type { type string; }
                 list parameters {
@@ -98,14 +98,6 @@ module vnf-bd {
         leaf interface { type string; }
         leaf type { type string; }
         leaf address { type string; }
-        /* disabled. we use connection_point_refs in links instead
-        leaf link-id { type string; }
-        leaf link-id { 
-            type leafref {
-                path "../../../links/id";
-            } 
-        }
-        */
     }
 
     grouping nodes {
@@ -120,6 +112,14 @@ module vnf-bd {
             key "id";
             uses connection_points;
         }
+
+
+        list relationships {
+            key "type";
+            leaf type { type string; }
+            leaf target { type string; }
+        }
+
 
         list lifecycle {
             key "workflow";

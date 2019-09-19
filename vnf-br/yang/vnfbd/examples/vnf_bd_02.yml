@@ -7,10 +7,10 @@ vnf-bd:
   experiments:
     trials: 1
     tests: 1 
-    methods: 1
   environment:
     name: "Execution-Environment-Alpha"
     description: "Esablishes scenario in containernet"   
+    deploy: true
     plugin: 
       type: "containernet" 
       parameters:
@@ -115,6 +115,9 @@ vnf-bd:
         type: "internal"
         image: ""
         image_format: ""
+        relationships:
+          - type: "HostedOn"
+            target: "d1"
         resources:
           cpu:
             vcpus: 1
