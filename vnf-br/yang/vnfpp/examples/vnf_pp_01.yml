@@ -1,222 +1,97 @@
-vnf-bd:
+vnf-pp:
   id: "01"
-  name: "Simple-VNF-BD"
+  name: "Simple-VNF-PP"
   version: "0.01"
   author: "VNF Developer"
-  description: "VNF-BD test scenario"
-  experiments:
-    trials: 1
-    tests: 1 
-    methods: 1
-  environment:
-    name: "Execution-Environment-Alpha"
-    description: "Esablishes scenario in containernet"   
-    plugin: 
-      type: "containernet" 
-      parameters:
-        - input: "entrypoint"
-          value: "http://127.0.0.1:7878/001/"
-  targets:
-    - id: "vnf-test-01"             
-      name: "vnf/suricata:0.1"
-      version: "0.1"      
-      author: "Test case"
-      description: "Suricata IDS"
-  scenario:
-    nodes:
-      - id: "d1"
-        type: "internal"
-        image: "gym/test:0.1"
-        image_format: "docker"
-        resources:
-          cpu:
-            vcpus: 1
-            cpu_bw: '1.0'
-            pinning: 
-          memory:
-            size: 512
-            units: "MB"
-          storage:
-            size: 2
-            units: "GB"
-            volumes: "/mnt/pcaps/:/mnt/pcaps:rw"
-        connection_points:
-          - id: "eth1"
-            interface: "ipv4"
-            type: "internal"
-            address: "172.31.1.1/24"
-            link-id: 1
-        lifecycle:
-          - workflow: "start"
-            parameters:
-              - input: "host_id"
-                value: "d1"
-              - input: "host_ip"
-                value: ""
-            implementation: "gym-agent --id {host_id} --url http://{host_ip}:8988 > gym-agent.log 2>&1 &"
-      - id: "d2"
-        type: "internal"
-        image: "vnf/suricata:0.1"
-        image_format: "docker"
-        resources:
-          cpu:
-            vcpus: 1
-            cpu_bw: '1.0'
-            pinning: 
-          memory:
-            size: 2048
-            units: "MB"
-          storage:
-            size: 2
-            units: "GB"
-        connection_points:
-          - id: "input"
-            interface: "ipv4"
-            type: "internal"
-            address: "172.31.1.2/24"
-            link-id: 1
-          - id: "output"
-            interface: "ipv4"
-            type: "internal"
-            address: "172.31.1.3/24"
-            link-id: 2
-        lifecycle:
-          - workflow: "start"
-            parameters:
-              - input: "configuration"
-                value: "small_ruleset"
-            implementation: "./start.sh {configuration}"
-      - id: "d3"
-        type: "internal"
-        image: "gym/test:0.1"
-        image_format: "docker"
-        resources:
-          cpu:
-            vcpus: 1
-            cpu_bw: "1.0"
-            pinning: 
-          memory:
-            size: 512
-            units: "MB"
-          storage:
-            size: 2
-            units: "GB"
-        connection_points:
-          - id: "eth1"
-            interface: "ipv4"
-            type: "internal"
-            address: "172.31.1.4/24"
-            link-id: 2
-        lifecycle:
-          - workflow: "start"
-            parameters:
-              - input: "host_id"
-                value: "d3"
-              - input: "host_ip"
-                value: ""
-            implementation: "gym-agent --id {host_id} --url http://{host_ip}:8988 > gym-agent.log 2>&1 &"
-      - id: "d4"
-        type: "internal"
-        image: ""
-        image_format: ""
-        resources:
-          cpu:
-            vcpus: 1
-            cpu_bw: '1.0'
-            pinning: 
-          memory:
-            size: 2048
-            units: "MB"
-          storage:
-            size: 2
-            units: "GB"
-        lifecycle:
-          - workflow: "start"
-            parameters:
-              - input: "host_id"
-                value: "d4"
-              - input: "host_ip"
-                value: ""
-            implementation: "gym-monitor --id {host_id} --url http://{host_ip}:8987"
-      - id: "d5"
-        type: "internal"
-        image: "gym/test:0.1"
-        image_format: "docker"
-        lifecycle:
-          - workflow: "start"
-            parameters:
-              - input: "host_id"
-                value: "d5"
-              - input: "host_ip"
-                value: ""
-            implementation: "gym-manager --id {host_id} --url http://{host_ip}:8989 > gym-mngr.log 2>&1 &"
-    links:
-      - id: 1
-        name: "d1-d2"
-        type: "E-Line"
-        network: "s1"
-      - id: 2
-        name: "d2-d3"
-        type: "E-Line"
-        network: "s2"
-
-  proceedings:
-    attributes:
-      - name: duration
-        value: "30"
-    agents:
-      - id: 1
-        host: 
-          setting: "internal"
-          node: "d1"
-        probers:
-          - id: 1
-            instances: 1
-            name: iperf3
-            parameters:
-              - input: client
-                value: "True"
-              - input: server
-                value: "172.31.0.4"
-              - input: port
-                value: "9015"
-              - input: protocol
-                value: "udp"
-              - input: duration
-                value: "30"
-              - input: frame_size
-                value: "512"
-              - input: rate
-                value: "1G"
-      - id: 2
-        host: 
-          setting: "internal"
-          node: "d3"
-        probers:
-          - id: 1
-            instances: 1
-            name: iperf3
-            parameters:
-              - input: client
-                value: "False"
-              - input: port
-                value: "9015"
-              - input: protocol
-                value: "udp"
-              - input: duration
-                value: "30"
-    monitors:
-      - id: 3
-        host:
-          setting: "external"
-          node: "d2"
-        listeners:
-          - id: 1
-            name: docker
-            parameters:
-              - input: target
-                value: "d2"
-              - input: interval
-                value: "1"
-              - input: duration
-                value: "30"
+  description: "VNF-PP Test"
+  timestamp: "2019-10-13T18:09:42.478884Z"
+  target:
+    id: "vnf-test-01"             
+    name: "vnf/suricata:0.1"
+    version: "0.1"      
+    author: "Test case"
+    description: "Suricata IDS"
+  reports:
+    - test: 1
+      snapshots:
+        - id: 1
+          trial: 1
+          origin: 
+            id: 1
+            host: "d1"
+            role: "agent"
+          evaluations:
+            - id: 1             
+              source:
+                id: 1
+                type: "prober"
+                name: "ping"
+                version: "1.9.4"
+                call: "ping -c 60 127.0.0.1"
+              timestamp:
+                start: "2019-05-13T18:09:42.478884Z"
+                stop: "2019-05-13T18:09:43.478884Z"
+              metrics:
+                - name: "rtt_avg"
+                  series: false
+                  type: "float"
+                  unit: "ms"
+                  value: 22.197
+                - name: "rtt_max"
+                  series: false
+                  type: "float"
+                  unit: "ms"
+                  value: 38.687
+                - name: "rtt_mdev"
+                  series: false
+                  type: "float"
+                  unit: "ms"
+                  value: 9.366
+                - name: "rtt_min"
+                  series: false
+                  type: "float"
+                  unit: "ms"
+                  value: 9.694
+                - name: "frame_loss"
+                  series: false
+                  type: "uint32"
+                  unit: "%"
+                  value: 0
+        - id: 2
+          trial: 1
+          origin: 
+            id: 1
+            host: "d4"
+            role: "monitor"
+          evaluations:
+            - id: 1
+              source: 
+                id: 1
+                type: "listener"
+                name: "docker-py"
+                version: "1.9.4"
+                call: "docker-py -i 1 -t 60"
+              timestamp:
+                start: "2019-05-13T18:09:42.478884Z"
+                stop: "2019-05-13T18:09:43.478884Z"
+              metrics:
+                - name: "cpu_percent"
+                  series: true
+                  type: "float"
+                  unit: "%"
+                  value:
+                    - 98.6
+                    - 96.8
+                    - 97.3
+                    - 99.1
+                    - 100.0
+                - name: "mem_percent"
+                  series: true
+                  type: "float"
+                  unit: "%"
+                  value:
+                    - 38.6
+                    - 36.8
+                    - 37.3
+                    - 39.1
+                    - 40.0

@@ -16,7 +16,7 @@ def check_against_model(yaml_path):
     model.
     """
     with open(yaml_path, "r") as f:
-        vnf_pp_data = yaml.load(f)
+        vnf_pp_data = yaml.load(f, Loader=yaml.FullLoader)
         vnf_pp_model = pybindJSON.loads_ietf(
             vnf_pp_data, vnf_pp, MODEL_NAME)
         #  print(ped_model.ped.name)  # example how to use model
