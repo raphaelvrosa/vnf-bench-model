@@ -11,6 +11,15 @@ module vnf-pp {
         reference "https://datatracker.ietf.org/doc/draft-rosa-bmwg-vnfbench/"; 
     }
 
+    grouping timeseries {
+        leaf timestamp { type uint32; }
+        leaf value {
+            type decimal64{
+               fraction-digits 6;
+            }
+        }
+    }
+
     grouping settings {
         leaf id { type string; }
         leaf name { type string; }
@@ -29,11 +38,54 @@ module vnf-pp {
     }
 
     grouping metric {
+        description "Metric that holds the recorded benchmarking results, can be
+        a single value (scalar), a list of values (vector), a single value (string-scalar),
+        a list of values (string-vector), or a list of timeseries data (timeseries-vector).";
         leaf name { type string; }
-        leaf value { type string; }
-        leaf type { type string; }
-        leaf series { type boolean; }
         leaf unit { type string; }
+        choice value {
+            case scalar {
+                leaf scalar {
+                    type decimal64{
+                        fraction-digits 6;
+                    }
+                    mandatory true;
+                    description "Single numeric value";
+                }
+            }
+            case vector {
+                leaf-list vector {
+                    type decimal64{
+                        fraction-digits 6;
+                    }
+                    min-elements 1;
+                    description "List of numeric values";
+                }
+            }
+            case string-scalar {
+                leaf string-scalar {
+                    type string;
+                    mandatory true;
+                    description "Single string value";
+                }
+            }
+            case string-vector {
+                leaf-list string-vector {
+                    type string;
+                    min-elements 1;
+                    description "List of string values";
+                }
+            }
+            case timeseries-vector {
+                list timeseries-vector {
+                    key "timestamp";
+                    uses timeseries;
+                    description "List of timeseries values";
+                }
+            }
+            mandatory true;
+            description "Choice: scalar, vector, string-scalar, string-vector, timeseries-vector";
+        }
     }
 
     grouping evaluation {
