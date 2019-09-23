@@ -11,6 +11,15 @@ module vnf-pp {
         reference "https://datatracker.ietf.org/doc/draft-rosa-bmwg-vnfbench/"; 
     }
 
+    grouping timeseries {
+        leaf timestamp { type uint32; }
+        leaf value {
+            type decimal64{
+               fraction-digits 6;
+            }
+        }
+    }
+
     grouping settings {
         leaf id { type string; }
         leaf name { type string; }
@@ -29,9 +38,11 @@ module vnf-pp {
     }
 
     grouping metric {
+        description "Metric that holds the recorded benchmarking results, can be
+        a single value (scalar), a list of values (vector), a single value (string-scalar),
+        a list of values (string-vector), or a list of timeseries data (timeseries-vector).";
         leaf name { type string; }
         leaf unit { type string; }
-        
         choice value {
             case scalar {
                 leaf scalar {
@@ -65,6 +76,15 @@ module vnf-pp {
                     description "List of string values";
                 }
             }
+            case timeseries-vector {
+                list timeseries-vector {
+                    key "timestamp";
+                    uses timeseries;
+                    description "List of timeseries values";
+                }
+            }
+            mandatory true;
+            description "Choice: scalar, vector, string-scalar, string-vector, timeseries-vector";
         }
     }
 

@@ -15,6 +15,9 @@ Title vnf-pp
 note top of vnf_pp_vnf_pp : <b>Namespace: </b> urn:ietf:params:xml:ns:yang:vnf-pp \n<b>Prefix: </b> vnf-pp \n<b>Organization : </b>\nIETF/BMWG \n<b>Contact : </b>\nManuel Peuster <peuster@mail.uni-paderborn.de>, Raphael Vicente Rosa <raphaelvrosa@gmail.com> \n<b>Revision : </b> 2019-08-13 \n
 package "vnf-pp:vnf-pp" as vnf_pp_vnf_pp { 
 class "vnf-pp" as vnf_pp << (M, #33CCFF) module>> 
+class "timeseries" as vnf_pp_I_timeseries_grouping <<(G,Lime) grouping>> 
+vnf_pp_I_timeseries_grouping : timestamp : uint32  
+vnf_pp_I_timeseries_grouping : value : decimal64  
 class "settings" as vnf_pp_I_settings_grouping <<(G,Lime) grouping>> 
 vnf_pp_I_settings_grouping : id : string  
 vnf_pp_I_settings_grouping : name : string  
@@ -45,6 +48,11 @@ vnf_pp_I_metric_I_value_I_string_scalar_case : string-scalar : string   {mandato
 class "string-vector" as vnf_pp_I_metric_I_value_I_string_vector_case <<case>>
 vnf_pp_I_metric_I_value .. vnf_pp_I_metric_I_value_I_string_vector_case  : choice value
 vnf_pp_I_metric_I_value_I_string_vector_case : string-vector []: string 
+class "timeseries-vector" as vnf_pp_I_metric_I_value_I_timeseries_vector_case <<case>>
+vnf_pp_I_metric_I_value .. vnf_pp_I_metric_I_value_I_timeseries_vector_case  : choice value
+class "timeseries-vector" as vnf_pp_I_metric_I_value_I_timeseries_vector_I_timeseries_vector << (L, #FF7700) list>> 
+vnf_pp_I_metric_I_value_I_timeseries_vector_case *-- "0..N" vnf_pp_I_metric_I_value_I_timeseries_vector_I_timeseries_vector 
+vnf_pp_I_metric_I_value_I_timeseries_vector_I_timeseries_vector : timeseries {uses} 
 class "evaluation" as vnf_pp_I_evaluation_grouping <<(G,Lime) grouping>> 
 vnf_pp_I_evaluation_grouping : id : string  
 class "source" as  vnf_pp_I_evaluation_I_source <<container>> 
@@ -90,6 +98,7 @@ vnf_pp *-- "1" vnf_pp_I_vnf_pp
 vnf_pp_I_vnf_pp : vnf-pp {uses} 
 } 
 
+vnf_pp_I_metric_I_value_I_timeseries_vector_I_timeseries_vector --> vnf_pp_I_timeseries_grouping : uses 
 vnf_pp_I_evaluation_I_metrics --> vnf_pp_I_metric_grouping : uses 
 vnf_pp_I_snapshot_I_evaluations --> vnf_pp_I_evaluation_grouping : uses 
 vnf_pp_I_report_I_snapshots --> vnf_pp_I_snapshot_grouping : uses 
@@ -98,6 +107,6 @@ vnf_pp_I_vnf_pp_I_target --> vnf_pp_I_target_grouping : uses
 vnf_pp_I_vnf_pp_I_reports --> vnf_pp_I_report_grouping : uses 
 vnf_pp_I_vnf_pp --> vnf_pp_I_vnf_pp_grouping : uses 
 center footer
- <size:20> UML Generated : 2019-09-23 13:16 </size>
+ <size:20> UML Generated : 2019-09-23 13:47 </size>
  endfooter 
 @enduml 

@@ -89,3 +89,12 @@ vnf-pp:
                   string-vector:
                     - "output1"
                     - "output2"
+                - name: "example_time_series"
+                  unit: "time series tuples"
+                  timeseries-vector:
+                    - timestamp: 1235
+                      value: 0.123
+                    - timestamp: 1236
+                      value: 123.5
+                    - timestamp: 1237
+                      value: 1232
