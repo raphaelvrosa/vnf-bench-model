@@ -35,10 +35,10 @@ vnf_pp_I_metric_grouping : type : string
 vnf_pp_I_metric_grouping : series : boolean  
 vnf_pp_I_metric_grouping : unit : string  
 class "evaluation" as vnf_pp_I_evaluation_grouping <<(G,Lime) grouping>> 
-vnf_pp_I_evaluation_grouping : id : uint32  
+vnf_pp_I_evaluation_grouping : id : string  
 class "source" as  vnf_pp_I_evaluation_I_source <<container>> 
 vnf_pp_I_evaluation_grouping *-- "1" vnf_pp_I_evaluation_I_source 
-vnf_pp_I_evaluation_I_source : id : uint32  
+vnf_pp_I_evaluation_I_source : id : string  
 vnf_pp_I_evaluation_I_source : name : string  
 vnf_pp_I_evaluation_I_source : type : string  
 vnf_pp_I_evaluation_I_source : version : string  
@@ -51,7 +51,7 @@ class "metrics" as vnf_pp_I_evaluation_I_metrics << (L, #FF7700) list>>
 vnf_pp_I_evaluation_grouping *-- "0..N" vnf_pp_I_evaluation_I_metrics 
 vnf_pp_I_evaluation_I_metrics : metric {uses} 
 class "snapshot" as vnf_pp_I_snapshot_grouping <<(G,Lime) grouping>> 
-vnf_pp_I_snapshot_grouping : id : uint32  
+vnf_pp_I_snapshot_grouping : id : string  
 vnf_pp_I_snapshot_grouping : trial : uint32  
 class "origin" as  vnf_pp_I_snapshot_I_origin <<container>> 
 vnf_pp_I_snapshot_grouping *-- "1" vnf_pp_I_snapshot_I_origin 
@@ -87,6 +87,6 @@ vnf_pp_I_vnf_pp_I_target --> vnf_pp_I_target_grouping : uses
 vnf_pp_I_vnf_pp_I_reports --> vnf_pp_I_report_grouping : uses 
 vnf_pp_I_vnf_pp --> vnf_pp_I_vnf_pp_grouping : uses 
 center footer
- <size:20> UML Generated : 2019-09-19 11:51 </size>
+ <size:20> UML Generated : 2019-09-23 12:42 </size>
  endfooter 
 @enduml 

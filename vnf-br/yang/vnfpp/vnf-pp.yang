@@ -37,10 +37,10 @@ module vnf-pp {
     }
 
     grouping evaluation {
-        leaf id { type uint32; }
+        leaf id { type string; }
 
         container source {
-            leaf id { type uint32; }
+            leaf id { type string; }
             leaf name { type string; }
             leaf type { type string; }
             leaf version { type string; }
@@ -60,7 +60,7 @@ module vnf-pp {
 
 
     grouping snapshot {
-        leaf id { type uint32; }
+        leaf id { type string; }
         leaf trial { type uint32; }
 
         container origin {
