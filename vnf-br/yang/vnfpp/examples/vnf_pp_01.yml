@@ -33,30 +33,23 @@ vnf-pp:
                 stop: "2019-05-13T18:09:43.478884Z"
               metrics:
                 - name: "rtt_avg"
-                  series: false
-                  type: "float"
                   unit: "ms"
-                  value: 22.197
+                  scalar: 22.197
                 - name: "rtt_max"
-                  series: false
-                  type: "float"
                   unit: "ms"
-                  value: 38.687
+                  scalar: 38.687
                 - name: "rtt_mdev"
-                  series: false
-                  type: "float"
                   unit: "ms"
-                  value: 9.366
+                  scalar: 9.366
                 - name: "rtt_min"
-                  series: false
-                  type: "float"
                   unit: "ms"
-                  value: 9.694
+                  scalar: 9.694
                 - name: "frame_loss"
-                  series: false
-                  type: "uint32"
                   unit: "%"
-                  value: 0
+                  scalar: 0
+                - name: "example_string_metric"
+                  unit: "my unite"
+                  string-scalar: "this is an example"
         - id: 2
           trial: 1
           origin: 
@@ -76,22 +69,23 @@ vnf-pp:
                 stop: "2019-05-13T18:09:43.478884Z"
               metrics:
                 - name: "cpu_percent"
-                  series: true
-                  type: "float"
                   unit: "%"
-                  value:
+                  vector:
                     - 98.6
                     - 96.8
                     - 97.3
                     - 99.1
                     - 100.0
                 - name: "mem_percent"
-                  series: true
-                  type: "float"
                   unit: "%"
-                  value:
+                  vector:
                     - 38.6
                     - 36.8
                     - 37.3
                     - 39.1
                     - 40.0
+                - name: "example_string_metric"
+                  unit: "my unit"
+                  string-vector:
+                    - "output1"
+                    - "output2"

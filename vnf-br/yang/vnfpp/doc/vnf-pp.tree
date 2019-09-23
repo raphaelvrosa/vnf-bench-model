@@ -33,8 +33,14 @@ module: vnf-pp
               |  +--rw start?   string
               |  +--rw stop?    string
               +--rw metrics* [name]
-                 +--rw name      string
-                 +--rw value?    string
-                 +--rw type?     string
-                 +--rw series?   boolean
-                 +--rw unit?     string
+                 +--rw name                   string
+                 +--rw unit?                  string
+                 +--rw (value)?
+                    +--:(scalar)
+                    |  +--rw scalar           decimal64
+                    +--:(vector)
+                    |  +--rw vector*          decimal64
+                    +--:(string-scalar)
+                    |  +--rw string-scalar    string
+                    +--:(string-vector)
+                       +--rw string-vector*   string

@@ -30,10 +30,21 @@ vnf_pp_I_target_grouping : author : string
 vnf_pp_I_target_grouping : description : string  
 class "metric" as vnf_pp_I_metric_grouping <<(G,Lime) grouping>> 
 vnf_pp_I_metric_grouping : name : string  
-vnf_pp_I_metric_grouping : value : string  
-vnf_pp_I_metric_grouping : type : string  
-vnf_pp_I_metric_grouping : series : boolean  
 vnf_pp_I_metric_grouping : unit : string  
+class "value" as vnf_pp_I_metric_I_value <<choice>> 
+vnf_pp_I_metric_grouping .. vnf_pp_I_metric_I_value : choice 
+class "scalar" as vnf_pp_I_metric_I_value_I_scalar_case <<case>>
+vnf_pp_I_metric_I_value .. vnf_pp_I_metric_I_value_I_scalar_case  : choice value
+vnf_pp_I_metric_I_value_I_scalar_case : scalar : decimal64   {mandatory}
+class "vector" as vnf_pp_I_metric_I_value_I_vector_case <<case>>
+vnf_pp_I_metric_I_value .. vnf_pp_I_metric_I_value_I_vector_case  : choice value
+vnf_pp_I_metric_I_value_I_vector_case : vector []: decimal64 
+class "string-scalar" as vnf_pp_I_metric_I_value_I_string_scalar_case <<case>>
+vnf_pp_I_metric_I_value .. vnf_pp_I_metric_I_value_I_string_scalar_case  : choice value
+vnf_pp_I_metric_I_value_I_string_scalar_case : string-scalar : string   {mandatory}
+class "string-vector" as vnf_pp_I_metric_I_value_I_string_vector_case <<case>>
+vnf_pp_I_metric_I_value .. vnf_pp_I_metric_I_value_I_string_vector_case  : choice value
+vnf_pp_I_metric_I_value_I_string_vector_case : string-vector []: string 
 class "evaluation" as vnf_pp_I_evaluation_grouping <<(G,Lime) grouping>> 
 vnf_pp_I_evaluation_grouping : id : string  
 class "source" as  vnf_pp_I_evaluation_I_source <<container>> 
@@ -87,6 +98,6 @@ vnf_pp_I_vnf_pp_I_target --> vnf_pp_I_target_grouping : uses
 vnf_pp_I_vnf_pp_I_reports --> vnf_pp_I_report_grouping : uses 
 vnf_pp_I_vnf_pp --> vnf_pp_I_vnf_pp_grouping : uses 
 center footer
- <size:20> UML Generated : 2019-09-23 12:42 </size>
+ <size:20> UML Generated : 2019-09-23 13:16 </size>
  endfooter 
 @enduml 

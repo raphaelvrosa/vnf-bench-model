@@ -30,10 +30,42 @@ module vnf-pp {
 
     grouping metric {
         leaf name { type string; }
-        leaf value { type string; }
-        leaf type { type string; }
-        leaf series { type boolean; }
         leaf unit { type string; }
+        
+        choice value {
+            case scalar {
+                leaf scalar {
+                    type decimal64{
+                        fraction-digits 6;
+                    }
+                    mandatory true;
+                    description "Single numeric value";
+                }
+            }
+            case vector {
+                leaf-list vector {
+                    type decimal64{
+                        fraction-digits 6;
+                    }
+                    min-elements 1;
+                    description "List of numeric values";
+                }
+            }
+            case string-scalar {
+                leaf string-scalar {
+                    type string;
+                    mandatory true;
+                    description "Single string value";
+                }
+            }
+            case string-vector {
+                leaf-list string-vector {
+                    type string;
+                    min-elements 1;
+                    description "List of string values";
+                }
+            }
+        }
     }
 
     grouping evaluation {

@@ -752,7 +752,7 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
   the container is represented as a class variable - with a specific
   YANG type.
   """
-  __slots__ = ('_path_helper', '_extmethods', '__name','__value','__type','__series','__unit',)
+  __slots__ = ('_path_helper', '_extmethods', '__name','__unit','__scalar','__vector','__string_scalar','__string_vector',)
 
   _yang_name = 'metrics'
 
@@ -764,10 +764,11 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
 
     self._extmethods = False
     self.__name = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
-    self.__value = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
-    self.__type = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
-    self.__series = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="series", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='boolean', is_config=True)
     self.__unit = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="unit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
+    self.__scalar = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=6), is_leaf=True, yang_name="scalar", parent=self, choice=('value', 'scalar'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='decimal64', is_config=True)
+    self.__vector = YANGDynClass(unique=True, base=TypedListType(allowed_type=RestrictedPrecisionDecimalType(precision=6)), is_leaf=False, yang_name="vector", parent=self, choice=('value', 'vector'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='decimal64', is_config=True)
+    self.__string_scalar = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="string-scalar", parent=self, choice=('value', 'string-scalar'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
+    self.__string_vector = YANGDynClass(unique=True, base=TypedListType(allowed_type=six.text_type), is_leaf=False, yang_name="string-vector", parent=self, choice=('value', 'string-vector'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
 
     load = kwargs.pop("load", None)
     if args:
@@ -834,105 +835,6 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
     self.__name = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="name", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, is_keyval=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
 
 
-  def _get_value(self):
-    """
-    Getter method for value, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/value (string)
-    """
-    return self.__value
-      
-  def _set_value(self, v, load=False):
-    """
-    Setter method for value, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/value (string)
-    If this variable is read-only (config: false) in the
-    source YANG file, then _set_value is considered as a private
-    method. Backends looking to populate this variable should
-    do so via calling thisObj._set_value() directly.
-    """
-    if hasattr(v, "_utype"):
-      v = v._utype(v)
-    try:
-      t = YANGDynClass(v,base=six.text_type, is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
-    except (TypeError, ValueError):
-      raise ValueError({
-          'error-string': """value must be of a type compatible with string""",
-          'defined-type': "string",
-          'generated-type': """YANGDynClass(base=six.text_type, is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)""",
-        })
-
-    self.__value = t
-    if hasattr(self, '_set'):
-      self._set()
-
-  def _unset_value(self):
-    self.__value = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="value", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
-
-
-  def _get_type(self):
-    """
-    Getter method for type, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/type (string)
-    """
-    return self.__type
-      
-  def _set_type(self, v, load=False):
-    """
-    Setter method for type, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/type (string)
-    If this variable is read-only (config: false) in the
-    source YANG file, then _set_type is considered as a private
-    method. Backends looking to populate this variable should
-    do so via calling thisObj._set_type() directly.
-    """
-    if hasattr(v, "_utype"):
-      v = v._utype(v)
-    try:
-      t = YANGDynClass(v,base=six.text_type, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
-    except (TypeError, ValueError):
-      raise ValueError({
-          'error-string': """type must be of a type compatible with string""",
-          'defined-type': "string",
-          'generated-type': """YANGDynClass(base=six.text_type, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)""",
-        })
-
-    self.__type = t
-    if hasattr(self, '_set'):
-      self._set()
-
-  def _unset_type(self):
-    self.__type = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="type", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
-
-
-  def _get_series(self):
-    """
-    Getter method for series, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/series (boolean)
-    """
-    return self.__series
-      
-  def _set_series(self, v, load=False):
-    """
-    Setter method for series, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/series (boolean)
-    If this variable is read-only (config: false) in the
-    source YANG file, then _set_series is considered as a private
-    method. Backends looking to populate this variable should
-    do so via calling thisObj._set_series() directly.
-    """
-    if hasattr(v, "_utype"):
-      v = v._utype(v)
-    try:
-      t = YANGDynClass(v,base=YANGBool, is_leaf=True, yang_name="series", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='boolean', is_config=True)
-    except (TypeError, ValueError):
-      raise ValueError({
-          'error-string': """series must be of a type compatible with boolean""",
-          'defined-type': "boolean",
-          'generated-type': """YANGDynClass(base=YANGBool, is_leaf=True, yang_name="series", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='boolean', is_config=True)""",
-        })
-
-    self.__series = t
-    if hasattr(self, '_set'):
-      self._set()
-
-  def _unset_series(self):
-    self.__series = YANGDynClass(base=YANGBool, is_leaf=True, yang_name="series", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='boolean', is_config=True)
-
-
   def _get_unit(self):
     """
     Getter method for unit, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/unit (string)
@@ -965,14 +867,163 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
   def _unset_unit(self):
     self.__unit = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="unit", parent=self, path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
 
+
+  def _get_scalar(self):
+    """
+    Getter method for scalar, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/scalar (decimal64)
+
+    YANG Description: Single numeric value
+    """
+    return self.__scalar
+      
+  def _set_scalar(self, v, load=False):
+    """
+    Setter method for scalar, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/scalar (decimal64)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_scalar is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_scalar() directly.
+
+    YANG Description: Single numeric value
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=RestrictedPrecisionDecimalType(precision=6), is_leaf=True, yang_name="scalar", parent=self, choice=('value', 'scalar'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='decimal64', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """scalar must be of a type compatible with decimal64""",
+          'defined-type': "decimal64",
+          'generated-type': """YANGDynClass(base=RestrictedPrecisionDecimalType(precision=6), is_leaf=True, yang_name="scalar", parent=self, choice=('value', 'scalar'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='decimal64', is_config=True)""",
+        })
+
+    self.__scalar = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_scalar(self):
+    self.__scalar = YANGDynClass(base=RestrictedPrecisionDecimalType(precision=6), is_leaf=True, yang_name="scalar", parent=self, choice=('value', 'scalar'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='decimal64', is_config=True)
+
+
+  def _get_vector(self):
+    """
+    Getter method for vector, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/vector (decimal64)
+
+    YANG Description: List of numeric values
+    """
+    return self.__vector
+      
+  def _set_vector(self, v, load=False):
+    """
+    Setter method for vector, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/vector (decimal64)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_vector is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_vector() directly.
+
+    YANG Description: List of numeric values
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,unique=True, base=TypedListType(allowed_type=RestrictedPrecisionDecimalType(precision=6)), is_leaf=False, yang_name="vector", parent=self, choice=('value', 'vector'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='decimal64', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """vector must be of a type compatible with decimal64""",
+          'defined-type': "decimal64",
+          'generated-type': """YANGDynClass(unique=True, base=TypedListType(allowed_type=RestrictedPrecisionDecimalType(precision=6)), is_leaf=False, yang_name="vector", parent=self, choice=('value', 'vector'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='decimal64', is_config=True)""",
+        })
+
+    self.__vector = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_vector(self):
+    self.__vector = YANGDynClass(unique=True, base=TypedListType(allowed_type=RestrictedPrecisionDecimalType(precision=6)), is_leaf=False, yang_name="vector", parent=self, choice=('value', 'vector'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='decimal64', is_config=True)
+
+
+  def _get_string_scalar(self):
+    """
+    Getter method for string_scalar, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/string_scalar (string)
+
+    YANG Description: Single string value
+    """
+    return self.__string_scalar
+      
+  def _set_string_scalar(self, v, load=False):
+    """
+    Setter method for string_scalar, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/string_scalar (string)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_string_scalar is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_string_scalar() directly.
+
+    YANG Description: Single string value
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,base=six.text_type, is_leaf=True, yang_name="string-scalar", parent=self, choice=('value', 'string-scalar'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """string_scalar must be of a type compatible with string""",
+          'defined-type': "string",
+          'generated-type': """YANGDynClass(base=six.text_type, is_leaf=True, yang_name="string-scalar", parent=self, choice=('value', 'string-scalar'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)""",
+        })
+
+    self.__string_scalar = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_string_scalar(self):
+    self.__string_scalar = YANGDynClass(base=six.text_type, is_leaf=True, yang_name="string-scalar", parent=self, choice=('value', 'string-scalar'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
+
+
+  def _get_string_vector(self):
+    """
+    Getter method for string_vector, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/string_vector (string)
+
+    YANG Description: List of string values
+    """
+    return self.__string_vector
+      
+  def _set_string_vector(self, v, load=False):
+    """
+    Setter method for string_vector, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/string_vector (string)
+    If this variable is read-only (config: false) in the
+    source YANG file, then _set_string_vector is considered as a private
+    method. Backends looking to populate this variable should
+    do so via calling thisObj._set_string_vector() directly.
+
+    YANG Description: List of string values
+    """
+    if hasattr(v, "_utype"):
+      v = v._utype(v)
+    try:
+      t = YANGDynClass(v,unique=True, base=TypedListType(allowed_type=six.text_type), is_leaf=False, yang_name="string-vector", parent=self, choice=('value', 'string-vector'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
+    except (TypeError, ValueError):
+      raise ValueError({
+          'error-string': """string_vector must be of a type compatible with string""",
+          'defined-type': "string",
+          'generated-type': """YANGDynClass(unique=True, base=TypedListType(allowed_type=six.text_type), is_leaf=False, yang_name="string-vector", parent=self, choice=('value', 'string-vector'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)""",
+        })
+
+    self.__string_vector = t
+    if hasattr(self, '_set'):
+      self._set()
+
+  def _unset_string_vector(self):
+    self.__string_vector = YANGDynClass(unique=True, base=TypedListType(allowed_type=six.text_type), is_leaf=False, yang_name="string-vector", parent=self, choice=('value', 'string-vector'), path_helper=self._path_helper, extmethods=self._extmethods, register_paths=True, namespace='urn:ietf:params:xml:ns:yang:vnf-pp', defining_module='vnf-pp', yang_type='string', is_config=True)
+
   name = __builtin__.property(_get_name, _set_name)
-  value = __builtin__.property(_get_value, _set_value)
-  type = __builtin__.property(_get_type, _set_type)
-  series = __builtin__.property(_get_series, _set_series)
   unit = __builtin__.property(_get_unit, _set_unit)
+  scalar = __builtin__.property(_get_scalar, _set_scalar)
+  vector = __builtin__.property(_get_vector, _set_vector)
+  string_scalar = __builtin__.property(_get_string_scalar, _set_string_scalar)
+  string_vector = __builtin__.property(_get_string_vector, _set_string_vector)
 
-
-  _pyangbind_elements = OrderedDict([('name', name), ('value', value), ('type', type), ('series', series), ('unit', unit), ])
+  __choices__ = {'value': {'scalar': ['scalar'], 'vector': ['vector'], 'string-scalar': ['string_scalar'], 'string-vector': ['string_vector']}}
+  _pyangbind_elements = OrderedDict([('name', name), ('unit', unit), ('scalar', scalar), ('vector', vector), ('string_scalar', string_scalar), ('string_vector', string_vector), ])
 
 
 class yc_evaluations_vnf_pp__vnf_pp_reports_snapshots_evaluations(PybindBase):
