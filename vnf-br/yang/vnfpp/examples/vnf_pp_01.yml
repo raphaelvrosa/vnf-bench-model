@@ -34,22 +34,24 @@ vnf-pp:
               metrics:
                 - name: "rtt_avg"
                   unit: "ms"
-                  scalar: 22.197
+                  type: "float"
+                  scalar: "22.197"
                 - name: "rtt_max"
                   unit: "ms"
+                  type: "float"
                   scalar: 38.687
                 - name: "rtt_mdev"
                   unit: "ms"
+                  type: "float"
                   scalar: 9.366
                 - name: "rtt_min"
                   unit: "ms"
+                  type: "float"
                   scalar: 9.694
                 - name: "frame_loss"
+                  type: "uint32"
                   unit: "%"
                   scalar: 0
-                - name: "example_string_metric"
-                  unit: "my unite"
-                  string-scalar: "this is an example"
         - id: 2
           trial: 1
           origin: 
@@ -70,31 +72,28 @@ vnf-pp:
               metrics:
                 - name: "cpu_percent"
                   unit: "%"
+                  type: "float"
                   vector:
-                    - 98.6
-                    - 96.8
-                    - 97.3
-                    - 99.1
-                    - 100.0
+                    - "98.6"
+                    - "96.8"
+                    - "97.3"
+                    - "99.1"
+                    - "100.0"
                 - name: "mem_percent"
                   unit: "%"
+                  type: "float"
                   vector:
-                    - 38.6
-                    - 36.8
-                    - 37.3
-                    - 39.1
-                    - 40.0
-                - name: "example_string_metric"
-                  unit: "my unit"
-                  string-vector:
-                    - "output1"
-                    - "output2"
+                    - "38.6"
+                    - "36.8"
+                    - "37.3"
+                    - "39.1"
+                    - "40.0"
                 - name: "example_time_series"
                   unit: "time series tuples"
-                  timeseries-vector:
-                    - timestamp: 1235
-                      value: 0.123
-                    - timestamp: 1236
-                      value: 123.5
-                    - timestamp: 1237
-                      value: 1232
+                  type: "float"
+                  tuple-vector:
+                    - key: "1235"
+                      value: "0.123"
+                    - key: "1236"
+                      value: "123.5"
+

@@ -33,18 +33,15 @@ module: vnf-pp
               |  +--rw start?   string
               |  +--rw stop?    string
               +--rw metrics* [name]
-                 +--rw name                       string
-                 +--rw unit?                      string
+                 +--rw name                  string
+                 +--rw unit?                 string
+                 +--rw type                  string
                  +--rw (value)
                     +--:(scalar)
-                    |  +--rw scalar               decimal64
+                    |  +--rw scalar          string
                     +--:(vector)
-                    |  +--rw vector*              decimal64
-                    +--:(string-scalar)
-                    |  +--rw string-scalar        string
-                    +--:(string-vector)
-                    |  +--rw string-vector*       string
-                    +--:(timeseries-vector)
-                       +--rw timeseries-vector* [timestamp]
-                          +--rw timestamp    uint32
-                          +--rw value?       decimal64
+                    |  +--rw vector*         string
+                    +--:(tuple-vector)
+                       +--rw tuple-vector* [key]
+                          +--rw key      string
+                          +--rw value?   string
