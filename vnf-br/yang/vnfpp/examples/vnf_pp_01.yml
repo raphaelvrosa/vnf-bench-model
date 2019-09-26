@@ -5,12 +5,6 @@ vnf-pp:
   author: "VNF Developer"
   description: "VNF-PP Test"
   timestamp: "2019-10-13T18:09:42.478884Z"
-  target:
-    id: "vnf-test-01"             
-    name: "vnf/suricata:0.1"
-    version: "0.1"      
-    author: "Test case"
-    description: "Suricata IDS"
   reports:
     - test: 1
       snapshots:

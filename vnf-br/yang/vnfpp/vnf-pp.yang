@@ -25,14 +25,6 @@ module vnf-pp {
         leaf timestamp { type string; }
     }
 
-    grouping target {
-        leaf id { type string; }
-        leaf name { type string; }
-        leaf version { type string; }
-        leaf author { type string; }
-        leaf description { type string; }
-    }
-
     grouping metric {
         description "Metric that holds the recorded benchmarking results, can be
         a single value (scalar), a list of values (vector), or a list of key/value
@@ -124,10 +116,6 @@ module vnf-pp {
         description "Grouping for a single vnf-pp";
 
         uses settings;
-
-        container target {
-            uses target;
-        }
 
         list reports {
             key "test";

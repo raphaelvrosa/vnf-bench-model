@@ -116,7 +116,8 @@ vnf-bd:
         image: ""
         image_format: ""
         relationships:
-          - type: "HostedOn"
+          - name: "d4-inside-d1"
+            type: "HostedOn"
             target: "d1"
         resources:
           cpu:
@@ -154,14 +155,14 @@ vnf-bd:
         name: "d1-d2"
         type: "E-Line"
         network: "s1"
-        connection_point_refs:
+        connection_points:
           - d1:eth1
           - d2:input
       - id: 2
         name: "d2-d3"
         type: "E-Line"
         network: "s2"
-        connection_point_refs:
+        connection_points:
           - d2:output
           - d3:eth1
 

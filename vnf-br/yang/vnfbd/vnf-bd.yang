@@ -113,9 +113,9 @@ module vnf-bd {
             uses connection_points;
         }
 
-
         list relationships {
-            key "type";
+            key "name";
+            leaf name { type string; }
             leaf type { type string; }
             leaf target { type string; }
         }
@@ -141,12 +141,12 @@ module vnf-bd {
     
     }
 
-    grouping links {
+    grouping link {
         leaf id { type string; }
         leaf name { type string; }
         leaf type { type string; }
         leaf network { type string; }
-        leaf-list connection_point_refs { 
+        leaf-list connection_points { 
             type leafref {
                 path "../../nodes/connection_points/id";
             } 
@@ -161,7 +161,7 @@ module vnf-bd {
 
         list links {
             key "id";
-            uses links;
+            uses link;
         }
 
         list policies {

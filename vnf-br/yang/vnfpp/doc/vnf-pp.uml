@@ -25,12 +25,6 @@ vnf_pp_I_settings_grouping : version : string
 vnf_pp_I_settings_grouping : author : string  
 vnf_pp_I_settings_grouping : description : string  
 vnf_pp_I_settings_grouping : timestamp : string  
-class "target" as vnf_pp_I_target_grouping <<(G,Lime) grouping>> 
-vnf_pp_I_target_grouping : id : string  
-vnf_pp_I_target_grouping : name : string  
-vnf_pp_I_target_grouping : version : string  
-vnf_pp_I_target_grouping : author : string  
-vnf_pp_I_target_grouping : description : string  
 class "metric" as vnf_pp_I_metric_grouping <<(G,Lime) grouping>> 
 vnf_pp_I_metric_grouping : name : string  
 vnf_pp_I_metric_grouping : unit : string  
@@ -82,9 +76,6 @@ vnf_pp_I_report_grouping *-- "0..N" vnf_pp_I_report_I_snapshots
 vnf_pp_I_report_I_snapshots : snapshot {uses} 
 class "vnf-pp" as vnf_pp_I_vnf_pp_grouping <<(G,Lime) grouping>> 
 vnf_pp_I_vnf_pp_grouping : settings {uses} 
-class "target" as  vnf_pp_I_vnf_pp_I_target <<container>> 
-vnf_pp_I_vnf_pp_grouping *-- "1" vnf_pp_I_vnf_pp_I_target 
-vnf_pp_I_vnf_pp_I_target : target {uses} 
 class "reports" as vnf_pp_I_vnf_pp_I_reports << (L, #FF7700) list>> 
 vnf_pp_I_vnf_pp_grouping *-- "0..N" vnf_pp_I_vnf_pp_I_reports 
 vnf_pp_I_vnf_pp_I_reports : report {uses} 
@@ -98,10 +89,9 @@ vnf_pp_I_evaluation_I_metrics --> vnf_pp_I_metric_grouping : uses
 vnf_pp_I_snapshot_I_evaluations --> vnf_pp_I_evaluation_grouping : uses 
 vnf_pp_I_report_I_snapshots --> vnf_pp_I_snapshot_grouping : uses 
 vnf_pp_I_vnf_pp_grouping --> vnf_pp_I_settings_grouping : uses 
-vnf_pp_I_vnf_pp_I_target --> vnf_pp_I_target_grouping : uses 
 vnf_pp_I_vnf_pp_I_reports --> vnf_pp_I_report_grouping : uses 
 vnf_pp_I_vnf_pp --> vnf_pp_I_vnf_pp_grouping : uses 
 center footer
- <size:20> UML Generated : 2019-09-25 07:16 </size>
+ <size:20> UML Generated : 2019-09-26 11:01 </size>
  endfooter 
 @enduml 

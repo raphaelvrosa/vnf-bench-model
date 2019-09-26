@@ -4,6 +4,7 @@ vnf-bd:vnf-bd:
   environment:
     deploy: true
     description: vim-emu execution platform on fgcn-peuster
+    deploy: true
     name: default
     plugin:
       parameters:
@@ -75,17 +76,17 @@ vnf-bd:vnf-bd:
           value: de.upb.ns-1vnf-ids-suricata.0.1
   scenario:
     links:
-    - connection_point_refs:
+    - connection_points:
       - vnf0:mgmt
       - ns:mgmt
       id: mgmt-elan
       type: E-LAN
-    - connection_point_refs:
+    - connection_points:
       - mp.input:data
       - vnf0:input
       id: input-2-vnf0
       type: E-Line
-    - connection_point_refs:
+    - connection_points:
       - vnf0:output
       - mp.output:data
       id: vnf0-2-output
