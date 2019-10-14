@@ -9,7 +9,7 @@ validate:
 	pyang vnf-bd.yang -f jstree -o "$(DOC_DIR)/vnf-bd.html"
 	pyang vnf-bd.yang -f uml -o "$(DOC_DIR)/vnf-bd.uml"
 	# finally validate - Not ready yet
-	# pyang vnf-bd.yang --ietf
+	pyang vnf-bd.yang --ietf
 
 build:
 	# generate / compile python model
