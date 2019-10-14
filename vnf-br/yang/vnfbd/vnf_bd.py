@@ -26,6 +26,8 @@ class yc_experiments_vnf_bd__vnf_bd_experiments(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/experiments. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Number of trails and test to be executed
   """
   __slots__ = ('_path_helper', '_extmethods', '__trials','__tests',)
 
@@ -71,6 +73,8 @@ class yc_experiments_vnf_bd__vnf_bd_experiments(PybindBase):
   def _get_trials(self):
     """
     Getter method for trials, mapped from YANG variable /vnf_bd/experiments/trials (uint32)
+
+    YANG Description: Number of trails
     """
     return self.__trials
       
@@ -81,6 +85,8 @@ class yc_experiments_vnf_bd__vnf_bd_experiments(PybindBase):
     source YANG file, then _set_trials is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_trials() directly.
+
+    YANG Description: Number of trails
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -104,6 +110,8 @@ class yc_experiments_vnf_bd__vnf_bd_experiments(PybindBase):
   def _get_tests(self):
     """
     Getter method for tests, mapped from YANG variable /vnf_bd/experiments/tests (uint32)
+
+    YANG Description: Number of tests
     """
     return self.__tests
       
@@ -114,6 +122,8 @@ class yc_experiments_vnf_bd__vnf_bd_experiments(PybindBase):
     source YANG file, then _set_tests is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_tests() directly.
+
+    YANG Description: Number of tests
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -146,6 +156,8 @@ class yc_parameters_vnf_bd__vnf_bd_environment_plugin_parameters(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/environment/plugin/parameters. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: List of key/value parameters
   """
   __slots__ = ('_path_helper', '_extmethods', '__input','__value',)
 
@@ -191,6 +203,8 @@ class yc_parameters_vnf_bd__vnf_bd_environment_plugin_parameters(PybindBase):
   def _get_input(self):
     """
     Getter method for input, mapped from YANG variable /vnf_bd/environment/plugin/parameters/input (string)
+
+    YANG Description: Key of the parameter
     """
     return self.__input
       
@@ -201,6 +215,8 @@ class yc_parameters_vnf_bd__vnf_bd_environment_plugin_parameters(PybindBase):
     source YANG file, then _set_input is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_input() directly.
+
+    YANG Description: Key of the parameter
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -229,6 +245,8 @@ class yc_parameters_vnf_bd__vnf_bd_environment_plugin_parameters(PybindBase):
   def _get_value(self):
     """
     Getter method for value, mapped from YANG variable /vnf_bd/environment/plugin/parameters/value (string)
+
+    YANG Description: Value of the parameter
     """
     return self.__value
       
@@ -239,6 +257,8 @@ class yc_parameters_vnf_bd__vnf_bd_environment_plugin_parameters(PybindBase):
     source YANG file, then _set_value is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_value() directly.
+
+    YANG Description: Value of the parameter
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -271,6 +291,8 @@ class yc_plugin_vnf_bd__vnf_bd_environment_plugin(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/environment/plugin. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Management plugin used for given envrionment
   """
   __slots__ = ('_path_helper', '_extmethods', '__type','__parameters',)
 
@@ -316,6 +338,8 @@ class yc_plugin_vnf_bd__vnf_bd_environment_plugin(PybindBase):
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /vnf_bd/environment/plugin/type (string)
+
+    YANG Description: Type of the plugin
     """
     return self.__type
       
@@ -326,6 +350,8 @@ class yc_plugin_vnf_bd__vnf_bd_environment_plugin(PybindBase):
     source YANG file, then _set_type is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
+
+    YANG Description: Type of the plugin
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -349,6 +375,8 @@ class yc_plugin_vnf_bd__vnf_bd_environment_plugin(PybindBase):
   def _get_parameters(self):
     """
     Getter method for parameters, mapped from YANG variable /vnf_bd/environment/plugin/parameters (list)
+
+    YANG Description: List of key/value parameters
     """
     return self.__parameters
       
@@ -359,6 +387,8 @@ class yc_plugin_vnf_bd__vnf_bd_environment_plugin(PybindBase):
     source YANG file, then _set_parameters is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_parameters() directly.
+
+    YANG Description: List of key/value parameters
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -391,6 +421,8 @@ class yc_environment_vnf_bd__vnf_bd_environment(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/environment. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Definition of the benchmarking execution environment
   """
   __slots__ = ('_path_helper', '_extmethods', '__name','__description','__deploy','__plugin',)
 
@@ -438,6 +470,8 @@ class yc_environment_vnf_bd__vnf_bd_environment(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/environment/name (string)
+
+    YANG Description: The evironment's name
     """
     return self.__name
       
@@ -448,6 +482,8 @@ class yc_environment_vnf_bd__vnf_bd_environment(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: The evironment's name
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -471,6 +507,8 @@ class yc_environment_vnf_bd__vnf_bd_environment(PybindBase):
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /vnf_bd/environment/description (string)
+
+    YANG Description: A description
     """
     return self.__description
       
@@ -481,6 +519,8 @@ class yc_environment_vnf_bd__vnf_bd_environment(PybindBase):
     source YANG file, then _set_description is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_description() directly.
+
+    YANG Description: A description
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -504,6 +544,8 @@ class yc_environment_vnf_bd__vnf_bd_environment(PybindBase):
   def _get_deploy(self):
     """
     Getter method for deploy, mapped from YANG variable /vnf_bd/environment/deploy (boolean)
+
+    YANG Description: Deploy the SUT and probes or use a running deployment
     """
     return self.__deploy
       
@@ -514,6 +556,8 @@ class yc_environment_vnf_bd__vnf_bd_environment(PybindBase):
     source YANG file, then _set_deploy is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_deploy() directly.
+
+    YANG Description: Deploy the SUT and probes or use a running deployment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -537,6 +581,8 @@ class yc_environment_vnf_bd__vnf_bd_environment(PybindBase):
   def _get_plugin(self):
     """
     Getter method for plugin, mapped from YANG variable /vnf_bd/environment/plugin (container)
+
+    YANG Description: Management plugin used for given envrionment
     """
     return self.__plugin
       
@@ -547,6 +593,8 @@ class yc_environment_vnf_bd__vnf_bd_environment(PybindBase):
     source YANG file, then _set_plugin is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_plugin() directly.
+
+    YANG Description: Management plugin used for given envrionment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -581,6 +629,8 @@ class yc_targets_vnf_bd__vnf_bd_targets(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/targets. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Target SUTs
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__name','__version','__author','__description',)
 
@@ -629,6 +679,8 @@ class yc_targets_vnf_bd__vnf_bd_targets(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_bd/targets/id (string)
+
+    YANG Description: Unique identifier
     """
     return self.__id
       
@@ -639,6 +691,8 @@ class yc_targets_vnf_bd__vnf_bd_targets(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique identifier
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -667,6 +721,8 @@ class yc_targets_vnf_bd__vnf_bd_targets(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/targets/name (string)
+
+    YANG Description: Name of target
     """
     return self.__name
       
@@ -677,6 +733,8 @@ class yc_targets_vnf_bd__vnf_bd_targets(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Name of target
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -700,6 +758,8 @@ class yc_targets_vnf_bd__vnf_bd_targets(PybindBase):
   def _get_version(self):
     """
     Getter method for version, mapped from YANG variable /vnf_bd/targets/version (string)
+
+    YANG Description: Version of target
     """
     return self.__version
       
@@ -710,6 +770,8 @@ class yc_targets_vnf_bd__vnf_bd_targets(PybindBase):
     source YANG file, then _set_version is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_version() directly.
+
+    YANG Description: Version of target
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -733,6 +795,8 @@ class yc_targets_vnf_bd__vnf_bd_targets(PybindBase):
   def _get_author(self):
     """
     Getter method for author, mapped from YANG variable /vnf_bd/targets/author (string)
+
+    YANG Description: Author of target
     """
     return self.__author
       
@@ -743,6 +807,8 @@ class yc_targets_vnf_bd__vnf_bd_targets(PybindBase):
     source YANG file, then _set_author is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_author() directly.
+
+    YANG Description: Author of target
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -766,6 +832,8 @@ class yc_targets_vnf_bd__vnf_bd_targets(PybindBase):
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /vnf_bd/targets/description (string)
+
+    YANG Description: Description of target
     """
     return self.__description
       
@@ -776,6 +844,8 @@ class yc_targets_vnf_bd__vnf_bd_targets(PybindBase):
     source YANG file, then _set_description is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_description() directly.
+
+    YANG Description: Description of target
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -811,6 +881,8 @@ class yc_cpu_vnf_bd__vnf_bd_scenario_nodes_resources_cpu(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/scenario/nodes/resources/cpu. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: CPU resources
   """
   __slots__ = ('_path_helper', '_extmethods', '__vcpus','__cpu_bw','__pinning',)
 
@@ -857,6 +929,8 @@ class yc_cpu_vnf_bd__vnf_bd_scenario_nodes_resources_cpu(PybindBase):
   def _get_vcpus(self):
     """
     Getter method for vcpus, mapped from YANG variable /vnf_bd/scenario/nodes/resources/cpu/vcpus (uint32)
+
+    YANG Description: Number of cores to be used
     """
     return self.__vcpus
       
@@ -867,6 +941,8 @@ class yc_cpu_vnf_bd__vnf_bd_scenario_nodes_resources_cpu(PybindBase):
     source YANG file, then _set_vcpus is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_vcpus() directly.
+
+    YANG Description: Number of cores to be used
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -890,6 +966,8 @@ class yc_cpu_vnf_bd__vnf_bd_scenario_nodes_resources_cpu(PybindBase):
   def _get_cpu_bw(self):
     """
     Getter method for cpu_bw, mapped from YANG variable /vnf_bd/scenario/nodes/resources/cpu/cpu_bw (string)
+
+    YANG Description: CPU bandwidth (CFS limit in 0.01-1.0)
     """
     return self.__cpu_bw
       
@@ -900,6 +978,8 @@ class yc_cpu_vnf_bd__vnf_bd_scenario_nodes_resources_cpu(PybindBase):
     source YANG file, then _set_cpu_bw is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_cpu_bw() directly.
+
+    YANG Description: CPU bandwidth (CFS limit in 0.01-1.0)
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -923,6 +1003,8 @@ class yc_cpu_vnf_bd__vnf_bd_scenario_nodes_resources_cpu(PybindBase):
   def _get_pinning(self):
     """
     Getter method for pinning, mapped from YANG variable /vnf_bd/scenario/nodes/resources/cpu/pinning (string)
+
+    YANG Description: CPU core set to be used
     """
     return self.__pinning
       
@@ -933,6 +1015,8 @@ class yc_cpu_vnf_bd__vnf_bd_scenario_nodes_resources_cpu(PybindBase):
     source YANG file, then _set_pinning is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_pinning() directly.
+
+    YANG Description: CPU core set to be used
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -966,6 +1050,8 @@ class yc_memory_vnf_bd__vnf_bd_scenario_nodes_resources_memory(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/scenario/nodes/resources/memory. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Memory resources
   """
   __slots__ = ('_path_helper', '_extmethods', '__size','__unit',)
 
@@ -1011,6 +1097,8 @@ class yc_memory_vnf_bd__vnf_bd_scenario_nodes_resources_memory(PybindBase):
   def _get_size(self):
     """
     Getter method for size, mapped from YANG variable /vnf_bd/scenario/nodes/resources/memory/size (uint32)
+
+    YANG Description: Memory size
     """
     return self.__size
       
@@ -1021,6 +1109,8 @@ class yc_memory_vnf_bd__vnf_bd_scenario_nodes_resources_memory(PybindBase):
     source YANG file, then _set_size is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_size() directly.
+
+    YANG Description: Memory size
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1044,6 +1134,8 @@ class yc_memory_vnf_bd__vnf_bd_scenario_nodes_resources_memory(PybindBase):
   def _get_unit(self):
     """
     Getter method for unit, mapped from YANG variable /vnf_bd/scenario/nodes/resources/memory/unit (string)
+
+    YANG Description: Memory unit
     """
     return self.__unit
       
@@ -1054,6 +1146,8 @@ class yc_memory_vnf_bd__vnf_bd_scenario_nodes_resources_memory(PybindBase):
     source YANG file, then _set_unit is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_unit() directly.
+
+    YANG Description: Memory unit
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1086,6 +1180,8 @@ class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/scenario/nodes/resources/storage. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Storage resources
   """
   __slots__ = ('_path_helper', '_extmethods', '__size','__unit','__volumes',)
 
@@ -1132,6 +1228,8 @@ class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
   def _get_size(self):
     """
     Getter method for size, mapped from YANG variable /vnf_bd/scenario/nodes/resources/storage/size (uint32)
+
+    YANG Description: Storage size
     """
     return self.__size
       
@@ -1142,6 +1240,8 @@ class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
     source YANG file, then _set_size is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_size() directly.
+
+    YANG Description: Storage size
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1165,6 +1265,8 @@ class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
   def _get_unit(self):
     """
     Getter method for unit, mapped from YANG variable /vnf_bd/scenario/nodes/resources/storage/unit (string)
+
+    YANG Description: Storage unit
     """
     return self.__unit
       
@@ -1175,6 +1277,8 @@ class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
     source YANG file, then _set_unit is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_unit() directly.
+
+    YANG Description: Storage unit
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1198,6 +1302,8 @@ class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
   def _get_volumes(self):
     """
     Getter method for volumes, mapped from YANG variable /vnf_bd/scenario/nodes/resources/storage/volumes (string)
+
+    YANG Description: Valumes to be used
     """
     return self.__volumes
       
@@ -1208,6 +1314,8 @@ class yc_storage_vnf_bd__vnf_bd_scenario_nodes_resources_storage(PybindBase):
     source YANG file, then _set_volumes is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_volumes() directly.
+
+    YANG Description: Valumes to be used
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1241,6 +1349,8 @@ class yc_resources_vnf_bd__vnf_bd_scenario_nodes_resources(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/scenario/nodes/resources. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Resource assigned to SUT
   """
   __slots__ = ('_path_helper', '_extmethods', '__cpu','__memory','__storage',)
 
@@ -1287,6 +1397,8 @@ class yc_resources_vnf_bd__vnf_bd_scenario_nodes_resources(PybindBase):
   def _get_cpu(self):
     """
     Getter method for cpu, mapped from YANG variable /vnf_bd/scenario/nodes/resources/cpu (container)
+
+    YANG Description: CPU resources
     """
     return self.__cpu
       
@@ -1297,6 +1409,8 @@ class yc_resources_vnf_bd__vnf_bd_scenario_nodes_resources(PybindBase):
     source YANG file, then _set_cpu is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_cpu() directly.
+
+    YANG Description: CPU resources
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1320,6 +1434,8 @@ class yc_resources_vnf_bd__vnf_bd_scenario_nodes_resources(PybindBase):
   def _get_memory(self):
     """
     Getter method for memory, mapped from YANG variable /vnf_bd/scenario/nodes/resources/memory (container)
+
+    YANG Description: Memory resources
     """
     return self.__memory
       
@@ -1330,6 +1446,8 @@ class yc_resources_vnf_bd__vnf_bd_scenario_nodes_resources(PybindBase):
     source YANG file, then _set_memory is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_memory() directly.
+
+    YANG Description: Memory resources
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1353,6 +1471,8 @@ class yc_resources_vnf_bd__vnf_bd_scenario_nodes_resources(PybindBase):
   def _get_storage(self):
     """
     Getter method for storage, mapped from YANG variable /vnf_bd/scenario/nodes/resources/storage (container)
+
+    YANG Description: Storage resources
     """
     return self.__storage
       
@@ -1363,6 +1483,8 @@ class yc_resources_vnf_bd__vnf_bd_scenario_nodes_resources(PybindBase):
     source YANG file, then _set_storage is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_storage() directly.
+
+    YANG Description: Storage resources
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1396,6 +1518,8 @@ class yc_connection_points_vnf_bd__vnf_bd_scenario_nodes_connection_points(Pybin
   from YANG module vnf-bd - based on the path /vnf-bd/scenario/nodes/connection_points. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: List of connection points of node
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__interface','__type','__address',)
 
@@ -1443,6 +1567,8 @@ class yc_connection_points_vnf_bd__vnf_bd_scenario_nodes_connection_points(Pybin
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_bd/scenario/nodes/connection_points/id (string)
+
+    YANG Description: Unique identifier
     """
     return self.__id
       
@@ -1453,6 +1579,8 @@ class yc_connection_points_vnf_bd__vnf_bd_scenario_nodes_connection_points(Pybin
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique identifier
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -1481,6 +1609,8 @@ class yc_connection_points_vnf_bd__vnf_bd_scenario_nodes_connection_points(Pybin
   def _get_interface(self):
     """
     Getter method for interface, mapped from YANG variable /vnf_bd/scenario/nodes/connection_points/interface (string)
+
+    YANG Description: Interface name
     """
     return self.__interface
       
@@ -1491,6 +1621,8 @@ class yc_connection_points_vnf_bd__vnf_bd_scenario_nodes_connection_points(Pybin
     source YANG file, then _set_interface is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_interface() directly.
+
+    YANG Description: Interface name
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1514,6 +1646,8 @@ class yc_connection_points_vnf_bd__vnf_bd_scenario_nodes_connection_points(Pybin
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /vnf_bd/scenario/nodes/connection_points/type (string)
+
+    YANG Description: Network type
     """
     return self.__type
       
@@ -1524,6 +1658,8 @@ class yc_connection_points_vnf_bd__vnf_bd_scenario_nodes_connection_points(Pybin
     source YANG file, then _set_type is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
+
+    YANG Description: Network type
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1547,6 +1683,8 @@ class yc_connection_points_vnf_bd__vnf_bd_scenario_nodes_connection_points(Pybin
   def _get_address(self):
     """
     Getter method for address, mapped from YANG variable /vnf_bd/scenario/nodes/connection_points/address (string)
+
+    YANG Description: Network address, e.g., 10.0.0.1/24
     """
     return self.__address
       
@@ -1557,6 +1695,8 @@ class yc_connection_points_vnf_bd__vnf_bd_scenario_nodes_connection_points(Pybin
     source YANG file, then _set_address is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_address() directly.
+
+    YANG Description: Network address, e.g., 10.0.0.1/24
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1591,6 +1731,8 @@ class yc_relationships_vnf_bd__vnf_bd_scenario_nodes_relationships(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/scenario/nodes/relationships. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Relationship of node to other components in the experiment
   """
   __slots__ = ('_path_helper', '_extmethods', '__name','__type','__target',)
 
@@ -1637,6 +1779,8 @@ class yc_relationships_vnf_bd__vnf_bd_scenario_nodes_relationships(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/scenario/nodes/relationships/name (string)
+
+    YANG Description: Name of relationship
     """
     return self.__name
       
@@ -1647,6 +1791,8 @@ class yc_relationships_vnf_bd__vnf_bd_scenario_nodes_relationships(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Name of relationship
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -1675,6 +1821,8 @@ class yc_relationships_vnf_bd__vnf_bd_scenario_nodes_relationships(PybindBase):
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /vnf_bd/scenario/nodes/relationships/type (string)
+
+    YANG Description: Type of relationship
     """
     return self.__type
       
@@ -1685,6 +1833,8 @@ class yc_relationships_vnf_bd__vnf_bd_scenario_nodes_relationships(PybindBase):
     source YANG file, then _set_type is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
+
+    YANG Description: Type of relationship
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1708,6 +1858,8 @@ class yc_relationships_vnf_bd__vnf_bd_scenario_nodes_relationships(PybindBase):
   def _get_target(self):
     """
     Getter method for target, mapped from YANG variable /vnf_bd/scenario/nodes/relationships/target (string)
+
+    YANG Description: Target of relationship
     """
     return self.__target
       
@@ -1718,6 +1870,8 @@ class yc_relationships_vnf_bd__vnf_bd_scenario_nodes_relationships(PybindBase):
     source YANG file, then _set_target is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_target() directly.
+
+    YANG Description: Target of relationship
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1751,6 +1905,8 @@ class yc_parameters_vnf_bd__vnf_bd_scenario_nodes_lifecycle_parameters(PybindBas
   from YANG module vnf-bd - based on the path /vnf-bd/scenario/nodes/lifecycle/parameters. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Parameters to be applied to node
   """
   __slots__ = ('_path_helper', '_extmethods', '__input','__value',)
 
@@ -1796,6 +1952,8 @@ class yc_parameters_vnf_bd__vnf_bd_scenario_nodes_lifecycle_parameters(PybindBas
   def _get_input(self):
     """
     Getter method for input, mapped from YANG variable /vnf_bd/scenario/nodes/lifecycle/parameters/input (string)
+
+    YANG Description: Key of parameter
     """
     return self.__input
       
@@ -1806,6 +1964,8 @@ class yc_parameters_vnf_bd__vnf_bd_scenario_nodes_lifecycle_parameters(PybindBas
     source YANG file, then _set_input is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_input() directly.
+
+    YANG Description: Key of parameter
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -1834,6 +1994,8 @@ class yc_parameters_vnf_bd__vnf_bd_scenario_nodes_lifecycle_parameters(PybindBas
   def _get_value(self):
     """
     Getter method for value, mapped from YANG variable /vnf_bd/scenario/nodes/lifecycle/parameters/value (string)
+
+    YANG Description: Value of parameter
     """
     return self.__value
       
@@ -1844,6 +2006,8 @@ class yc_parameters_vnf_bd__vnf_bd_scenario_nodes_lifecycle_parameters(PybindBas
     source YANG file, then _set_value is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_value() directly.
+
+    YANG Description: Value of parameter
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1876,6 +2040,8 @@ class yc_lifecycle_vnf_bd__vnf_bd_scenario_nodes_lifecycle(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/scenario/nodes/lifecycle. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Lifecycle to be applied to this node
   """
   __slots__ = ('_path_helper', '_extmethods', '__workflow','__name','__parameters','__implementation',)
 
@@ -1923,6 +2089,8 @@ class yc_lifecycle_vnf_bd__vnf_bd_scenario_nodes_lifecycle(PybindBase):
   def _get_workflow(self):
     """
     Getter method for workflow, mapped from YANG variable /vnf_bd/scenario/nodes/lifecycle/workflow (workflows)
+
+    YANG Description: Workflow
     """
     return self.__workflow
       
@@ -1933,6 +2101,8 @@ class yc_lifecycle_vnf_bd__vnf_bd_scenario_nodes_lifecycle(PybindBase):
     source YANG file, then _set_workflow is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_workflow() directly.
+
+    YANG Description: Workflow
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -1961,6 +2131,8 @@ class yc_lifecycle_vnf_bd__vnf_bd_scenario_nodes_lifecycle(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/scenario/nodes/lifecycle/name (string)
+
+    YANG Description: Reference to workflow
     """
     return self.__name
       
@@ -1971,6 +2143,8 @@ class yc_lifecycle_vnf_bd__vnf_bd_scenario_nodes_lifecycle(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Reference to workflow
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1994,6 +2168,8 @@ class yc_lifecycle_vnf_bd__vnf_bd_scenario_nodes_lifecycle(PybindBase):
   def _get_parameters(self):
     """
     Getter method for parameters, mapped from YANG variable /vnf_bd/scenario/nodes/lifecycle/parameters (list)
+
+    YANG Description: Parameters to be applied to node
     """
     return self.__parameters
       
@@ -2004,6 +2180,8 @@ class yc_lifecycle_vnf_bd__vnf_bd_scenario_nodes_lifecycle(PybindBase):
     source YANG file, then _set_parameters is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_parameters() directly.
+
+    YANG Description: Parameters to be applied to node
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2027,6 +2205,8 @@ class yc_lifecycle_vnf_bd__vnf_bd_scenario_nodes_lifecycle(PybindBase):
   def _get_implementation(self):
     """
     Getter method for implementation, mapped from YANG variable /vnf_bd/scenario/nodes/lifecycle/implementation (string)
+
+    YANG Description: Type of implementation
     """
     return self.__implementation
       
@@ -2037,6 +2217,8 @@ class yc_lifecycle_vnf_bd__vnf_bd_scenario_nodes_lifecycle(PybindBase):
     source YANG file, then _set_implementation is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_implementation() directly.
+
+    YANG Description: Type of implementation
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2071,6 +2253,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/scenario/nodes. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Nodes in the scenario
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__type','__image','__image_format','__resources','__connection_points','__relationships','__lifecycle',)
 
@@ -2122,6 +2306,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_bd/scenario/nodes/id (string)
+
+    YANG Description: Unique identifier
     """
     return self.__id
       
@@ -2132,6 +2318,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique identifier
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -2160,6 +2348,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /vnf_bd/scenario/nodes/type (string)
+
+    YANG Description: Node type
     """
     return self.__type
       
@@ -2170,6 +2360,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
     source YANG file, then _set_type is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
+
+    YANG Description: Node type
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2193,6 +2385,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
   def _get_image(self):
     """
     Getter method for image, mapped from YANG variable /vnf_bd/scenario/nodes/image (string)
+
+    YANG Description: Disk/container image to be used
     """
     return self.__image
       
@@ -2203,6 +2397,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
     source YANG file, then _set_image is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_image() directly.
+
+    YANG Description: Disk/container image to be used
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2226,6 +2422,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
   def _get_image_format(self):
     """
     Getter method for image_format, mapped from YANG variable /vnf_bd/scenario/nodes/image_format (string)
+
+    YANG Description: Disk/container image format
     """
     return self.__image_format
       
@@ -2236,6 +2434,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
     source YANG file, then _set_image_format is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_image_format() directly.
+
+    YANG Description: Disk/container image format
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2259,6 +2459,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
   def _get_resources(self):
     """
     Getter method for resources, mapped from YANG variable /vnf_bd/scenario/nodes/resources (container)
+
+    YANG Description: Resource assigned to SUT
     """
     return self.__resources
       
@@ -2269,6 +2471,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
     source YANG file, then _set_resources is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_resources() directly.
+
+    YANG Description: Resource assigned to SUT
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2292,6 +2496,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
   def _get_connection_points(self):
     """
     Getter method for connection_points, mapped from YANG variable /vnf_bd/scenario/nodes/connection_points (list)
+
+    YANG Description: List of connection points of node
     """
     return self.__connection_points
       
@@ -2302,6 +2508,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
     source YANG file, then _set_connection_points is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_connection_points() directly.
+
+    YANG Description: List of connection points of node
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2325,6 +2533,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
   def _get_relationships(self):
     """
     Getter method for relationships, mapped from YANG variable /vnf_bd/scenario/nodes/relationships (list)
+
+    YANG Description: Relationship of node to other components in the experiment
     """
     return self.__relationships
       
@@ -2335,6 +2545,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
     source YANG file, then _set_relationships is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_relationships() directly.
+
+    YANG Description: Relationship of node to other components in the experiment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2358,6 +2570,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
   def _get_lifecycle(self):
     """
     Getter method for lifecycle, mapped from YANG variable /vnf_bd/scenario/nodes/lifecycle (list)
+
+    YANG Description: Lifecycle to be applied to this node
     """
     return self.__lifecycle
       
@@ -2368,6 +2582,8 @@ class yc_nodes_vnf_bd__vnf_bd_scenario_nodes(PybindBase):
     source YANG file, then _set_lifecycle is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_lifecycle() directly.
+
+    YANG Description: Lifecycle to be applied to this node
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2406,6 +2622,8 @@ class yc_links_vnf_bd__vnf_bd_scenario_links(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/scenario/links. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Links in the scenario
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__name','__type','__network','__connection_points',)
 
@@ -2454,6 +2672,8 @@ class yc_links_vnf_bd__vnf_bd_scenario_links(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_bd/scenario/links/id (string)
+
+    YANG Description: Unique identifier
     """
     return self.__id
       
@@ -2464,6 +2684,8 @@ class yc_links_vnf_bd__vnf_bd_scenario_links(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique identifier
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -2492,6 +2714,8 @@ class yc_links_vnf_bd__vnf_bd_scenario_links(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/scenario/links/name (string)
+
+    YANG Description: Name of the link
     """
     return self.__name
       
@@ -2502,6 +2726,8 @@ class yc_links_vnf_bd__vnf_bd_scenario_links(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Name of the link
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2525,6 +2751,8 @@ class yc_links_vnf_bd__vnf_bd_scenario_links(PybindBase):
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /vnf_bd/scenario/links/type (string)
+
+    YANG Description: Type of the link
     """
     return self.__type
       
@@ -2535,6 +2763,8 @@ class yc_links_vnf_bd__vnf_bd_scenario_links(PybindBase):
     source YANG file, then _set_type is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
+
+    YANG Description: Type of the link
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2558,6 +2788,8 @@ class yc_links_vnf_bd__vnf_bd_scenario_links(PybindBase):
   def _get_network(self):
     """
     Getter method for network, mapped from YANG variable /vnf_bd/scenario/links/network (string)
+
+    YANG Description: Network the link belongs to
     """
     return self.__network
       
@@ -2568,6 +2800,8 @@ class yc_links_vnf_bd__vnf_bd_scenario_links(PybindBase):
     source YANG file, then _set_network is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_network() directly.
+
+    YANG Description: Network the link belongs to
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2591,6 +2825,8 @@ class yc_links_vnf_bd__vnf_bd_scenario_links(PybindBase):
   def _get_connection_points(self):
     """
     Getter method for connection_points, mapped from YANG variable /vnf_bd/scenario/links/connection_points (leafref)
+
+    YANG Description: Reference to connection points the link is connected to
     """
     return self.__connection_points
       
@@ -2601,6 +2837,8 @@ class yc_links_vnf_bd__vnf_bd_scenario_links(PybindBase):
     source YANG file, then _set_connection_points is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_connection_points() directly.
+
+    YANG Description: Reference to connection points the link is connected to
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2636,6 +2874,8 @@ class yc_policies_vnf_bd__vnf_bd_scenario_policies(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/scenario/policies. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Definition of execution environment policies
   """
   __slots__ = ('_path_helper', '_extmethods', '__name','__type','__targets','__action',)
 
@@ -2683,6 +2923,8 @@ class yc_policies_vnf_bd__vnf_bd_scenario_policies(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/scenario/policies/name (string)
+
+    YANG Description: Policies in the scenarios
     """
     return self.__name
       
@@ -2693,6 +2935,8 @@ class yc_policies_vnf_bd__vnf_bd_scenario_policies(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Policies in the scenarios
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -2721,6 +2965,8 @@ class yc_policies_vnf_bd__vnf_bd_scenario_policies(PybindBase):
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /vnf_bd/scenario/policies/type (string)
+
+    YANG Description: Type of the policy
     """
     return self.__type
       
@@ -2731,6 +2977,8 @@ class yc_policies_vnf_bd__vnf_bd_scenario_policies(PybindBase):
     source YANG file, then _set_type is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
+
+    YANG Description: Type of the policy
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2754,6 +3002,8 @@ class yc_policies_vnf_bd__vnf_bd_scenario_policies(PybindBase):
   def _get_targets(self):
     """
     Getter method for targets, mapped from YANG variable /vnf_bd/scenario/policies/targets (string)
+
+    YANG Description: Target of the policy
     """
     return self.__targets
       
@@ -2764,6 +3014,8 @@ class yc_policies_vnf_bd__vnf_bd_scenario_policies(PybindBase):
     source YANG file, then _set_targets is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_targets() directly.
+
+    YANG Description: Target of the policy
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2787,6 +3039,8 @@ class yc_policies_vnf_bd__vnf_bd_scenario_policies(PybindBase):
   def _get_action(self):
     """
     Getter method for action, mapped from YANG variable /vnf_bd/scenario/policies/action (string)
+
+    YANG Description: Action of the policy
     """
     return self.__action
       
@@ -2797,6 +3051,8 @@ class yc_policies_vnf_bd__vnf_bd_scenario_policies(PybindBase):
     source YANG file, then _set_action is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_action() directly.
+
+    YANG Description: Action of the policy
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2831,6 +3087,8 @@ class yc_scenario_vnf_bd__vnf_bd_scenario(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/scenario. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Scenarios defined by this VNF-BD
   """
   __slots__ = ('_path_helper', '_extmethods', '__nodes','__links','__policies',)
 
@@ -2877,6 +3135,8 @@ class yc_scenario_vnf_bd__vnf_bd_scenario(PybindBase):
   def _get_nodes(self):
     """
     Getter method for nodes, mapped from YANG variable /vnf_bd/scenario/nodes (list)
+
+    YANG Description: Nodes in the scenario
     """
     return self.__nodes
       
@@ -2887,6 +3147,8 @@ class yc_scenario_vnf_bd__vnf_bd_scenario(PybindBase):
     source YANG file, then _set_nodes is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_nodes() directly.
+
+    YANG Description: Nodes in the scenario
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2910,6 +3172,8 @@ class yc_scenario_vnf_bd__vnf_bd_scenario(PybindBase):
   def _get_links(self):
     """
     Getter method for links, mapped from YANG variable /vnf_bd/scenario/links (list)
+
+    YANG Description: Links in the scenario
     """
     return self.__links
       
@@ -2920,6 +3184,8 @@ class yc_scenario_vnf_bd__vnf_bd_scenario(PybindBase):
     source YANG file, then _set_links is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_links() directly.
+
+    YANG Description: Links in the scenario
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2943,6 +3209,8 @@ class yc_scenario_vnf_bd__vnf_bd_scenario(PybindBase):
   def _get_policies(self):
     """
     Getter method for policies, mapped from YANG variable /vnf_bd/scenario/policies (list)
+
+    YANG Description: Definition of execution environment policies
     """
     return self.__policies
       
@@ -2953,6 +3221,8 @@ class yc_scenario_vnf_bd__vnf_bd_scenario(PybindBase):
     source YANG file, then _set_policies is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_policies() directly.
+
+    YANG Description: Definition of execution environment policies
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -2986,6 +3256,8 @@ class yc_attributes_vnf_bd__vnf_bd_proceedings_attributes(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/proceedings/attributes. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Attributes of proceedings
   """
   __slots__ = ('_path_helper', '_extmethods', '__name','__value',)
 
@@ -3031,6 +3303,8 @@ class yc_attributes_vnf_bd__vnf_bd_proceedings_attributes(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/proceedings/attributes/name (string)
+
+    YANG Description: Attribute key
     """
     return self.__name
       
@@ -3041,6 +3315,8 @@ class yc_attributes_vnf_bd__vnf_bd_proceedings_attributes(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Attribute key
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -3069,6 +3345,8 @@ class yc_attributes_vnf_bd__vnf_bd_proceedings_attributes(PybindBase):
   def _get_value(self):
     """
     Getter method for value, mapped from YANG variable /vnf_bd/proceedings/attributes/value (string)
+
+    YANG Description: Attribute value
     """
     return self.__value
       
@@ -3079,6 +3357,8 @@ class yc_attributes_vnf_bd__vnf_bd_proceedings_attributes(PybindBase):
     source YANG file, then _set_value is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_value() directly.
+
+    YANG Description: Attribute value
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3111,6 +3391,8 @@ class yc_host_vnf_bd__vnf_bd_proceedings_agents_host(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/proceedings/agents/host. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Host on which component shall be executed
   """
   __slots__ = ('_path_helper', '_extmethods', '__setting','__node',)
 
@@ -3156,6 +3438,8 @@ class yc_host_vnf_bd__vnf_bd_proceedings_agents_host(PybindBase):
   def _get_setting(self):
     """
     Getter method for setting, mapped from YANG variable /vnf_bd/proceedings/agents/host/setting (string)
+
+    YANG Description: Settings for this host
     """
     return self.__setting
       
@@ -3166,6 +3450,8 @@ class yc_host_vnf_bd__vnf_bd_proceedings_agents_host(PybindBase):
     source YANG file, then _set_setting is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_setting() directly.
+
+    YANG Description: Settings for this host
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3189,6 +3475,8 @@ class yc_host_vnf_bd__vnf_bd_proceedings_agents_host(PybindBase):
   def _get_node(self):
     """
     Getter method for node, mapped from YANG variable /vnf_bd/proceedings/agents/host/node (string)
+
+    YANG Description: Node assigned to this host
     """
     return self.__node
       
@@ -3199,6 +3487,8 @@ class yc_host_vnf_bd__vnf_bd_proceedings_agents_host(PybindBase):
     source YANG file, then _set_node is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_node() directly.
+
+    YANG Description: Node assigned to this host
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3231,6 +3521,8 @@ class yc_parameters_vnf_bd__vnf_bd_proceedings_agents_probers_parameters(PybindB
   from YANG module vnf-bd - based on the path /vnf-bd/proceedings/agents/probers/parameters. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: List of parameters for tool
   """
   __slots__ = ('_path_helper', '_extmethods', '__input','__value',)
 
@@ -3276,6 +3568,8 @@ class yc_parameters_vnf_bd__vnf_bd_proceedings_agents_probers_parameters(PybindB
   def _get_input(self):
     """
     Getter method for input, mapped from YANG variable /vnf_bd/proceedings/agents/probers/parameters/input (string)
+
+    YANG Description: Key of parameter
     """
     return self.__input
       
@@ -3286,6 +3580,8 @@ class yc_parameters_vnf_bd__vnf_bd_proceedings_agents_probers_parameters(PybindB
     source YANG file, then _set_input is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_input() directly.
+
+    YANG Description: Key of parameter
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -3314,6 +3610,8 @@ class yc_parameters_vnf_bd__vnf_bd_proceedings_agents_probers_parameters(PybindB
   def _get_value(self):
     """
     Getter method for value, mapped from YANG variable /vnf_bd/proceedings/agents/probers/parameters/value (string)
+
+    YANG Description: Value of parameter
     """
     return self.__value
       
@@ -3324,6 +3622,8 @@ class yc_parameters_vnf_bd__vnf_bd_proceedings_agents_probers_parameters(PybindB
     source YANG file, then _set_value is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_value() directly.
+
+    YANG Description: Value of parameter
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3356,6 +3656,8 @@ class yc_probers_vnf_bd__vnf_bd_proceedings_agents_probers(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/proceedings/agents/probers. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Probers in experiment
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__instances','__name','__parameters',)
 
@@ -3403,6 +3705,8 @@ class yc_probers_vnf_bd__vnf_bd_proceedings_agents_probers(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_bd/proceedings/agents/probers/id (string)
+
+    YANG Description: Unique identifier
     """
     return self.__id
       
@@ -3413,6 +3717,8 @@ class yc_probers_vnf_bd__vnf_bd_proceedings_agents_probers(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique identifier
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -3441,6 +3747,8 @@ class yc_probers_vnf_bd__vnf_bd_proceedings_agents_probers(PybindBase):
   def _get_instances(self):
     """
     Getter method for instances, mapped from YANG variable /vnf_bd/proceedings/agents/probers/instances (uint32)
+
+    YANG Description: Number of tool instances
     """
     return self.__instances
       
@@ -3451,6 +3759,8 @@ class yc_probers_vnf_bd__vnf_bd_proceedings_agents_probers(PybindBase):
     source YANG file, then _set_instances is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_instances() directly.
+
+    YANG Description: Number of tool instances
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3474,6 +3784,8 @@ class yc_probers_vnf_bd__vnf_bd_proceedings_agents_probers(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/proceedings/agents/probers/name (string)
+
+    YANG Description: Name of tool
     """
     return self.__name
       
@@ -3484,6 +3796,8 @@ class yc_probers_vnf_bd__vnf_bd_proceedings_agents_probers(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Name of tool
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3507,6 +3821,8 @@ class yc_probers_vnf_bd__vnf_bd_proceedings_agents_probers(PybindBase):
   def _get_parameters(self):
     """
     Getter method for parameters, mapped from YANG variable /vnf_bd/proceedings/agents/probers/parameters (list)
+
+    YANG Description: List of parameters for tool
     """
     return self.__parameters
       
@@ -3517,6 +3833,8 @@ class yc_probers_vnf_bd__vnf_bd_proceedings_agents_probers(PybindBase):
     source YANG file, then _set_parameters is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_parameters() directly.
+
+    YANG Description: List of parameters for tool
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3551,6 +3869,8 @@ class yc_agents_vnf_bd__vnf_bd_proceedings_agents(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/proceedings/agents. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Involved agents
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__name','__host','__probers',)
 
@@ -3598,6 +3918,8 @@ class yc_agents_vnf_bd__vnf_bd_proceedings_agents(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_bd/proceedings/agents/id (string)
+
+    YANG Description: Unique identifier
     """
     return self.__id
       
@@ -3608,6 +3930,8 @@ class yc_agents_vnf_bd__vnf_bd_proceedings_agents(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique identifier
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -3636,6 +3960,8 @@ class yc_agents_vnf_bd__vnf_bd_proceedings_agents(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/proceedings/agents/name (string)
+
+    YANG Description: Name of component
     """
     return self.__name
       
@@ -3646,6 +3972,8 @@ class yc_agents_vnf_bd__vnf_bd_proceedings_agents(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Name of component
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3669,6 +3997,8 @@ class yc_agents_vnf_bd__vnf_bd_proceedings_agents(PybindBase):
   def _get_host(self):
     """
     Getter method for host, mapped from YANG variable /vnf_bd/proceedings/agents/host (container)
+
+    YANG Description: Host on which component shall be executed
     """
     return self.__host
       
@@ -3679,6 +4009,8 @@ class yc_agents_vnf_bd__vnf_bd_proceedings_agents(PybindBase):
     source YANG file, then _set_host is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_host() directly.
+
+    YANG Description: Host on which component shall be executed
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3702,6 +4034,8 @@ class yc_agents_vnf_bd__vnf_bd_proceedings_agents(PybindBase):
   def _get_probers(self):
     """
     Getter method for probers, mapped from YANG variable /vnf_bd/proceedings/agents/probers (list)
+
+    YANG Description: Probers in experiment
     """
     return self.__probers
       
@@ -3712,6 +4046,8 @@ class yc_agents_vnf_bd__vnf_bd_proceedings_agents(PybindBase):
     source YANG file, then _set_probers is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_probers() directly.
+
+    YANG Description: Probers in experiment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3746,6 +4082,8 @@ class yc_host_vnf_bd__vnf_bd_proceedings_monitors_host(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/proceedings/monitors/host. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Host on which component shall be executed
   """
   __slots__ = ('_path_helper', '_extmethods', '__setting','__node',)
 
@@ -3791,6 +4129,8 @@ class yc_host_vnf_bd__vnf_bd_proceedings_monitors_host(PybindBase):
   def _get_setting(self):
     """
     Getter method for setting, mapped from YANG variable /vnf_bd/proceedings/monitors/host/setting (string)
+
+    YANG Description: Settings for this host
     """
     return self.__setting
       
@@ -3801,6 +4141,8 @@ class yc_host_vnf_bd__vnf_bd_proceedings_monitors_host(PybindBase):
     source YANG file, then _set_setting is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_setting() directly.
+
+    YANG Description: Settings for this host
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3824,6 +4166,8 @@ class yc_host_vnf_bd__vnf_bd_proceedings_monitors_host(PybindBase):
   def _get_node(self):
     """
     Getter method for node, mapped from YANG variable /vnf_bd/proceedings/monitors/host/node (string)
+
+    YANG Description: Node assigned to this host
     """
     return self.__node
       
@@ -3834,6 +4178,8 @@ class yc_host_vnf_bd__vnf_bd_proceedings_monitors_host(PybindBase):
     source YANG file, then _set_node is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_node() directly.
+
+    YANG Description: Node assigned to this host
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3866,6 +4212,8 @@ class yc_parameters_vnf_bd__vnf_bd_proceedings_monitors_listeners_parameters(Pyb
   from YANG module vnf-bd - based on the path /vnf-bd/proceedings/monitors/listeners/parameters. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: List of parameters for tool
   """
   __slots__ = ('_path_helper', '_extmethods', '__input','__value',)
 
@@ -3911,6 +4259,8 @@ class yc_parameters_vnf_bd__vnf_bd_proceedings_monitors_listeners_parameters(Pyb
   def _get_input(self):
     """
     Getter method for input, mapped from YANG variable /vnf_bd/proceedings/monitors/listeners/parameters/input (string)
+
+    YANG Description: Key of parameter
     """
     return self.__input
       
@@ -3921,6 +4271,8 @@ class yc_parameters_vnf_bd__vnf_bd_proceedings_monitors_listeners_parameters(Pyb
     source YANG file, then _set_input is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_input() directly.
+
+    YANG Description: Key of parameter
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -3949,6 +4301,8 @@ class yc_parameters_vnf_bd__vnf_bd_proceedings_monitors_listeners_parameters(Pyb
   def _get_value(self):
     """
     Getter method for value, mapped from YANG variable /vnf_bd/proceedings/monitors/listeners/parameters/value (string)
+
+    YANG Description: Value of parameter
     """
     return self.__value
       
@@ -3959,6 +4313,8 @@ class yc_parameters_vnf_bd__vnf_bd_proceedings_monitors_listeners_parameters(Pyb
     source YANG file, then _set_value is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_value() directly.
+
+    YANG Description: Value of parameter
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -3991,6 +4347,8 @@ class yc_listeners_vnf_bd__vnf_bd_proceedings_monitors_listeners(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/proceedings/monitors/listeners. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Listeners in experiment
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__instances','__name','__parameters',)
 
@@ -4038,6 +4396,8 @@ class yc_listeners_vnf_bd__vnf_bd_proceedings_monitors_listeners(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_bd/proceedings/monitors/listeners/id (string)
+
+    YANG Description: Unique identifier
     """
     return self.__id
       
@@ -4048,6 +4408,8 @@ class yc_listeners_vnf_bd__vnf_bd_proceedings_monitors_listeners(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique identifier
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -4076,6 +4438,8 @@ class yc_listeners_vnf_bd__vnf_bd_proceedings_monitors_listeners(PybindBase):
   def _get_instances(self):
     """
     Getter method for instances, mapped from YANG variable /vnf_bd/proceedings/monitors/listeners/instances (uint32)
+
+    YANG Description: Number of tool instances
     """
     return self.__instances
       
@@ -4086,6 +4450,8 @@ class yc_listeners_vnf_bd__vnf_bd_proceedings_monitors_listeners(PybindBase):
     source YANG file, then _set_instances is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_instances() directly.
+
+    YANG Description: Number of tool instances
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4109,6 +4475,8 @@ class yc_listeners_vnf_bd__vnf_bd_proceedings_monitors_listeners(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/proceedings/monitors/listeners/name (string)
+
+    YANG Description: Name of tool
     """
     return self.__name
       
@@ -4119,6 +4487,8 @@ class yc_listeners_vnf_bd__vnf_bd_proceedings_monitors_listeners(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Name of tool
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4142,6 +4512,8 @@ class yc_listeners_vnf_bd__vnf_bd_proceedings_monitors_listeners(PybindBase):
   def _get_parameters(self):
     """
     Getter method for parameters, mapped from YANG variable /vnf_bd/proceedings/monitors/listeners/parameters (list)
+
+    YANG Description: List of parameters for tool
     """
     return self.__parameters
       
@@ -4152,6 +4524,8 @@ class yc_listeners_vnf_bd__vnf_bd_proceedings_monitors_listeners(PybindBase):
     source YANG file, then _set_parameters is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_parameters() directly.
+
+    YANG Description: List of parameters for tool
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4186,6 +4560,8 @@ class yc_monitors_vnf_bd__vnf_bd_proceedings_monitors(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/proceedings/monitors. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Involved monitors
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__name','__host','__listeners',)
 
@@ -4233,6 +4609,8 @@ class yc_monitors_vnf_bd__vnf_bd_proceedings_monitors(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_bd/proceedings/monitors/id (string)
+
+    YANG Description: Unique identifier
     """
     return self.__id
       
@@ -4243,6 +4621,8 @@ class yc_monitors_vnf_bd__vnf_bd_proceedings_monitors(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique identifier
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -4271,6 +4651,8 @@ class yc_monitors_vnf_bd__vnf_bd_proceedings_monitors(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/proceedings/monitors/name (string)
+
+    YANG Description: Name of component
     """
     return self.__name
       
@@ -4281,6 +4663,8 @@ class yc_monitors_vnf_bd__vnf_bd_proceedings_monitors(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Name of component
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4304,6 +4688,8 @@ class yc_monitors_vnf_bd__vnf_bd_proceedings_monitors(PybindBase):
   def _get_host(self):
     """
     Getter method for host, mapped from YANG variable /vnf_bd/proceedings/monitors/host (container)
+
+    YANG Description: Host on which component shall be executed
     """
     return self.__host
       
@@ -4314,6 +4700,8 @@ class yc_monitors_vnf_bd__vnf_bd_proceedings_monitors(PybindBase):
     source YANG file, then _set_host is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_host() directly.
+
+    YANG Description: Host on which component shall be executed
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4337,6 +4725,8 @@ class yc_monitors_vnf_bd__vnf_bd_proceedings_monitors(PybindBase):
   def _get_listeners(self):
     """
     Getter method for listeners, mapped from YANG variable /vnf_bd/proceedings/monitors/listeners (list)
+
+    YANG Description: Listeners in experiment
     """
     return self.__listeners
       
@@ -4347,6 +4737,8 @@ class yc_monitors_vnf_bd__vnf_bd_proceedings_monitors(PybindBase):
     source YANG file, then _set_listeners is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_listeners() directly.
+
+    YANG Description: Listeners in experiment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4381,6 +4773,8 @@ class yc_proceedings_vnf_bd__vnf_bd_proceedings(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd/proceedings. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Proceedings of VNF-BD
   """
   __slots__ = ('_path_helper', '_extmethods', '__attributes','__agents','__monitors',)
 
@@ -4427,6 +4821,8 @@ class yc_proceedings_vnf_bd__vnf_bd_proceedings(PybindBase):
   def _get_attributes(self):
     """
     Getter method for attributes, mapped from YANG variable /vnf_bd/proceedings/attributes (list)
+
+    YANG Description: Attributes of proceedings
     """
     return self.__attributes
       
@@ -4437,6 +4833,8 @@ class yc_proceedings_vnf_bd__vnf_bd_proceedings(PybindBase):
     source YANG file, then _set_attributes is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_attributes() directly.
+
+    YANG Description: Attributes of proceedings
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4460,6 +4858,8 @@ class yc_proceedings_vnf_bd__vnf_bd_proceedings(PybindBase):
   def _get_agents(self):
     """
     Getter method for agents, mapped from YANG variable /vnf_bd/proceedings/agents (list)
+
+    YANG Description: Involved agents
     """
     return self.__agents
       
@@ -4470,6 +4870,8 @@ class yc_proceedings_vnf_bd__vnf_bd_proceedings(PybindBase):
     source YANG file, then _set_agents is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_agents() directly.
+
+    YANG Description: Involved agents
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4493,6 +4895,8 @@ class yc_proceedings_vnf_bd__vnf_bd_proceedings(PybindBase):
   def _get_monitors(self):
     """
     Getter method for monitors, mapped from YANG variable /vnf_bd/proceedings/monitors (list)
+
+    YANG Description: Involved monitors
     """
     return self.__monitors
       
@@ -4503,6 +4907,8 @@ class yc_proceedings_vnf_bd__vnf_bd_proceedings(PybindBase):
     source YANG file, then _set_monitors is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_monitors() directly.
+
+    YANG Description: Involved monitors
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4536,6 +4942,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
   from YANG module vnf-bd - based on the path /vnf-bd. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: A VNF-BD
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__name','__version','__author','__description','__experiments','__environment','__targets','__scenario','__proceedings',)
 
@@ -4589,6 +4997,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_bd/id (string)
+
+    YANG Description: Unique identifier
     """
     return self.__id
       
@@ -4599,6 +5009,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique identifier
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4622,6 +5034,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_bd/name (string)
+
+    YANG Description: Name of the experiment
     """
     return self.__name
       
@@ -4632,6 +5046,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Name of the experiment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4655,6 +5071,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
   def _get_version(self):
     """
     Getter method for version, mapped from YANG variable /vnf_bd/version (string)
+
+    YANG Description: Version of the experiment
     """
     return self.__version
       
@@ -4665,6 +5083,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
     source YANG file, then _set_version is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_version() directly.
+
+    YANG Description: Version of the experiment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4688,6 +5108,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
   def _get_author(self):
     """
     Getter method for author, mapped from YANG variable /vnf_bd/author (string)
+
+    YANG Description: Author of the experiment
     """
     return self.__author
       
@@ -4698,6 +5120,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
     source YANG file, then _set_author is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_author() directly.
+
+    YANG Description: Author of the experiment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4721,6 +5145,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /vnf_bd/description (string)
+
+    YANG Description: Description of the experiment
     """
     return self.__description
       
@@ -4731,6 +5157,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
     source YANG file, then _set_description is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_description() directly.
+
+    YANG Description: Description of the experiment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4754,6 +5182,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
   def _get_experiments(self):
     """
     Getter method for experiments, mapped from YANG variable /vnf_bd/experiments (container)
+
+    YANG Description: Number of trails and test to be executed
     """
     return self.__experiments
       
@@ -4764,6 +5194,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
     source YANG file, then _set_experiments is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_experiments() directly.
+
+    YANG Description: Number of trails and test to be executed
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4787,6 +5219,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
   def _get_environment(self):
     """
     Getter method for environment, mapped from YANG variable /vnf_bd/environment (container)
+
+    YANG Description: Definition of the benchmarking execution environment
     """
     return self.__environment
       
@@ -4797,6 +5231,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
     source YANG file, then _set_environment is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_environment() directly.
+
+    YANG Description: Definition of the benchmarking execution environment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4820,6 +5256,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
   def _get_targets(self):
     """
     Getter method for targets, mapped from YANG variable /vnf_bd/targets (list)
+
+    YANG Description: Target SUTs
     """
     return self.__targets
       
@@ -4830,6 +5268,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
     source YANG file, then _set_targets is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_targets() directly.
+
+    YANG Description: Target SUTs
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4853,6 +5293,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
   def _get_scenario(self):
     """
     Getter method for scenario, mapped from YANG variable /vnf_bd/scenario (container)
+
+    YANG Description: Scenarios defined by this VNF-BD
     """
     return self.__scenario
       
@@ -4863,6 +5305,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
     source YANG file, then _set_scenario is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_scenario() directly.
+
+    YANG Description: Scenarios defined by this VNF-BD
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4886,6 +5330,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
   def _get_proceedings(self):
     """
     Getter method for proceedings, mapped from YANG variable /vnf_bd/proceedings (container)
+
+    YANG Description: Proceedings of VNF-BD
     """
     return self.__proceedings
       
@@ -4896,6 +5342,8 @@ class yc_vnf_bd_vnf_bd__vnf_bd(PybindBase):
     source YANG file, then _set_proceedings is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_proceedings() directly.
+
+    YANG Description: Proceedings of VNF-BD
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -4982,6 +5430,8 @@ class vnf_bd(PybindBase):
   def _get_vnf_bd(self):
     """
     Getter method for vnf_bd, mapped from YANG variable /vnf_bd (container)
+
+    YANG Description: A VNF-BD
     """
     return self.__vnf_bd
       
@@ -4992,6 +5442,8 @@ class vnf_bd(PybindBase):
     source YANG file, then _set_vnf_bd is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_vnf_bd() directly.
+
+    YANG Description: A VNF-BD
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
