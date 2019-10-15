@@ -26,6 +26,8 @@ class yc_origin_vnf_pp__vnf_pp_reports_snapshots_origin(PybindBase):
   from YANG module vnf-pp - based on the path /vnf-pp/reports/snapshots/origin. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Trial when the snapshot was obtained.
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__role','__host',)
 
@@ -72,6 +74,8 @@ class yc_origin_vnf_pp__vnf_pp_reports_snapshots_origin(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_pp/reports/snapshots/origin/id (string)
+
+    YANG Description: Unique origin identifier, i.e., agent or monitor identifier.
     """
     return self.__id
       
@@ -82,6 +86,8 @@ class yc_origin_vnf_pp__vnf_pp_reports_snapshots_origin(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique origin identifier, i.e., agent or monitor identifier.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -105,6 +111,8 @@ class yc_origin_vnf_pp__vnf_pp_reports_snapshots_origin(PybindBase):
   def _get_role(self):
     """
     Getter method for role, mapped from YANG variable /vnf_pp/reports/snapshots/origin/role (string)
+
+    YANG Description: Role of the component, origin of the snapshop, i.e., agent or monitor.
     """
     return self.__role
       
@@ -115,6 +123,8 @@ class yc_origin_vnf_pp__vnf_pp_reports_snapshots_origin(PybindBase):
     source YANG file, then _set_role is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_role() directly.
+
+    YANG Description: Role of the component, origin of the snapshop, i.e., agent or monitor.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -138,6 +148,8 @@ class yc_origin_vnf_pp__vnf_pp_reports_snapshots_origin(PybindBase):
   def _get_host(self):
     """
     Getter method for host, mapped from YANG variable /vnf_pp/reports/snapshots/origin/host (string)
+
+    YANG Description: Host name where the source of the snapshot was placed.
     """
     return self.__host
       
@@ -148,6 +160,8 @@ class yc_origin_vnf_pp__vnf_pp_reports_snapshots_origin(PybindBase):
     source YANG file, then _set_host is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_host() directly.
+
+    YANG Description: Host name where the source of the snapshot was placed.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -181,6 +195,8 @@ class yc_source_vnf_pp__vnf_pp_reports_snapshots_evaluations_source(PybindBase):
   from YANG module vnf-pp - based on the path /vnf-pp/reports/snapshots/evaluations/source. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Details regarding the source of the evaluation.
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__name','__type','__version','__call',)
 
@@ -229,6 +245,8 @@ class yc_source_vnf_pp__vnf_pp_reports_snapshots_evaluations_source(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/source/id (string)
+
+    YANG Description: Unique source id
     """
     return self.__id
       
@@ -239,6 +257,8 @@ class yc_source_vnf_pp__vnf_pp_reports_snapshots_evaluations_source(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique source id
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -262,6 +282,8 @@ class yc_source_vnf_pp__vnf_pp_reports_snapshots_evaluations_source(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/source/name (string)
+
+    YANG Description: Name of the source of the evaluation.
     """
     return self.__name
       
@@ -272,6 +294,8 @@ class yc_source_vnf_pp__vnf_pp_reports_snapshots_evaluations_source(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Name of the source of the evaluation.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -295,6 +319,8 @@ class yc_source_vnf_pp__vnf_pp_reports_snapshots_evaluations_source(PybindBase):
   def _get_type(self):
     """
     Getter method for type, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/source/type (string)
+
+    YANG Description: Type of the evaluation source, i.e., prober or listener.
     """
     return self.__type
       
@@ -305,6 +331,8 @@ class yc_source_vnf_pp__vnf_pp_reports_snapshots_evaluations_source(PybindBase):
     source YANG file, then _set_type is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
+
+    YANG Description: Type of the evaluation source, i.e., prober or listener.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -328,6 +356,8 @@ class yc_source_vnf_pp__vnf_pp_reports_snapshots_evaluations_source(PybindBase):
   def _get_version(self):
     """
     Getter method for version, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/source/version (string)
+
+    YANG Description: Version of the tool interfacing the prober/listener.
     """
     return self.__version
       
@@ -338,6 +368,8 @@ class yc_source_vnf_pp__vnf_pp_reports_snapshots_evaluations_source(PybindBase):
     source YANG file, then _set_version is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_version() directly.
+
+    YANG Description: Version of the tool interfacing the prober/listener.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -361,6 +393,8 @@ class yc_source_vnf_pp__vnf_pp_reports_snapshots_evaluations_source(PybindBase):
   def _get_call(self):
     """
     Getter method for call, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/source/call (string)
+
+    YANG Description: Full call realized by the source of evaluation.
     """
     return self.__call
       
@@ -371,6 +405,8 @@ class yc_source_vnf_pp__vnf_pp_reports_snapshots_evaluations_source(PybindBase):
     source YANG file, then _set_call is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_call() directly.
+
+    YANG Description: Full call realized by the source of evaluation.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -406,6 +442,8 @@ class yc_timestamp_vnf_pp__vnf_pp_reports_snapshots_evaluations_timestamp(Pybind
   from YANG module vnf-pp - based on the path /vnf-pp/reports/snapshots/evaluations/timestamp. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: Timestamps of the procedures that realized the extraction of the evaluation.
   """
   __slots__ = ('_path_helper', '_extmethods', '__start','__stop',)
 
@@ -451,6 +489,8 @@ class yc_timestamp_vnf_pp__vnf_pp_reports_snapshots_evaluations_timestamp(Pybind
   def _get_start(self):
     """
     Getter method for start, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/timestamp/start (string)
+
+    YANG Description: Time (date, hour, minute, second) when the evaluation started
     """
     return self.__start
       
@@ -461,6 +501,8 @@ class yc_timestamp_vnf_pp__vnf_pp_reports_snapshots_evaluations_timestamp(Pybind
     source YANG file, then _set_start is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_start() directly.
+
+    YANG Description: Time (date, hour, minute, second) when the evaluation started
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -484,6 +526,8 @@ class yc_timestamp_vnf_pp__vnf_pp_reports_snapshots_evaluations_timestamp(Pybind
   def _get_stop(self):
     """
     Getter method for stop, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/timestamp/stop (string)
+
+    YANG Description: Time (date, hour, minute, second) when the evaluation stopped
     """
     return self.__stop
       
@@ -494,6 +538,8 @@ class yc_timestamp_vnf_pp__vnf_pp_reports_snapshots_evaluations_timestamp(Pybind
     source YANG file, then _set_stop is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_stop() directly.
+
+    YANG Description: Time (date, hour, minute, second) when the evaluation stopped
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -573,6 +619,8 @@ class yc_tuple_vector_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics_tuple
   def _get_key(self):
     """
     Getter method for key, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/tuple_vector/key (string)
+
+    YANG Description: Tuple key.
     """
     return self.__key
       
@@ -583,6 +631,8 @@ class yc_tuple_vector_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics_tuple
     source YANG file, then _set_key is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_key() directly.
+
+    YANG Description: Tuple key.
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -611,6 +661,8 @@ class yc_tuple_vector_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics_tuple
   def _get_value(self):
     """
     Getter method for value, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/tuple_vector/value (string)
+
+    YANG Description: Tuple value.
     """
     return self.__value
       
@@ -621,6 +673,8 @@ class yc_tuple_vector_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics_tuple
     source YANG file, then _set_value is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_value() directly.
+
+    YANG Description: Tuple value.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -653,6 +707,8 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
   from YANG module vnf-pp - based on the path /vnf-pp/reports/snapshots/evaluations/metrics. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: List of metrics obtained by evaluation.
   """
   __slots__ = ('_path_helper', '_extmethods', '__name','__unit','__type','__scalar','__vector','__tuple_vector',)
 
@@ -702,6 +758,8 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/name (string)
+
+    YANG Description: Metric name
     """
     return self.__name
       
@@ -712,6 +770,8 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Metric name
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -740,6 +800,8 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
   def _get_unit(self):
     """
     Getter method for unit, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/unit (string)
+
+    YANG Description: Unit of the metric value(s)
     """
     return self.__unit
       
@@ -750,6 +812,8 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
     source YANG file, then _set_unit is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_unit() directly.
+
+    YANG Description: Unit of the metric value(s)
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -774,7 +838,7 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
     """
     Getter method for type, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/type (string)
 
-    YANG Description: The data type encoded in the string value.
+    YANG Description: The data type encoded in the value.
     """
     return self.__type
       
@@ -786,7 +850,7 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_type() directly.
 
-    YANG Description: The data type encoded in the string value.
+    YANG Description: The data type encoded in the value.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -811,7 +875,7 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
     """
     Getter method for scalar, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/scalar (string)
 
-    YANG Description: Single string value
+    YANG Description: Single value
     """
     return self.__scalar
       
@@ -823,7 +887,7 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_scalar() directly.
 
-    YANG Description: Single string value
+    YANG Description: Single value
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -848,7 +912,7 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
     """
     Getter method for vector, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics/vector (string)
 
-    YANG Description: List of string values
+    YANG Description: List of values
     """
     return self.__vector
       
@@ -860,7 +924,7 @@ class yc_metrics_vnf_pp__vnf_pp_reports_snapshots_evaluations_metrics(PybindBase
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_vector() directly.
 
-    YANG Description: List of string values
+    YANG Description: List of values
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -934,6 +998,8 @@ class yc_evaluations_vnf_pp__vnf_pp_reports_snapshots_evaluations(PybindBase):
   from YANG module vnf-pp - based on the path /vnf-pp/reports/snapshots/evaluations. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: List of evaluations contained in a single snapshot.
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__source','__timestamp','__metrics',)
 
@@ -981,6 +1047,8 @@ class yc_evaluations_vnf_pp__vnf_pp_reports_snapshots_evaluations(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/id (string)
+
+    YANG Description: Unique id
     """
     return self.__id
       
@@ -991,6 +1059,8 @@ class yc_evaluations_vnf_pp__vnf_pp_reports_snapshots_evaluations(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique id
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -1019,6 +1089,8 @@ class yc_evaluations_vnf_pp__vnf_pp_reports_snapshots_evaluations(PybindBase):
   def _get_source(self):
     """
     Getter method for source, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/source (container)
+
+    YANG Description: Details regarding the source of the evaluation.
     """
     return self.__source
       
@@ -1029,6 +1101,8 @@ class yc_evaluations_vnf_pp__vnf_pp_reports_snapshots_evaluations(PybindBase):
     source YANG file, then _set_source is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_source() directly.
+
+    YANG Description: Details regarding the source of the evaluation.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1052,6 +1126,8 @@ class yc_evaluations_vnf_pp__vnf_pp_reports_snapshots_evaluations(PybindBase):
   def _get_timestamp(self):
     """
     Getter method for timestamp, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/timestamp (container)
+
+    YANG Description: Timestamps of the procedures that realized the extraction of the evaluation.
     """
     return self.__timestamp
       
@@ -1062,6 +1138,8 @@ class yc_evaluations_vnf_pp__vnf_pp_reports_snapshots_evaluations(PybindBase):
     source YANG file, then _set_timestamp is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_timestamp() directly.
+
+    YANG Description: Timestamps of the procedures that realized the extraction of the evaluation.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1085,6 +1163,8 @@ class yc_evaluations_vnf_pp__vnf_pp_reports_snapshots_evaluations(PybindBase):
   def _get_metrics(self):
     """
     Getter method for metrics, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations/metrics (list)
+
+    YANG Description: List of metrics obtained by evaluation.
     """
     return self.__metrics
       
@@ -1095,6 +1175,8 @@ class yc_evaluations_vnf_pp__vnf_pp_reports_snapshots_evaluations(PybindBase):
     source YANG file, then _set_metrics is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_metrics() directly.
+
+    YANG Description: List of metrics obtained by evaluation.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1129,6 +1211,8 @@ class yc_snapshots_vnf_pp__vnf_pp_reports_snapshots(PybindBase):
   from YANG module vnf-pp - based on the path /vnf-pp/reports/snapshots. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: List of snapshots contained in a single report.
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__trial','__origin','__evaluations',)
 
@@ -1176,6 +1260,8 @@ class yc_snapshots_vnf_pp__vnf_pp_reports_snapshots(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_pp/reports/snapshots/id (string)
+
+    YANG Description: Unique identifier.
     """
     return self.__id
       
@@ -1186,6 +1272,8 @@ class yc_snapshots_vnf_pp__vnf_pp_reports_snapshots(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique identifier.
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -1214,6 +1302,8 @@ class yc_snapshots_vnf_pp__vnf_pp_reports_snapshots(PybindBase):
   def _get_trial(self):
     """
     Getter method for trial, mapped from YANG variable /vnf_pp/reports/snapshots/trial (uint32)
+
+    YANG Description: Trial identifier when the snapshot was obtained.
     """
     return self.__trial
       
@@ -1224,6 +1314,8 @@ class yc_snapshots_vnf_pp__vnf_pp_reports_snapshots(PybindBase):
     source YANG file, then _set_trial is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_trial() directly.
+
+    YANG Description: Trial identifier when the snapshot was obtained.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1247,6 +1339,8 @@ class yc_snapshots_vnf_pp__vnf_pp_reports_snapshots(PybindBase):
   def _get_origin(self):
     """
     Getter method for origin, mapped from YANG variable /vnf_pp/reports/snapshots/origin (container)
+
+    YANG Description: Trial when the snapshot was obtained.
     """
     return self.__origin
       
@@ -1257,6 +1351,8 @@ class yc_snapshots_vnf_pp__vnf_pp_reports_snapshots(PybindBase):
     source YANG file, then _set_origin is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_origin() directly.
+
+    YANG Description: Trial when the snapshot was obtained.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1280,6 +1376,8 @@ class yc_snapshots_vnf_pp__vnf_pp_reports_snapshots(PybindBase):
   def _get_evaluations(self):
     """
     Getter method for evaluations, mapped from YANG variable /vnf_pp/reports/snapshots/evaluations (list)
+
+    YANG Description: List of evaluations contained in a single snapshot.
     """
     return self.__evaluations
       
@@ -1290,6 +1388,8 @@ class yc_snapshots_vnf_pp__vnf_pp_reports_snapshots(PybindBase):
     source YANG file, then _set_evaluations is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_evaluations() directly.
+
+    YANG Description: List of evaluations contained in a single snapshot.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1324,6 +1424,8 @@ class yc_reports_vnf_pp__vnf_pp_reports(PybindBase):
   from YANG module vnf-pp - based on the path /vnf-pp/reports. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: List of reports obtained in a vnf-pp.
   """
   __slots__ = ('_path_helper', '_extmethods', '__test','__snapshots',)
 
@@ -1369,6 +1471,8 @@ class yc_reports_vnf_pp__vnf_pp_reports(PybindBase):
   def _get_test(self):
     """
     Getter method for test, mapped from YANG variable /vnf_pp/reports/test (uint32)
+
+    YANG Description: Test identifier when the snapshot was obtained.
     """
     return self.__test
       
@@ -1379,6 +1483,8 @@ class yc_reports_vnf_pp__vnf_pp_reports(PybindBase):
     source YANG file, then _set_test is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_test() directly.
+
+    YANG Description: Test identifier when the snapshot was obtained.
     """
     parent = getattr(self, "_parent", None)
     if parent is not None and load is False:
@@ -1407,6 +1513,8 @@ class yc_reports_vnf_pp__vnf_pp_reports(PybindBase):
   def _get_snapshots(self):
     """
     Getter method for snapshots, mapped from YANG variable /vnf_pp/reports/snapshots (list)
+
+    YANG Description: List of snapshots contained in a single report.
     """
     return self.__snapshots
       
@@ -1417,6 +1525,8 @@ class yc_reports_vnf_pp__vnf_pp_reports(PybindBase):
     source YANG file, then _set_snapshots is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_snapshots() directly.
+
+    YANG Description: List of snapshots contained in a single report.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1449,6 +1559,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
   from YANG module vnf-pp - based on the path /vnf-pp. Each member element of
   the container is represented as a class variable - with a specific
   YANG type.
+
+  YANG Description: A VNF-PP.
   """
   __slots__ = ('_path_helper', '_extmethods', '__id','__name','__version','__author','__description','__timestamp','__reports',)
 
@@ -1499,6 +1611,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
   def _get_id(self):
     """
     Getter method for id, mapped from YANG variable /vnf_pp/id (string)
+
+    YANG Description: Unique identifier
     """
     return self.__id
       
@@ -1509,6 +1623,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
     source YANG file, then _set_id is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_id() directly.
+
+    YANG Description: Unique identifier
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1532,6 +1648,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
   def _get_name(self):
     """
     Getter method for name, mapped from YANG variable /vnf_pp/name (string)
+
+    YANG Description: Name of the experiment
     """
     return self.__name
       
@@ -1542,6 +1660,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
     source YANG file, then _set_name is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_name() directly.
+
+    YANG Description: Name of the experiment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1565,6 +1685,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
   def _get_version(self):
     """
     Getter method for version, mapped from YANG variable /vnf_pp/version (string)
+
+    YANG Description: Version of the experiment
     """
     return self.__version
       
@@ -1575,6 +1697,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
     source YANG file, then _set_version is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_version() directly.
+
+    YANG Description: Version of the experiment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1598,6 +1722,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
   def _get_author(self):
     """
     Getter method for author, mapped from YANG variable /vnf_pp/author (string)
+
+    YANG Description: Author of the experiment
     """
     return self.__author
       
@@ -1608,6 +1734,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
     source YANG file, then _set_author is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_author() directly.
+
+    YANG Description: Author of the experiment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1631,6 +1759,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
   def _get_description(self):
     """
     Getter method for description, mapped from YANG variable /vnf_pp/description (string)
+
+    YANG Description: Description of the experiment
     """
     return self.__description
       
@@ -1641,6 +1771,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
     source YANG file, then _set_description is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_description() directly.
+
+    YANG Description: Description of the experiment
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1664,6 +1796,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
   def _get_timestamp(self):
     """
     Getter method for timestamp, mapped from YANG variable /vnf_pp/timestamp (string)
+
+    YANG Description: Time (date, hour, minute, second) when the vnf-pp was created.
     """
     return self.__timestamp
       
@@ -1674,6 +1808,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
     source YANG file, then _set_timestamp is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_timestamp() directly.
+
+    YANG Description: Time (date, hour, minute, second) when the vnf-pp was created.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1697,6 +1833,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
   def _get_reports(self):
     """
     Getter method for reports, mapped from YANG variable /vnf_pp/reports (list)
+
+    YANG Description: List of reports obtained in a vnf-pp.
     """
     return self.__reports
       
@@ -1707,6 +1845,8 @@ class yc_vnf_pp_vnf_pp__vnf_pp(PybindBase):
     source YANG file, then _set_reports is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_reports() directly.
+
+    YANG Description: List of reports obtained in a vnf-pp.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)
@@ -1745,7 +1885,7 @@ class vnf_pp(PybindBase):
   the container is represented as a class variable - with a specific
   YANG type.
 
-  YANG Description: Yang model for a VNF Performance Profile (vnf-pp) in the scope of IETF/BMWG
+  YANG Description: Yang model for a VNF Performance Profile (VNF-PP) in the scope of IETF/BMWG
   """
   __slots__ = ('_path_helper', '_extmethods', '__vnf_pp',)
 
@@ -1790,6 +1930,8 @@ class vnf_pp(PybindBase):
   def _get_vnf_pp(self):
     """
     Getter method for vnf_pp, mapped from YANG variable /vnf_pp (container)
+
+    YANG Description: A VNF-PP.
     """
     return self.__vnf_pp
       
@@ -1800,6 +1942,8 @@ class vnf_pp(PybindBase):
     source YANG file, then _set_vnf_pp is considered as a private
     method. Backends looking to populate this variable should
     do so via calling thisObj._set_vnf_pp() directly.
+
+    YANG Description: A VNF-PP.
     """
     if hasattr(v, "_utype"):
       v = v._utype(v)

@@ -68,7 +68,7 @@ module vnf-bd {
             leaf trials {
                 type uint32;
                 default 1;
-                description "Number of trails";
+                description "Number of trials";
             }
             leaf tests {
                 type uint32;

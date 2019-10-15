@@ -12,12 +12,12 @@ hide <<leafref>> stereotype
 hide <<leafref>> circle
 page 1x1 
 Title vnf-pp 
-note top of vnf_pp_vnf_pp : <b>Namespace: </b> urn:ietf:params:xml:ns:yang:vnf-pp \n<b>Prefix: </b> vnf-pp \n<b>Organization : </b>\nIETF/BMWG \n<b>Contact : </b>\nManuel Peuster <peuster@mail.uni-paderborn.de>, Raphael Vicente Rosa <raphaelvrosa@gmail.com> \n<b>Revision : </b> 2019-08-13 \n
+note top of vnf_pp_vnf_pp : <b>Namespace: </b> urn:ietf:params:xml:ns:yang:vnf-pp \n<b>Prefix: </b> vnf-pp \n<b>Organization : </b>\nIETF/BMWG \n<b>Contact : </b>\nManuel Peuster <peuster@mail.uni-paderborn.de>, Raphael Vicente Rosa <raphaelvrosa@gmail.com> \n<b>Revision : </b> 2019-10-15 \n
 package "vnf-pp:vnf-pp" as vnf_pp_vnf_pp { 
 class "vnf-pp" as vnf_pp << (M, #33CCFF) module>> 
-class "string-tuple" as vnf_pp_I_string_tuple_grouping <<(G,Lime) grouping>> 
-vnf_pp_I_string_tuple_grouping : key : string  
-vnf_pp_I_string_tuple_grouping : value : string  
+class "tuple" as vnf_pp_I_tuple_grouping <<(G,Lime) grouping>> 
+vnf_pp_I_tuple_grouping : key : string  
+vnf_pp_I_tuple_grouping : value : string  
 class "settings" as vnf_pp_I_settings_grouping <<(G,Lime) grouping>> 
 vnf_pp_I_settings_grouping : id : string  
 vnf_pp_I_settings_grouping : name : string  
@@ -41,7 +41,7 @@ class "tuple-vector" as vnf_pp_I_metric_I_value_I_tuple_vector_case <<case>>
 vnf_pp_I_metric_I_value .. vnf_pp_I_metric_I_value_I_tuple_vector_case  : choice value
 class "tuple-vector" as vnf_pp_I_metric_I_value_I_tuple_vector_I_tuple_vector << (L, #FF7700) list>> 
 vnf_pp_I_metric_I_value_I_tuple_vector_case *-- "0..N" vnf_pp_I_metric_I_value_I_tuple_vector_I_tuple_vector 
-vnf_pp_I_metric_I_value_I_tuple_vector_I_tuple_vector : string-tuple {uses} 
+vnf_pp_I_metric_I_value_I_tuple_vector_I_tuple_vector : tuple {uses} 
 class "evaluation" as vnf_pp_I_evaluation_grouping <<(G,Lime) grouping>> 
 vnf_pp_I_evaluation_grouping : id : string  
 class "source" as  vnf_pp_I_evaluation_I_source <<container>> 
@@ -84,7 +84,7 @@ vnf_pp *-- "1" vnf_pp_I_vnf_pp
 vnf_pp_I_vnf_pp : vnf-pp {uses} 
 } 
 
-vnf_pp_I_metric_I_value_I_tuple_vector_I_tuple_vector --> vnf_pp_I_string_tuple_grouping : uses 
+vnf_pp_I_metric_I_value_I_tuple_vector_I_tuple_vector --> vnf_pp_I_tuple_grouping : uses 
 vnf_pp_I_evaluation_I_metrics --> vnf_pp_I_metric_grouping : uses 
 vnf_pp_I_snapshot_I_evaluations --> vnf_pp_I_evaluation_grouping : uses 
 vnf_pp_I_report_I_snapshots --> vnf_pp_I_snapshot_grouping : uses 
@@ -92,6 +92,6 @@ vnf_pp_I_vnf_pp_grouping --> vnf_pp_I_settings_grouping : uses
 vnf_pp_I_vnf_pp_I_reports --> vnf_pp_I_report_grouping : uses 
 vnf_pp_I_vnf_pp --> vnf_pp_I_vnf_pp_grouping : uses 
 center footer
- <size:20> UML Generated : 2019-09-26 11:01 </size>
+ <size:20> UML Generated : 2019-10-15 11:05 </size>
  endfooter 
 @enduml 

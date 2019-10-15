@@ -8,8 +8,7 @@ validate:
 	pyang vnf-pp.yang -f tree -o "$(DOC_DIR)/vnf-pp.tree"
 	pyang vnf-pp.yang -f jstree -o "$(DOC_DIR)/vnf-pp.html"
 	pyang vnf-pp.yang -f uml -o "$(DOC_DIR)/vnf-pp.uml"
-	# finally validate - Not ready yet
-	# pyang vnf-pp.yang --ietf
+	pyang vnf-pp.yang --ietf
 
 build:
 	# generate / compile python model
